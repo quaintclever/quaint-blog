@@ -1,8 +1,6 @@
 package com.quaint.blogback.controller;
 
-import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Hello {
 
-    //测试使用
+    //测试使用...
     @RequestMapping("/test")
     public String showBack(){
         return "main";
