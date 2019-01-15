@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.quaint.blogback.dao.UserCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.UserComment" >
+    <id column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="blog_id" property="blogId" jdbcType="INTEGER" />
+    <result column="commit_id" property="commitId" jdbcType="INTEGER" />
+    <result column="commit_content" property="commitContent" jdbcType="VARCHAR" />
+    <result column="commit_user_id" property="commitUserId" jdbcType="INTEGER" />
+    <result column="commit_time" property="commitTime" jdbcType="TIMESTAMP" />
+    <result column="commit_ip" property="commitIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c_id, user_id, blog_id, commit_id, commit_content, commit_user_id, commit_time, commit_ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quaint_user_comment
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quaint_user_comment
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.quaint.blogback.pojo.UserComment" >
+    insert into quaint_user_comment (c_id, user_id, blog_id, 
+      commit_id, commit_content, commit_user_id, 
+      commit_time, commit_ip)
+    values (#{cId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, 
+      #{commitId,jdbcType=INTEGER}, #{commitContent,jdbcType=VARCHAR}, #{commitUserId,jdbcType=INTEGER}, 
+      #{commitTime,jdbcType=TIMESTAMP}, #{commitIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.UserComment" >
+    insert into quaint_user_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="blogId != null" >
+        blog_id,
+      </if>
+      <if test="commitId != null" >
+        commit_id,
+      </if>
+      <if test="commitContent != null" >
+        commit_content,
+      </if>
+      <if test="commitUserId != null" >
+        commit_user_id,
+      </if>
+      <if test="commitTime != null" >
+        commit_time,
+      </if>
+      <if test="commitIp != null" >
+        commit_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="blogId != null" >
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="commitId != null" >
+        #{commitId,jdbcType=INTEGER},
+      </if>
+      <if test="commitContent != null" >
+        #{commitContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commitUserId != null" >
+        #{commitUserId,jdbcType=INTEGER},
+      </if>
+      <if test="commitTime != null" >
+        #{commitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commitIp != null" >
+        #{commitIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.UserComment" >
+    update quaint_user_comment
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="blogId != null" >
+        blog_id = #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="commitId != null" >
+        commit_id = #{commitId,jdbcType=INTEGER},
+      </if>
+      <if test="commitContent != null" >
+        commit_content = #{commitContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commitUserId != null" >
+        commit_user_id = #{commitUserId,jdbcType=INTEGER},
+      </if>
+      <if test="commitTime != null" >
+        commit_time = #{commitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commitIp != null" >
+        commit_ip = #{commitIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.UserComment" >
+    update quaint_user_comment
+    set user_id = #{userId,jdbcType=INTEGER},
+      blog_id = #{blogId,jdbcType=INTEGER},
+      commit_id = #{commitId,jdbcType=INTEGER},
+      commit_content = #{commitContent,jdbcType=VARCHAR},
+      commit_user_id = #{commitUserId,jdbcType=INTEGER},
+      commit_time = #{commitTime,jdbcType=TIMESTAMP},
+      commit_ip = #{commitIp,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

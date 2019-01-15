@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    name: quaint
+    url: jdbc:mysql://127.0.0.1:3306/quaintblog
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.quaint.blogback.pojo
+#配置分页插件pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
