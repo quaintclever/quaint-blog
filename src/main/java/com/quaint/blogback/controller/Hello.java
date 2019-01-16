@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Hello {
 
+
     //测试使用...111
     @RequestMapping("/test")
     public String showBack(){
@@ -27,5 +28,6 @@ public class Hello {
     public String showMain(){
         return "main";
     }
+
 
 }
