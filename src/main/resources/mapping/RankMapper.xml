@@ -16,6 +16,11 @@
     from quaint_rank
     where r_id = #{rId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_rank
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_rank
     where r_id = #{rId,jdbcType=INTEGER}

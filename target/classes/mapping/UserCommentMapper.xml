@@ -20,6 +20,11 @@
     from quaint_user_comment
     where c_id = #{cId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_user_comment
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_user_comment
     where c_id = #{cId,jdbcType=INTEGER}

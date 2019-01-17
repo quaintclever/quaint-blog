@@ -5,7 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>后台管理面板</title>
-		<link rel="stylesheet" href="../static/layui/css/layui.css"> </head>
+		<link rel="stylesheet" href="../static/layui/css/layui.css">
+	</head>
 
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -50,7 +51,7 @@
 						</dl>
 					</li>
 					<li class="layui-nav-item">
-						<a href="/exit">退了</a>
+						<a href="/exit">退出</a>
 					</li>
 				</ul>
 			</div>
@@ -63,43 +64,44 @@
 						layui-this	默认选中
 					-->
 					<ul class="layui-nav layui-nav-tree" lay-filter="test">
-						<li class="layui-nav-item ">
-							<a class="" href="javascript:;">Quaint管理菜单测试</a>
+						<li class="layui-nav-item layui-nav-itemed">
+							<a class="" href="javascript:;">系统综合管理</a>
 							<dl class="layui-nav-child">
 								<dd>
-									<a href="/powerList/data" target="quaint-ifream">权限列表管理</a>
+									<a href="/user/view" target="quaint-ifream">用户管理</a>
 								</dd>
 								<dd>
-									<a href="/mood/data" target="quaint-ifream">心情说说管理</a>
+									<a href="javascript:;" target="quaint-ifream">等级管理</a>
 								</dd>
 								<dd>
-									<a href="javascript:;">列表三</a>
+									<a href="/powerList/data" target="quaint-ifream">权限管理</a>
 								</dd>
 								<dd>
-									<a href="">超链接</a>
+									<a href="javascript:;" target="quaint-ifream">博文管理</a>
+								</dd>
+								<dd>
+									<a href="/mood/data" target="quaint-ifream">心情管理</a>
+								</dd>
+								<dd>
+									<a href="javascript:;" target="quaint-ifream">留言管理</a>
+								</dd>
+								<dd>
+									<a href="javascript:;" target="quaint-ifream">评论管理</a>
 								</dd>
 							</dl>
 						</li>
 						<li class="layui-nav-item">
-							<a href="javascript:;">解决方案</a>
+							<a href="javascript:;">搜索系统管理</a>
 							<dl class="layui-nav-child">
 								<dd>
-									<a href="javascript:;">列表一</a>
+									<a href="javascript:;" target="quaint-ifream">标签管理</a>
 								</dd>
 								<dd>
-									<a href="javascript:;">列表二</a>
-								</dd>
-								<dd>
-									<a href="">超链接</a>
+									<a href="javascript:;" target="quaint-ifream">热搜管理</a>
 								</dd>
 							</dl>
 						</li>
-						<li class="layui-nav-item">
-							<a href="">云市场</a>
-						</li>
-						<li class="layui-nav-item">
-							<a href="">权限列表管理</a>
-						</li>
+
 					</ul>
 				</div>
 			</div>

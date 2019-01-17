@@ -2,6 +2,8 @@ package com.quaint.blogback.dao;
 
 import com.quaint.blogback.pojo.StayMessage;
 
+import java.util.List;
+
 public interface StayMessageMapper {
     int deleteByPrimaryKey(Integer stayId);
 
@@ -10,6 +12,8 @@ public interface StayMessageMapper {
     int insertSelective(StayMessage record);
 
     StayMessage selectByPrimaryKey(Integer stayId);
+
+    List<StayMessage> select();
 
     int updateByPrimaryKeySelective(StayMessage record);
 

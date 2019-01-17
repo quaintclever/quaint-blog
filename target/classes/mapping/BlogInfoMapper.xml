@@ -21,6 +21,11 @@
     from quaint_blog_info
     where blog_id = #{blogId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_blog_info
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_blog_info
     where blog_id = #{blogId,jdbcType=INTEGER}

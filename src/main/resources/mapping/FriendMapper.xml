@@ -15,6 +15,11 @@
     from quaint_friend
     where f_id = #{fId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_friend
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_friend
     where f_id = #{fId,jdbcType=INTEGER}

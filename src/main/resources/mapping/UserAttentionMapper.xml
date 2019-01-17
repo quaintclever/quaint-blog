@@ -15,6 +15,11 @@
     from quaint_user_attention
     where a_id = #{aId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_user_attention
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_user_attention
     where a_id = #{aId,jdbcType=INTEGER}

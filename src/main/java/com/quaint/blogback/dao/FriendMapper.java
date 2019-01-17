@@ -2,6 +2,8 @@ package com.quaint.blogback.dao;
 
 import com.quaint.blogback.pojo.Friend;
 
+import java.util.List;
+
 public interface FriendMapper {
     int deleteByPrimaryKey(Integer fId);
 
@@ -10,6 +12,8 @@ public interface FriendMapper {
     int insertSelective(Friend record);
 
     Friend selectByPrimaryKey(Integer fId);
+
+    List<Friend> select();
 
     int updateByPrimaryKeySelective(Friend record);
 

@@ -17,6 +17,11 @@
     from quaint_visitor
     where v_id = #{vId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_visitor
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_visitor
     where v_id = #{vId,jdbcType=INTEGER}

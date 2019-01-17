@@ -2,6 +2,8 @@ package com.quaint.blogback.dao;
 
 import com.quaint.blogback.pojo.UserComment;
 
+import java.util.List;
+
 public interface UserCommentMapper {
     int deleteByPrimaryKey(Integer cId);
 
@@ -10,6 +12,8 @@ public interface UserCommentMapper {
     int insertSelective(UserComment record);
 
     UserComment selectByPrimaryKey(Integer cId);
+
+    List<UserComment> select();
 
     int updateByPrimaryKeySelective(UserComment record);
 

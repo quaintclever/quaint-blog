@@ -20,6 +20,11 @@
     from quaint_stay_message
     where stay_id = #{stayId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from quaint_stay_message
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_stay_message
     where stay_id = #{stayId,jdbcType=INTEGER}

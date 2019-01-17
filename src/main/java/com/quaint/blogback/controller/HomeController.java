@@ -13,7 +13,7 @@ public class HomeController {
 
 
     //测试使用  直接进入后台
-    @RequestMapping("/test")
+    @RequestMapping("test")
     public String showBack(){
         return "main";
     }
@@ -23,9 +23,9 @@ public class HomeController {
         return "home";
     }
     //测试退出  退出返回界面
-    @RequestMapping("exit")
+    @RequestMapping(value={"exit","admin"})
     public String showHello(){
-        return "index";
+        return "admin";
     }
     //测试登陆  登陆跳转界面
     @PostMapping("login")

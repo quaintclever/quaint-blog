@@ -1,6 +1,7 @@
 package com.quaint.blogback.dao;
 
 import com.quaint.blogback.pojo.BlogInfo;
+import java.util.List;
 
 public interface BlogInfoMapper {
     int deleteByPrimaryKey(Integer blogId);
@@ -10,6 +11,8 @@ public interface BlogInfoMapper {
     int insertSelective(BlogInfo record);
 
     BlogInfo selectByPrimaryKey(Integer blogId);
+
+    List<BlogInfo> select();
 
     int updateByPrimaryKeySelective(BlogInfo record);
 
