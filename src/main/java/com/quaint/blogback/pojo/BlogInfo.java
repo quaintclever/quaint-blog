@@ -1,12 +1,10 @@
 package com.quaint.blogback.pojo;
 
 /**
- * 博客信息表 实体类
- * quaint 2019年1月17日13:43:02
+ * 博客实体类
+ * quaint 2019年1月17日17:29:43
  */
 public class BlogInfo {
-    private Integer bId;
-
     private Integer blogId;
 
     private Integer userId;
@@ -19,15 +17,9 @@ public class BlogInfo {
 
     private String blogContent;
 
-    private Integer blogCount;
+    private Integer blogCount;      //访问数量
 
-    public Integer getbId() {
-        return bId;
-    }
-
-    public void setbId(Integer bId) {
-        this.bId = bId;
-    }
+    private Integer praiseCount;    //点赞数
 
     public Integer getBlogId() {
         return blogId;
@@ -83,5 +75,13 @@ public class BlogInfo {
 
     public void setBlogCount(Integer blogCount) {
         this.blogCount = blogCount;
+    }
+
+    public Integer getPraiseCount() {
+        return praiseCount;
+    }
+
+    public void setPraiseCount(Integer praiseCount) {
+        this.praiseCount = praiseCount;
     }
 }

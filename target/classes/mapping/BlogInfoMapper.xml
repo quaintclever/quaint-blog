@@ -2,43 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.quaint.blogback.dao.BlogInfoMapper" >
   <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.BlogInfo" >
-    <id column="b_id" property="bId" jdbcType="INTEGER" />
-    <result column="blog_id" property="blogId" jdbcType="INTEGER" />
+    <id column="blog_id" property="blogId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="blog_keyword" property="blogKeyword" jdbcType="VARCHAR" />
     <result column="blog_description" property="blogDescription" jdbcType="VARCHAR" />
     <result column="blog_title" property="blogTitle" jdbcType="VARCHAR" />
     <result column="blog_content" property="blogContent" jdbcType="VARCHAR" />
     <result column="blog_count" property="blogCount" jdbcType="INTEGER" />
+    <result column="praise_count" property="praiseCount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    b_id, blog_id, user_id, blog_keyword, blog_description, blog_title, blog_content, 
-    blog_count
+    blog_id, user_id, blog_keyword, blog_description, blog_title, blog_content, blog_count, 
+    praise_count
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from quaint_blog_info
-    where b_id = #{bId,jdbcType=INTEGER}
+    where blog_id = #{blogId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from quaint_blog_info
-    where b_id = #{bId,jdbcType=INTEGER}
+    where blog_id = #{blogId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.quaint.blogback.pojo.BlogInfo" >
-    insert into quaint_blog_info (b_id, blog_id, user_id, 
-      blog_keyword, blog_description, blog_title, 
-      blog_content, blog_count)
-    values (#{bId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{blogKeyword,jdbcType=VARCHAR}, #{blogDescription,jdbcType=VARCHAR}, #{blogTitle,jdbcType=VARCHAR}, 
-      #{blogContent,jdbcType=VARCHAR}, #{blogCount,jdbcType=INTEGER})
+    insert into quaint_blog_info (blog_id, user_id, blog_keyword, 
+      blog_description, blog_title, blog_content, 
+      blog_count, praise_count)
+    values (#{blogId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{blogKeyword,jdbcType=VARCHAR}, 
+      #{blogDescription,jdbcType=VARCHAR}, #{blogTitle,jdbcType=VARCHAR}, #{blogContent,jdbcType=VARCHAR}, 
+      #{blogCount,jdbcType=INTEGER}, #{praiseCount,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.BlogInfo" >
     insert into quaint_blog_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="bId != null" >
-        b_id,
-      </if>
       <if test="blogId != null" >
         blog_id,
       </if>
@@ -60,11 +57,11 @@
       <if test="blogCount != null" >
         blog_count,
       </if>
+      <if test="praiseCount != null" >
+        praise_count,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="bId != null" >
-        #{bId,jdbcType=INTEGER},
-      </if>
       <if test="blogId != null" >
         #{blogId,jdbcType=INTEGER},
       </if>
@@ -86,14 +83,14 @@
       <if test="blogCount != null" >
         #{blogCount,jdbcType=INTEGER},
       </if>
+      <if test="praiseCount != null" >
+        #{praiseCount,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.BlogInfo" >
     update quaint_blog_info
     <set >
-      <if test="blogId != null" >
-        blog_id = #{blogId,jdbcType=INTEGER},
-      </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
@@ -112,18 +109,21 @@
       <if test="blogCount != null" >
         blog_count = #{blogCount,jdbcType=INTEGER},
       </if>
+      <if test="praiseCount != null" >
+        praise_count = #{praiseCount,jdbcType=INTEGER},
+      </if>
     </set>
-    where b_id = #{bId,jdbcType=INTEGER}
+    where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.BlogInfo" >
     update quaint_blog_info
-    set blog_id = #{blogId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=INTEGER},
       blog_keyword = #{blogKeyword,jdbcType=VARCHAR},
       blog_description = #{blogDescription,jdbcType=VARCHAR},
       blog_title = #{blogTitle,jdbcType=VARCHAR},
       blog_content = #{blogContent,jdbcType=VARCHAR},
-      blog_count = #{blogCount,jdbcType=INTEGER}
-    where b_id = #{bId,jdbcType=INTEGER}
+      blog_count = #{blogCount,jdbcType=INTEGER},
+      praise_count = #{praiseCount,jdbcType=INTEGER}
+    where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
 </mapper>

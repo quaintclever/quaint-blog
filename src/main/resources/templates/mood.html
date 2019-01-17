@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>心情说说列表板块</title>
+</head>
+<body>
+    <form action="/mood/data" method="post">
+        <input type="submit" value="添加">
+    </form>
+    <table>
+        <tr th:each="item : ${list}">
+            <td th:text="${item.moodId}"></td>
+            <td th:text="${item.moodContent}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
