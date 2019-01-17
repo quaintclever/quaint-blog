@@ -1,5 +1,9 @@
 package com.quaint.blogback.pojo;
 
+/**
+ * 博客信息表 实体类
+ * quaint 2019年1月17日13:43:02
+ */
 public class BlogInfo {
     private Integer bId;
 

@@ -1,5 +1,9 @@
 package com.quaint.blogback.pojo;
 
+/**
+ * 用户等级表实体类
+ * quaint 2019年1月17日13:40:51
+ */
 public class Rank {
     private Integer rId;
 

@@ -4,6 +4,8 @@ import com.quaint.blogback.pojo.PowerList;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * 权限表 接口
  * quaint 2019年1月16日12:45:19
@@ -19,6 +21,8 @@ public interface PowerListMapper {
     int insertSelective(PowerList record);
 
     PowerList selectByPrimaryKey(Integer powerId);
+
+    List<PowerList> select();
 
     int updateByPrimaryKeySelective(PowerList record);
 

@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Date 2019/1/12
  */
 @Controller
-public class Hello {
+public class HomeController {
 
 
-    //测试使用...111
+    //测试使用
     @RequestMapping("/test")
     public String showBack(){
         return "main";
+    }
+    //测试使用
+    @RequestMapping("/home")
+    public String showHome(){
+        return "home";
     }
     //返回json 数据
     @RequestMapping("/hello")

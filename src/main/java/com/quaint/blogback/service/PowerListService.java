@@ -2,6 +2,8 @@ package com.quaint.blogback.service;
 
 import com.quaint.blogback.pojo.PowerList;
 
+import java.util.List;
+
 /**
  * 权限类表业务层 接口
  * quaint 2019年1月16日12:56:16
@@ -13,6 +15,12 @@ public interface PowerListService {
      * @param power
      * @return
      */
-    public int addPowerList(PowerList power);
+    int insertSelective(PowerList power);
+
+    /**
+     * 查询全部权限列表
+     * @return
+     */
+    List<PowerList> select();
 
 }

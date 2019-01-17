@@ -1,5 +1,9 @@
 package com.quaint.blogback.pojo;
 
+/**
+ * 好友表 实体类
+ * quaint 2019年1月17日13:41:40
+ */
 public class Friend {
     private Integer fId;
 

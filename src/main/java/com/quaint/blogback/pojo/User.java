@@ -2,6 +2,10 @@ package com.quaint.blogback.pojo;
 
 import java.util.Date;
 
+/**
+ * 用户个人信息实体类
+ * quaint 2019年1月17日13:40:25
+ */
 public class User {
     private Integer userId;
 

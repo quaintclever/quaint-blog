@@ -2,6 +2,10 @@ package com.quaint.blogback.pojo;
 
 import java.util.Date;
 
+/**
+ * 最近访客表 实体类
+ * quaint 2019年1月17日13:43:31
+ */
 public class Visitor {
     private Integer vId;
 

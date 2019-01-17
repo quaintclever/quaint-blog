@@ -2,6 +2,10 @@ package com.quaint.blogback.pojo;
 
 import java.util.Date;
 
+/**
+ * 用户留言表 实体类
+ * quaint 2019年1月17日13:42:47
+ */
 public class StayMessage {
     private Integer stayId;
 

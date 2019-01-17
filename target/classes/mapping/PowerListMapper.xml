@@ -8,6 +8,11 @@
   <sql id="Base_Column_List" >
     power_id, power_name
   </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from quaint_power_list
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

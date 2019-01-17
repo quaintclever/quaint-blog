@@ -1,5 +1,9 @@
 package com.quaint.blogback.pojo;
 
+/**
+ * 用户私信表 实体类
+ * quaint 2019年1月17日13:42:31
+ */
 public class SecretMessage {
     private Integer secretId;
 

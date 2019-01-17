@@ -2,6 +2,10 @@ package com.quaint.blogback.pojo;
 
 import java.util.Date;
 
+/**
+ * 用户心情说说表 实体类
+ * quaint 2019年1月17日13:43:48
+ */
 public class Mood {
     private Integer moodId;
 
