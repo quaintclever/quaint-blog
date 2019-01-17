@@ -38,7 +38,7 @@ public class PowerListController {
     @PostMapping("data")
     public String insertSelective(){
         PowerList pl = new PowerList();
-        pl.setPowerName("test");
+        pl.setPowerName("lombok 添加测试");
         powerListService.insertSelective(pl);
         return "main";
     }

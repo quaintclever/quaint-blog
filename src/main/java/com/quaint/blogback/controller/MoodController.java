@@ -40,7 +40,7 @@ public class MoodController {
     @PostMapping("data")
     public ModelAndView insertSelective(){
         Mood mood = new Mood();
-        mood.setMoodContent("mood test");
+        mood.setMoodContent("lombok mood test");
         mood.setUserId(1);
         mood.setMoodIp("127.0.0.1");
         mood.setMoodTime(new Date());

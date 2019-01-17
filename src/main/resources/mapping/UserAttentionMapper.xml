@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.quaint.blogback.dao.UserAttentionMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.UserAttention" >
+    <id column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="attention_id" property="attentionId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    a_id, user_id, attention_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quaint_user_attention
+    where a_id = #{aId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quaint_user_attention
+    where a_id = #{aId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.quaint.blogback.pojo.UserAttention" >
+    insert into quaint_user_attention (a_id, user_id, attention_id
+      )
+    values (#{aId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{attentionId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.UserAttention" >
+    insert into quaint_user_attention
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        a_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="attentionId != null" >
+        attention_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="attentionId != null" >
+        #{attentionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.UserAttention" >
+    update quaint_user_attention
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="attentionId != null" >
+        attention_id = #{attentionId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.UserAttention" >
+    update quaint_user_attention
+    set user_id = #{userId,jdbcType=INTEGER},
+      attention_id = #{attentionId,jdbcType=INTEGER}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+</mapper>
