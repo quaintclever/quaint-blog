@@ -59,13 +59,13 @@
 						</li>
 						<li class="layui-nav-item" lay-unselect="">
 							<a href="javascript:;">
-								<cite>贤心</cite>
+								<cite>Quaint</cite>
 								<span class="layui-nav-more"></span></a>
 							<dl class="layui-nav-child">
 								<dd><a lay-href="set/user/info.html">基本资料</a></dd>
 								<dd><a lay-href="set/user/password.html">修改密码</a></dd>
 								<hr>
-								<dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+								<dd layadmin-event="logout" style="text-align: center;"><a href="/quaint/exit">退出</a></dd>
 							</dl>
 						</li>
 						<li class="layui-nav-item layui-hide-xs" lay-unselect="">
@@ -108,7 +108,7 @@
 									<span class="layui-nav-more"></span></a>
 								<dl class="layui-nav-child">
 									<dd><a lay-href="template/personalpage.html">个人主页</a></dd>
-									<dd><a lay-href="template/caller.html">客户列表</a></dd>
+									<dd><a href="/quaint/mood" target="quaint-ifream">心情列表</a></dd>
 									<dd><a lay-href="template/msgboard.html">留言板</a></dd>
 									<dd><a lay-href="template/search.html">搜索结果</a></dd>
 									<dd><a href="https://www.layui.com/admin/std/dist/views/user/reg.html" target="_blank">注册</a></dd>
@@ -233,7 +233,7 @@
 				<!-- 主体内容 -->
 				<div class="layui-body" id="LAY_app_body">
 					<div class="layadmin-tabsbody-item layui-show">
-						<iframe name="quaint-ifream" style="width:100%;height:100%" src="/home" frameborder="0" class="layadmin-iframe"></iframe>
+						<iframe name="quaint-ifream" style="width:100%;height:100%" src="/quaint/home" frameborder="0" class="layadmin-iframe"></iframe>
 					</div>
 				</div>
 				<!-- 辅助元素，一般用于移动设备下遮罩 -->

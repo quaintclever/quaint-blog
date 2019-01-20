@@ -11,16 +11,16 @@ import java.util.Date;
 @Data
 public class Mood {
 
-    private Integer moodId;
+    private Integer moodId;     //说说id
 
-    private Integer userId;
+    private Integer userId;     //发布的用户
 
-    private Date moodTime;
+    private Date moodTime;      //发布说说的时间
 
-    private String moodIp;
+    private String moodIp;      //发布说说的ip
 
-    private String moodContent;
+    private String moodContent; //说说内容
 
-    private Byte typeId;
+    private Byte typeId;    //隐私id
 
 }

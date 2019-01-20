@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>心情添加界面</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" method="post">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户id</label>
+        <div class="layui-input-block">
+            <input type="text" name="userId" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">说说内容</label>
+        <div class="layui-input-block">
+            <input type="text" name="moodContent" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="add">添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script src="../static/js/jquery-3.3.1.js" charset="utf-8"></script>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            // layer.msg(JSON.stringify(data.field));
+            var param = JSON.stringify(data.field);
+            layer.msg(param);
+
+            //TODO 请求失败？？？？
+            $.post('http://localhost:8080/mood/data',param,function(res){
+                alert(111);
+                alert(res);
+            },'json');
+
+
+
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
