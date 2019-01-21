@@ -13,10 +13,18 @@ import java.util.List;
 @Data
 public class LayJson<T> {
 
-    private int code=0;
+    //起始页
+    private int page;
+    //页数大小
+    private int limit;
+    private Integer code=0;
     private String msg;
-    private Long count; //总条数
-    private List<T> data = new ArrayList(); //装前台当前页的数据
+    //总条数
+    private Long count;
+    //装前台当前页的数据
+    private List<T> data = new ArrayList();
+    //任何类型条件
+    private T example;
 
 }
 

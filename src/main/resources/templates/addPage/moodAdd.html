@@ -35,18 +35,27 @@
 
         //监听提交
         form.on('submit(add)', function(data){
-            // layer.msg(JSON.stringify(data.field));
             var param = JSON.stringify(data.field);
-            layer.msg(param);
-
-            //TODO 请求失败？？？？
-            $.post('http://localhost:8080/mood/data',param,function(res){
-                alert(111);
-                alert(res);
-            },'json');
-
-
-
+            $.ajax({
+                url: "/mood/data",
+                type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                dataType:'text',
+                data: param,
+                success: function(msg) {
+                    if(msg=="ok"){
+                        //添加成功,先获取ifream坐标
+                        // var index = parent.layer.getFrameIndex(window.name);
+                        layer.msg("添加成功!");
+                        setTimeout(function(){
+                            // parent.layer.close(index);//关闭弹出层
+                            parent.location.reload();//更新父级页面
+                        }, 1000);
+                    }else{
+                        layer.msg(msg);
+                    }
+                }
+             });
             return false;
         });
     });

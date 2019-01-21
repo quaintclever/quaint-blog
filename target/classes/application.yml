@@ -11,8 +11,8 @@ spring:
   mail:
     host: smtp.qq.com # QQ邮箱smtp主机
     port: 587 #端口号465或587
-    username: 857776215@qq.com
-    password: arttnyqgipcmbcjg # 这里QQ邮箱开通POP3/SMTP提供的授权码，如果邮箱服务商没有授权码，可以使用密码代替
+    username: 85777@qq.com
+    password: qqqqqqqqqqqq # 这里QQ邮箱开通POP3/SMTP提供的授权码，如果邮箱服务商没有授权码，可以使用密码代替
     protocol: smtp
     default-encoding: UTF-8
 mybatis:
@@ -24,4 +24,4 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-
+    page-size-zero: true

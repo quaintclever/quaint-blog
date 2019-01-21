@@ -1,5 +1,7 @@
 package com.quaint.blogback.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.quaint.blogback.pojo.Mood;
 import com.quaint.blogback.service.MoodService;
 import com.quaint.blogback.util.LayJson;
@@ -25,23 +27,22 @@ public class MoodController {
      * @return 查询出来的心情
      */
     @GetMapping("data")
-    public LayJson<Mood> select(){
+    public LayJson<Mood> select(LayJson<Mood> layJson, Mood example){
         //获取心情(未完成)
-        LayJson<Mood> list = new LayJson<>();
-        list.setData(moodService.select());
-        return list;
+        PageHelper.startPage(layJson.getPage(), layJson.getLimit());//传入起始页与页数大小
+//        layJson.setExample(example);//设置条件
+        LayJson<Mood> list = moodService.select(layJson);//带条件查询
+        PageInfo page = new PageInfo(list.getData());//将用户数据封装到PageInfo 中
+        layJson.setCode(0);//设置成功代码
+        layJson.setCount(page.getTotal());//设置数据数量
+        return layJson;
     }
     /**
      * 测试Post    添加
      * @return 添加一个心情
      */
-    @PostMapping("data/{userId}/{moodContent}")
-    public String insertSelective(
-            @PathVariable("userId") Integer userId,
-            @PathVariable("moodContent") String moodContent ){
-        Mood mood = new Mood();
-        mood.setMoodContent(moodContent);
-        mood.setUserId(userId);
+    @PostMapping("data")
+    public String insertSelective(@RequestBody Mood mood){
         mood.setMoodIp("127.0.0.1");
         mood.setMoodTime(new Date());
         moodService.insertSelective(mood);
@@ -51,18 +52,20 @@ public class MoodController {
      * 测试put请求  修改
      * @return
      */
-    @PutMapping("dataById")
-    public void updateMood(){
-        //修改权限列表(未完成)
+    @PutMapping("dataById/{moodId}")
+    public void updateMood(@PathVariable("moodId") Integer moodId){
+        //修改心情(未完成)
+        System.out.println(moodId);
     }
 
     /**
      * 测试delete  删除
      * @return
      */
-    @DeleteMapping("dataById")
-    public void deleteMood(){
-        //删除权限列表(未完成)
+    @DeleteMapping("dataById/{moodId}")
+    public String deleteMood(@PathVariable("moodId") Integer moodId){
+        //删除心情(未完成)
+        return moodService.deleteByPrimaryKey(moodId)>0?"ok":"error";
     }
 
 

@@ -27,6 +27,7 @@
 <table class="layui-hide" id="mood" lay-filter="mood"></table>
 
 <script src="../static/layui/layui.js" charset="utf-8"></script>
+<script src="../static/js/jquery-3.3.1.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 <script type="text/javascript"  th:inline="none">
@@ -34,19 +35,22 @@
         var table = layui.table;
 
         table.render({
-            elem: '#mood'
+            id:'moodId'
+            ,elem: '#mood'
             ,url:'/mood/data'
             ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             ,toolbar: '#toolbarMood'
             ,cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                ,{field:'moodId', width:80, title: 'id', sort: true}
+                ,{type:'numbers',title:'编号'}
+                // ,{field:'moodId', width:80, title: 'id', sort: true,hidden:true}
                 ,{field:'userId', width:100, title: '用户',sort: true}
                 ,{field:'moodTime', width:150, title: '发布时间', sort: true}
                 ,{field:'moodContent', title: '说说内容'}
                 ,{field:'moodIp', width:120,title: '发布ip'}
                 ,{fixed: 'right', title:'操作', toolbar: '#barMood', width:150}
             ]]
+            ,page: true
         });
         //头工具栏事件
         table.on('toolbar(mood)', function(obj){
@@ -84,8 +88,20 @@
             //console.log(obj.data.moodId);
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
-                    alert("插入删除操作"+data.moodId);
                     //调用删除方法
+                    $.ajax({
+                        url: "/mood/dataById/"+data.moodId,
+                        type: "DELETE",
+                        dataType:'text',
+                        success: function(msg) {
+                            if(msg=="ok"){
+                                layer.msg("删除成功!");
+                            }else{
+                                layer.msg(msg);
+                            }
+                        }
+                    });
+
                     obj.del();
                     layer.close(index);
                 });
