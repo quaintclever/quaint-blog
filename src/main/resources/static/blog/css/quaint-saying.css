@@ -1,0 +1,172 @@
+/* index微调开始 */
+ul#show-nav li:nth-child(4){
+	display: block;
+}
+/* 微调结束 */
+/* 调整畅言开始 */
+#SOHUCS #SOHU_MAIN span,#SOHUCS #SOHU_MAIN em{
+	color: black;
+}
+#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-build-gw .build-floor-gw {
+    padding: 4px 4px 6px;
+    border: 1px solid #dee4e9;
+    background-color: none;
+    border-radius: 7px;
+    position: relative;
+    z-index: 2;
+}
+#SOHUCS #SOHU_MAIN .module-hot-topic {
+    width: 100%;
+    padding: 20px 0 0;
+    display: none;
+}
+#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists .type-list:after{
+    float: left;
+    z-index: 1;
+    position: relative;
+    top: -30px;
+    content: "留言";
+    width: 66px;
+    height: 29px;
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    background-color: rgb(87,140,181);
+    background-image: url(https://changyan.itc.cn/mdevp/extensions/cy-skin/028/skin-black/images/cmtlist-bg-active.png);
+    font-family: "Microsoft Yahei";
+    line-height: 30px;
+}
+#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number .comment-number:after{
+	z-index: 1;
+    position: relative;
+    top: 0px;
+    left: -42px;
+    content: "条留言";
+    color: #333;
+    font-size: 14px;
+    background-color: rgb(87,140,181);
+    font-family: "Microsoft YaHei";
+
+}
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw:after{
+	z-index: 1;
+    position: relative;
+    top: 0px;
+    left: -64px;
+    content: "最新留言";
+    color: #333;
+    font-size: 16px;
+    background-color: rgb(87,140,181);
+    font-family: "Microsoft YaHei";
+}
+/* 调整畅言结束 */
+.div-white-aYK{
+	margin-bottom: 15px;
+}
+.div-white-a a{
+	color: white;
+}
+
+/*自定义留言登录*/
+/*登录div*/
+#login_view{
+	position:absolute;
+	color: black;
+	left: 50%;
+	width: 240px;
+	margin-left: -120px;
+	padding: 10px;
+	border-radius: 5px;
+	background: #FFFFFF;
+	z-Index:3;
+	display: none;
+}
+
+#register_view{
+	position:absolute;
+	color: black;
+	left: 50%;
+	width: 240px;
+	margin-left: -120px;
+	padding: 10px;
+	border-radius: 5px;
+	background: #FFFFFF;
+	z-Index:3;
+	display: none;
+}
+/* 登录背后的阴影 */
+#hidebg {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-color: #000;
+	width: 100%;
+	/*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+	filter: alpha(opacity=60);
+	/*设置透明度为60%*/
+	opacity: 0.6;
+	/*非IE浏览器下设置透明度为60%*/
+	display: none;
+	z-Index: 2;
+}
+.hidden_view{
+	float: right;
+	cursor: pointer;
+}
+/*登陆的标题设置*/
+.quaint-login-title{
+	font-weight: bolder;
+	font-size: 16px;
+	margin: 15px auto;
+	text-align: center;
+	color: blueviolet;
+}
+.quaint-saying-text{
+	border-radius: 10px;
+	color: black;
+	width: 100%;
+	resize: none;
+	margin: 20px auto;
+}
+/*留言展示*/
+.quaint-saying-box{
+	position: relative;
+	margin-top: 30px;
+	margin-left: 92px;
+	height: 30px;
+	border-bottom: 1px solid;
+}
+.quaint-saying-logo{
+	position: absolute;
+	left: -92px;
+	border-radius: 7px 7px 0px 0px;
+	padding: 5px;
+	font-size: 16px;
+	text-align: center;
+	height: 30px;
+	width: 92px;
+	border:1px solid;
+	border-bottom: transparent;
+}
+/*最新留言*/
+.new-saying{
+	position: relative;
+	margin: 20px 0px 20px 10px;
+	font-size: 16px;
+}
+.new-saying span{
+	color: white;
+}
+.quaint-saying-img{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+}
+.quaint-saying-margin{
+	margin-left: 72px;
+}
+.quaint-saying-hr{
+	margin: 27px 0px;
+	border-bottom: 1px dashed;
+}
+

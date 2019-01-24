@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="quaint个人博客,quaintBlog,quaint" />
+		<meta name="date" content="2018.02.14"/>
+		<meta name="description" content="(๑• ₃ •๑)欢迎来到Quaintの博客，(๑> ؂ <๑)这是一个正在成长中的博客，一起成长的还有我的好朋友(> ω <)夏睡醒了秋~"/>
+		<title>Quaint个人博客 - 风清忆箫伤の侧耳倾听</title>
+		<link rel="shortcut icon" href="image/index/quaint-logo.ico">
+		<!-- js -->
+		<script src="../../static/comm/js/jquery-3.3.1.js"></script>
+		<script src="../../static/blog/js/quaint-saying.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/blog/js/quaint-effect.js" type="text/javascript"></script>
+		<!-- css -->
+		<link rel="stylesheet" type="text/css" href="../../static/comm/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/blog/css/quaint-saying.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/blog/css/quaint-index.css"/>
+		<!--<style type="text/css">
+			/* 测试使用  背景 */
+			body{
+				background: url(image/index/quaint-index-bg.jpg);
+			}
+		</style>-->
+		<script type="text/javascript">
+			$(function(){
+				// ajax 请求登录验证   返回用户信息
+				$.post("UserAjax?type=logins",{},function(data){
+					loginStatus(data);
+				},"json")
+				// 当单击注销的时候  清空session
+				$("#quaintUser").on("click","#cancel",function(){
+					alert("点击了注销！");
+					$.post("UserAjax?type=cancels",{},function(data){
+						alert("注销成功！");
+					},"json")
+				})
+				$("#login").on("click",function(){
+					login();
+				})
+			})
+			//  登录显示内容
+			function loginStatus(data){
+				if(data.user_status==701){
+					alert("用户名或密码错误！");
+				}else if(data.user_status==704){
+					$("#quaintUser").html("<button class='login quaint-btn-rediusB30 btn btn-success'>登录</button>");
+				}
+				else{
+					var str = `欢迎用户：${data.user_uname}！
+						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
+					$("#quaintUser").html(str);
+				}
+			}
+			function login(){
+				var uname = $("#unameInput").val();
+				var pwd = $("#pwdInput").val();
+				$.post("UserAjax?type=login",{"uname":uname,"pwd":pwd},function(data){
+					loginStatus(data);
+				},"json")
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!-- quaint 中间开始 -->
+		<div id="iframeH" class="container-fluid quaint-content">
+			<div class="quaint-middle-bgI">
+				<div class="quaint-middle-bgII">
+					<div class="div-white-a div-white-aYK">
+						<a href="quaint-sayingCY.html">不是熟人?进入畅言--></a>
+					</div>
+					<div id="quaintUser" align="left">
+						<button class="login quaint-btn-rediusB30 btn btn-success">登录</button>
+					</div>
+					<div id="hidebg"></div>
+					<div id="login_view">
+						<span class="black hidden_view glyphicon glyphicon-remove"></span>
+						<div class="quaint-login-title">
+							<span class="black">QuaintSaying<br>登陆界面</span>
+						</div>
+						<div class="form-group">
+						    <label for="unameInput"><span class="black glyphicon glyphicon-user"> QuaintSaying号：</span></label>
+						    <input class="form-control" type="text" id="unameInput" name="uname" placeholder="用户名"/>
+						</div>
+						<div class="form-group">
+						    <label for="pwdInput"><span class="black glyphicon glyphicon-star"> QuaintSaying密码：</span></label>
+						    <input class="form-control" type="password" id="pwdInput" name="pwd" placeholder="密码"/>
+						</div>
+						<div class="quaint-text-center">
+							<input id="login" class="btn btn-sm btn-info" type="button" value="登录" />
+							<button id="register" type="button" class="btn btn-sm btn-success">注册</button>
+						</div>
+					</div>
+					<div id="register_view">
+						<span class="black hidden_view glyphicon glyphicon-remove"></span>
+						<form action="UserRegister" method="post">
+							<div class="quaint-login-title">
+								<span class="black">QuaintSaying<br>注册界面</span>
+							</div>
+							<div class="form-group">
+							    <label for="unameInput"><span class="black glyphicon glyphicon-user"> QuaintSaying号：</span></label>
+							    <input class="form-control" type="text" id="unameInput" name="uname" placeholder="用来登陆的账号"/>
+							</div>
+							<div class="form-group">
+							    <label for="pwdInput"><span class="black glyphicon glyphicon-star"> QuaintSaying密码：</span></label>
+							    <input class="form-control" type="password" id="pwdInput" name="pwd" placeholder="密码"/>
+							</div>
+							<div class="form-group">
+							    <label for="emailInput">
+							    	<span class="black glyphicon glyphicon-envelope"> QQ邮箱：</span>
+							    	<a href="#" class="btn btn-sm btn-warning">获取验证码</a>
+							    </label>
+							    <input class="form-control" type="email" id="emailInput" name="email" placeholder="QQ邮箱"/>
+							</div>
+							<div class="form-group">
+							    <label for="codeInput"><span class="black glyphicon glyphicon-paperclip"> 邮箱验证码：</span></label>
+							    <input class="form-control" type="text" id="codeInput" name="code" placeholder="验证码"/>
+							</div>
+							<div class="quaint-text-center">
+								<input class="btn btn-sm btn-info" type="submit" value="注册" />
+								<button type="button" class="login btn btn-sm btn-success">返回</button>
+							</div>
+						</form>
+					</div>
+					<textarea class="quaint-saying-text" name="saying" rows="3" cols="5"></textarea>
+					<div align="right">
+						<button class="quaint-btn-rediusA30 btn btn-sm btn-warning" >留言</button>
+					</div>
+					<div class="quaint-saying-box">
+						<div class="quaint-f-right quaint-lineh40">
+							共XX条留言
+						</div>
+						<div class="quaint-saying-logo">留言展示</div>
+					</div>
+					<div class="new-saying">
+						<span class=" glyphicon glyphicon-send"> 最新留言</span>
+					</div>
+					
+					<div class="quaint-user-saying">
+						<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
+						<div class="row quaint-saying-margin">
+							<div class="col-sm-12">
+								<div class="row">
+									<p>2018-09-02 00:07:56</p>
+									Quaint:
+								</div>
+								<div class="row">
+									<p class="quaint-indent">这是一个测试留言!---------->><br />测试换行!<br />测试换行!<br />测试换行!</p>
+								</div>
+							</div>
+						</div>
+						<div class="quaint-saying-hr"></div>
+					</div>
+					
+					<div class="quaint-user-saying">
+						<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
+						<div class="row quaint-saying-margin">
+							<div class="col-sm-12">
+								<div class="row">
+									<p>2018-09-02 00:07:56</p>
+									Quaint:
+								</div>
+								<div class="row">
+									<p class="quaint-indent">这是一个测试留言!---------->><br />测试换行!<br />测试换行!<br />测试换行!</p>
+								</div>
+							</div>
+						</div>
+						<div class="quaint-saying-hr"></div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+		<!-- quaint 中间结束 -->
+	</body>
+	<script src="../../static/blog/js/quaint-jframe.js" type="text/javascript" charset="utf-8"></script>
+</html>
+    

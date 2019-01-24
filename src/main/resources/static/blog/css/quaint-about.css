@@ -1,0 +1,35 @@
+
+/* 个人介绍开始 */
+.quaint-ab-title {
+	/* 关于我 */
+    text-align: center;
+    position: relative;
+    margin: 20px;
+}
+.quaint-ab-title:before {
+    content: "";
+    width: 25%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+}
+.quaint-ab-title:after {
+    content: "";
+    width: 25%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+}
+img.quaint-sizeI{
+	/* 关于我的图片设置 */
+	border-radius: 7px;
+	border: 3px solid white;
+	width: 105px;
+	height: 105px;
+}
+
+/* 个人介绍结束 */

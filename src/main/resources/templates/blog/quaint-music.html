@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+			}
+			.quaint-img{
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+			}
+			.music-rotate{
+				animation: img-rotate 10s linear infinite;
+			}
+			@keyframes img-rotate{
+				from{transform: rotate(0deg);}
+				to{transform: rotate(360deg);}
+			}
+		</style>
+	</head>
+	<body>
+		<img onclick="quaintImg()" id="music-rotate" class="quaint-img music-rotate" src="../../static/blog/image/home/quaint-music.jpg"/>
+		<audio id="myaudio" loop="loop" preload="auto" autoplay="autoplay">
+        	<source src="../../static/blog/music/quaint-aini.mp3" type="audio/mp3" />
+        </audio>
+	</body>
+	<script type="text/javascript">
+		function quaintImg (){
+			var img = document.getElementById("music-rotate");
+			var music = document.getElementById("myaudio");
+			if(img.classList.contains("music-rotate")){
+				img.classList.remove("music-rotate");
+				music.pause();
+			}else{
+				img.classList.add("music-rotate");
+				music.play();
+			}
+			
+		}
+	</script>
+</html>

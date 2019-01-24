@@ -2,6 +2,9 @@ package com.quaint.blogback.constant;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Web常量类
+ */
 @Component
 public class WebConst {
 

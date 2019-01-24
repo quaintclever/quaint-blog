@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.quaint.blogback.dao.MoodMapper;
 import com.quaint.blogback.pojo.Mood;
 import com.quaint.blogback.service.MoodService;
-import com.quaint.blogback.util.LayJson;
+import com.quaint.blogback.utils.LayJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

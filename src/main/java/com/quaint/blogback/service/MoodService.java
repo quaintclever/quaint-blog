@@ -1,7 +1,7 @@
 package com.quaint.blogback.service;
 
 import com.quaint.blogback.pojo.Mood;
-import com.quaint.blogback.util.LayJson;
+import com.quaint.blogback.utils.LayJson;
 
 import java.util.List;
 

@@ -1,0 +1,429 @@
+﻿/* 后期维护搜索
+ * 
+ * 1.quaint-del-border  后期需要删除border的地方
+ * 
+ *  
+ * */
+
+/* 整体处理开始 */
+	/* 背景统一添加 */
+	.quaint-star,.quaint-fireworks,.quaint-meteor,.quaint-meteor1,.quaint-meteor2,.quaint-meteor3
+	,.quaint-flutteredI,.quaint-flutteredII{
+		background: url(../image/index/quaint-icons.png);
+	}
+	/* 部分初始化 */
+	*{
+		color: white;
+		font-family: "微软雅黑";
+	}
+	span.black{
+		color:black;
+	}
+	body{
+		background-color: rgba(17,92,150,0);
+	}
+	a{
+		transition: all 0.7s;
+		color: black;
+		text-decoration: none;
+	}
+	/* 部分初始化结束 */
+	.quaint-position-z-index2{
+		position: relative;
+		z-index: 2;
+	}
+	.quaint-div-center{
+		margin: 0px auto;
+	}
+	.quaint-text-center{
+		text-align: center;
+	}
+	.quaint-text-left{
+		text-align: left;
+	}
+	.quaint-content{
+		max-width: 1170px;
+		padding: 0px;
+	}
+	.quaint-f-right{
+		float: right;
+	}
+	.quaint-clear:after{
+		content: " ";
+		display: block;
+		height: 0px;
+		clear: both;
+		overflow: hidden;
+	}
+	.quaint-indent{
+		text-indent: 2em;
+	}
+	.quaint-mtop7{
+		/* 距顶部距离 */
+		margin-top: 7px;
+	}
+	/* 部分常用功能 */
+	.quaint-color-black{
+		color: black;
+	}
+	.quaint-color-red{
+		color: red;
+	}
+	.quaint-color-darkblue{
+		color: darkblue;
+	}
+	.quaint-btn-info{
+	  color: #fff;
+	  background-color: rgb(87,140,181);
+	}
+	.quaint-center{
+		margin: 0px auto;
+	}
+	/* A 全部边框都是10px */
+	.quaint-btn-rediusA10{
+		border-radius: 10px;
+	}
+	.quaint-btn-rediusA30{
+		border-radius: 30px;
+	}
+	.quaint-btn-rediusB30{
+		border-radius: 0px 30px;
+	}
+	.quaint-btn-rediusC30{
+		border-radius: 30px 0px;
+	}
+	/*new小标签*/
+	.quaint-new-label{
+		position: relative;
+	}
+	.quaint-new-label:after{
+		position: absolute;
+		top: -27px;
+		left: -21px;
+		content: " This is new >>";
+		color: brown;
+		background: lawngreen;
+		border-radius: 0px 21px 0px 21px;
+		box-shadow: 0px 0px 5px lawngreen;
+		padding: 0px 5px 0px 5px;
+	}
+	.quaint-lineh21{
+		line-height: 21px;
+	}
+	.quaint-lineh40{
+		line-height: 40px;
+	}
+	.quaint-lineh50{
+		line-height: 50px;
+	}
+	.quaint-active{
+		background-color: white;
+		border-radius: 4px;
+	}
+	.quaint-active a{
+		color: black;
+	}
+	.quaint-bottomLine{
+		font-weight: 700;
+		padding-bottom: 5px;
+		border-bottom: 2px solid white;
+	}
+	/* 部分常用功能结束 */
+	/*nav start*/
+	a:hover{
+		color: #F7F7F7;
+		text-decoration: none;
+	}
+	.quaint-index-bg{
+		background: url(../image/index/quaint-index-bg.jpg) no-repeat 53% top;
+	}
+	.quaint-logo{
+		font-size: 27px;
+		margin: 27px 0px 21px 0px;
+	}
+	.quaint-nav{
+		/* quaint-del-border */
+		/*border: 1px dashed white;*/
+		width: 72%;
+		position: relative;
+		z-index: 2;
+	}
+	.quaint-hide-text ul{
+		/* quaint-del-border */
+		/*border: 1px dashed white;*/
+		margin: 27px auto;
+		height: 90px;
+		position: relative;
+	}
+	.quaint-hide-text ul li{
+		position: absolute;
+		display: none;
+	}
+	.quaint-hide-text ul li:nth-child(1){
+		top: 10px;
+	}
+	.quaint-hide-text ul li:nth-child(3){
+		top: 40px;
+	}
+	.quaint-hide-text ul li:nth-child(2){
+		top: 25px;
+	}
+	.quaint-hide-text ul li:nth-child(4){
+		top: 55px;
+	}
+	.quaint-hide-text ul li:nth-child(5){
+		left: 5px;
+		display: block;
+		top: 77px;
+	}
+	.quaint-hide-text ul li:nth-child(5) a{
+		color: rgb(205,230,255);
+	}
+	.quaint-nav > ul > li > a:hover, .quaint-nav > ul > li > a:focus {
+	    background-color: white;
+	    color: black;
+	}
+	/* nav end*/
+	/* 动画 start */
+	.quaint-fireworks{
+		position: absolute;
+		width: 121px;
+		height: 121px;
+		z-index: 0;
+		background-position: 0px -35px;
+		top: 15px;
+		left: 30%;
+		opacity: 0;
+		animation: fireworks 4s ease-out infinite;
+	}
+	@keyframes fireworks{
+		from{transform: scale(0.1);opacity: 1;}
+		to{transform: scale(0.7);opacity: 0;}
+	}
+	/*手机端*/
+		/* 流星 */
+	.quaint-meteor,.quaint-meteor1,.quaint-meteor2,.quaint-meteor3{
+		position: fixed;
+		z-index: 1;
+		width: 26px;
+		height: 32px;
+		background-position: -128px -5px;
+		opacity: 0;
+	}
+	.quaint-meteor{
+		top: 0px;
+		left: 0px;
+		animation: meteor 4s infinite;
+	}
+	@keyframes meteor{
+		0%{}
+		50%{
+			opacity: 0;
+			top: 0px;
+			left: 0px;
+		}
+		51%{
+			opacity: 0.5;
+			top: 0px;
+			left: 0px;
+		}
+		100%{
+			opacity: 1;
+			top: 156px;
+			left: 126px;
+		}
+	}
+		/* 飘落物 */
+		.quaint-flutteredI,.quaint-flutteredII{
+			height: 30px;
+			width: 30px;
+			position: fixed;
+			transform: rotate(0deg);
+		}
+		/* 飘落物星星 */
+		.quaint-fluttered-PI{
+			background-position: -14px -6px;
+		}
+		/* 飘落物四叶草 */
+		.quaint-fluttered-PII{
+			background-position: -53px -6px;
+		}
+		/* 飘落物枫叶 */
+		.quaint-fluttered-PIII{
+			background-position: -89px -6px;
+		}
+		.quaint-flutteredI{
+			top: 0px;
+			left: 21px;
+			transform: rotate(0deg);
+			animation: flutteredI 13s linear infinite;
+		}
+		@keyframes flutteredI{
+			0%{
+				opacity: 1;
+				top: 0px;
+				left: 77px;
+				transform: rotate(0deg);
+			}
+			33%{
+				top: 222px;
+				left: 0px;
+				opacity: 1;
+				transform: rotate(120deg);
+			}
+			100%{
+				top: 666px;
+				left: 227px;
+				opacity: 0;
+				transform: rotate(360deg);
+			}
+		}
+		.quaint-flutteredII{
+			top: 0px;
+			left: 210px;
+			opacity: 0;
+			animation: flutteredII 13s 2s linear infinite;
+		}
+		@keyframes flutteredII{
+			0%{
+				opacity: 1;
+				top: 0px;
+				left: 210px;
+				transform: rotate(0deg);
+			}
+			33%{
+				top: 222px;
+				left: 400px;
+				transform: rotate(120deg);
+			}
+			66%{
+				top: 444px;
+				left: 121px;
+				opacity: 1;
+				transform: rotate(240deg);
+			}
+			100%{
+				top: 666px;
+				left: -21px;
+				opacity: 0;
+				transform: rotate(360deg);
+			}
+		}
+	
+	/*电脑端*/
+	.quaint-meteor1{
+		top: 21px;
+		left: 120px;
+		animation: meteor1 4s infinite;
+	}
+	@keyframes meteor1{
+		0%{
+			opacity: 0.5;
+			top: 21px;
+			left: 320px;
+		}
+		50%{
+			opacity: 1;
+			top: 177px;
+			left: 446px;
+		}
+		51%{
+			opacity: 0;
+			top: 21px;
+			left: 320px;
+		}
+	}
+	.quaint-meteor2{
+		top: 0px;
+		left: 0px;
+		animation: meteor2 4s infinite;
+	}
+	@keyframes meteor2{
+		25%{
+			opacity: 0;
+			top: 0px;
+			left: 0px;
+		}
+		26%{
+			opacity: 0.5;
+			top: 0px;
+			left: 600px;
+		}
+		75%{
+			opacity: 1;
+			top: 156px;
+			left: 726px;
+		}
+		76%{
+			opacity: 0;
+		}
+	}
+	.quaint-meteor3{
+		top: 21px;
+		left: 120px;
+		animation: meteor3 4s infinite;
+	}
+	@keyframes meteor3{
+		
+		26%{
+			opacity: 0;
+		}
+		75%{
+			opacity: 0;
+			top: 21px;
+			left: 920px;
+		}
+		76%{
+			opacity: 0.5;
+			top: 21px;
+			left: 920px;
+		}
+		100%{
+			opacity: 1;
+			top: 99px;
+			left: 983px;
+		}
+	}
+	/* 动画 end */
+	
+	/* middle start */
+	
+	.quaint-middle-bgI{
+		border-radius: 10px;
+		border: 3px solid white;
+		padding: 2%;
+		height: 100%;
+		width: 100%;
+		background: url(../image/index/articlebg.png);
+		box-shadow: 0px 0px 7px black inset;
+	}
+	.quaint-middle-bgII{
+		border-radius: 10px;
+		margin: 10px 0px 21px 0px;
+		padding: 21px;
+		height: 100%;
+		width: 100%;
+		background: url(../image/index/articlebg.png);
+		box-shadow: 0px 0px 7px black;
+	}
+	
+	/* middle end */
+	
+	/* bottom start */
+	.quaint-bottom{
+		/* quaint-del-border */
+		/*border: 1px dashed white;*/
+		text-align: center;
+		padding: 20px 0px;
+		margin: 20px 0px 20px 0px;
+	}
+	.quaint-bottom .quaint-copy{
+		color: rgb(205,230,255);
+		text-align: center;
+	}
+	.quaint-bottom .quaint-copy a{
+		color: rgb(205,230,255);
+	}
+	/* bottom end */
+	
+/* 处理结束 */

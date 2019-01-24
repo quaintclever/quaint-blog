@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/jdbc">
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/admin/layui/css/layui.css">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<table class="layui-hide" id="user"></table>
+
+<script src="../../static/admin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script type="text/javascript"  th:inline="none">
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#user'
+            ,url:'/user/data'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,cols: [[
+                {field:'userId', width:80, title: 'ID', sort: true}
+                ,{field:'userName', width:80, title: '用户名'}
+                ,{field:'userSex', width:80, title: '性别', sort: true}
+                ,{field:'userAddress', width:80, title: '城市'}
+                ,{field:'userSays', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'userPhone', title: '电话', sort: true}
+                ,{field:'userQq', title: 'QQ', sort: true}
+                ,{field:'userSchool', title: '学校'}
+                ,{field:'userEmail', width:137, title: '邮箱', sort: true}
+            ]]
+        });
+    });
+</script>
+
+</body>
+</html>
