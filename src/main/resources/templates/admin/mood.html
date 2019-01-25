@@ -107,10 +107,10 @@
             } else if(obj.event === 'edit'){
                 layer.prompt({
                     formType: 2
-                    ,value: data.email
+                    ,value: data.moodContent
                 }, function(value, index){
                     obj.update({
-                        email: value
+                        moodContent: value
                     });
                     layer.close(index);
                 });

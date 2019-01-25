@@ -1,6 +1,6 @@
 package com.quaint.blog.service;
 
-import com.quaint.blog.pojo.User;
+import com.quaint.blog.pojo.Users;
 
 import java.util.List;
 
@@ -11,12 +11,12 @@ public interface UserService {
      * @param user
      * @return
      */
-    int insertSelective(User user);
+    int insertSelective(Users user);
 
     /**
      * 查询全部用户
      * @return
      */
-    List<User> select();
+    List<Users> select();
 
 }

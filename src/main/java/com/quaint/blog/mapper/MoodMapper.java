@@ -1,4 +1,4 @@
-package com.quaint.blog.dao;
+package com.quaint.blog.mapper;
 
 import com.quaint.blog.pojo.Mood;
 

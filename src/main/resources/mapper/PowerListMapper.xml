@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blog.dao.PowerListMapper" >
+<mapper namespace="com.quaint.blog.mapper.PowerListMapper" >
   <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.PowerList" >
     <id column="power_id" property="powerId" jdbcType="INTEGER" />
     <result column="power_name" property="powerName" jdbcType="VARCHAR" />

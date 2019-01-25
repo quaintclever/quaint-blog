@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.quaint.blog.dao")
+@MapperScan(basePackages = "com.quaint.blog.mapper")
 public class BlogbackApplication {
 
     public static void main(String[] args) {

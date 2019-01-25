@@ -1,6 +1,23 @@
+#配置服务器
 server:
-  port: 8080
+  port: 7777
+#配置spring
 spring:
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
   datasource:
     name: quaint
     url: jdbc:mysql://127.0.0.1:3306/quaintblog
@@ -8,15 +25,18 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  #配置javaMail
   mail:
-    host: smtp.qq.com # QQ邮箱smtp主机
-    port: 587 #端口号465或587
-    username: 85777@qq.com
-    password: qqqqqqqqqqqq # 这里QQ邮箱开通POP3/SMTP提供的授权码，如果邮箱服务商没有授权码，可以使用密码代替
+    host: smtp.qq.com
+    #端口号465或587
+    port: 587
+    username: your_qq_num@qq.com
+    password: your_licenseKey_or_password
     protocol: smtp
     default-encoding: UTF-8
+#配置mybatis
 mybatis:
-  mapper-locations: classpath:mapping/*.xml
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.quaint.blog.pojo
 #配置分页插件pagehelper
 pagehelper:

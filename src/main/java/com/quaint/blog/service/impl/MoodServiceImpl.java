@@ -1,6 +1,6 @@
 package com.quaint.blog.service.impl;
 
-import com.quaint.blog.dao.MoodMapper;
+import com.quaint.blog.mapper.MoodMapper;
 import com.quaint.blog.pojo.Mood;
 import com.quaint.blog.service.MoodService;
 import com.quaint.blog.utils.LayJson;

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class BaseInterceptor implements HandlerInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseInterceptor.class);
-    private static final String USER_AGENT = "User-Agent";
+    private static final String USER_AGENT = "Users-Agent";
 
 
     @Autowired

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blog.dao.VisitorMapper" >
+<mapper namespace="com.quaint.blog.mapper.VisitorMapper" >
   <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.Visitor" >
     <id column="v_id" property="vId" jdbcType="INTEGER" />
     <result column="visitor_id" property="visitorId" jdbcType="INTEGER" />

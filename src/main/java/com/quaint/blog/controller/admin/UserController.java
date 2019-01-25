@@ -1,6 +1,6 @@
 package com.quaint.blog.controller.admin;
 
-import com.quaint.blog.pojo.User;
+import com.quaint.blog.pojo.Users;
 import com.quaint.blog.service.UserService;
 import com.quaint.blog.utils.LayJson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +30,9 @@ public class UserController {
      */
     @GetMapping("data")
     @ResponseBody
-    public LayJson<User> select(){
+    public LayJson<Users> select(){
         //获取用户(未完成)
-        LayJson<User> list = new LayJson<>();
+        LayJson<Users> list = new LayJson<>();
         list.setData(userService.select());
         return list;
     }
@@ -42,7 +42,7 @@ public class UserController {
      */
     @PostMapping("data")
     public String insertSelective(){
-        User user = new User();
+        Users user = new Users();
         user.setUserId(1);
         user.setUserName("quaint");
         user.setUserPwd("123465");

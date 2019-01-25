@@ -1,7 +1,7 @@
 package com.quaint.blog.service.impl;
 
-import com.quaint.blog.dao.UserMapper;
-import com.quaint.blog.pojo.User;
+import com.quaint.blog.mapper.UsersMapper;
+import com.quaint.blog.pojo.Users;
 import com.quaint.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,15 +16,15 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private UsersMapper userMapper;
 
     @Override
-    public int insertSelective(User user) {
+    public int insertSelective(Users user) {
         return userMapper.insertSelective(user);
     }
 
     @Override
-    public List<User> select() {
+    public List<Users> select() {
         return userMapper.select();
     }
 }

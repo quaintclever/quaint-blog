@@ -1,6 +1,6 @@
 package com.quaint.blog.controller;
 
-import com.quaint.blog.pojo.User;
+import com.quaint.blog.pojo.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +28,7 @@ public class HomeController {
 
         //测试使用
         if("quaint".equals(page)){
-            session.setAttribute("user",new User());
+            session.setAttribute("user",new Users());
             return "admin/main";
         }
 
@@ -54,7 +54,7 @@ public class HomeController {
     //测试登陆  登陆跳转界面
     @PostMapping("login")
     public String showMain(HttpSession session){
-        session.setAttribute("user",new User());
+        session.setAttribute("user",new Users());
         return "admin/main";
     }
 

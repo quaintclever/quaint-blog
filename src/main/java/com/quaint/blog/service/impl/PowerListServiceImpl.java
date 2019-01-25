@@ -1,6 +1,6 @@
 package com.quaint.blog.service.impl;
 
-import com.quaint.blog.dao.PowerListMapper;
+import com.quaint.blog.mapper.PowerListMapper;
 import com.quaint.blog.pojo.PowerList;
 import com.quaint.blog.service.PowerListService;
 import org.springframework.beans.factory.annotation.Autowired;
