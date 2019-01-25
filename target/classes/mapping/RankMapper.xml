@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.RankMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.Rank" >
+<mapper namespace="com.quaint.blog.dao.RankMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.Rank" >
     <id column="r_id" property="rId" jdbcType="INTEGER" />
     <result column="rank_id" property="rankId" jdbcType="INTEGER" />
     <result column="rank_name" property="rankName" jdbcType="VARCHAR" />
@@ -25,13 +25,13 @@
     delete from quaint_rank
     where r_id = #{rId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.Rank" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.Rank" >
     insert into quaint_rank (r_id, rank_id, rank_name, 
       power_id)
     values (#{rId,jdbcType=INTEGER}, #{rankId,jdbcType=INTEGER}, #{rankName,jdbcType=VARCHAR}, 
       #{powerId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.Rank" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.Rank" >
     insert into quaint_rank
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rId != null" >
@@ -62,7 +62,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.Rank" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.Rank" >
     update quaint_rank
     <set >
       <if test="rankId != null" >
@@ -77,7 +77,7 @@
     </set>
     where r_id = #{rId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.Rank" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.Rank" >
     update quaint_rank
     set rank_id = #{rankId,jdbcType=INTEGER},
       rank_name = #{rankName,jdbcType=VARCHAR},

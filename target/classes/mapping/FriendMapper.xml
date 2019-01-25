@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.FriendMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.Friend" >
+<mapper namespace="com.quaint.blog.dao.FriendMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.Friend" >
     <id column="f_id" property="fId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="friend_id" property="friendId" jdbcType="INTEGER" />
@@ -24,13 +24,13 @@
     delete from quaint_friend
     where f_id = #{fId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.Friend" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.Friend" >
     insert into quaint_friend (f_id, user_id, friend_id
       )
     values (#{fId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{friendId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.Friend" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.Friend" >
     insert into quaint_friend
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="fId != null" >
@@ -55,7 +55,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.Friend" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.Friend" >
     update quaint_friend
     <set >
       <if test="userId != null" >
@@ -67,7 +67,7 @@
     </set>
     where f_id = #{fId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.Friend" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.Friend" >
     update quaint_friend
     set user_id = #{userId,jdbcType=INTEGER},
       friend_id = #{friendId,jdbcType=INTEGER}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.BlogInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.BlogInfo" >
+<mapper namespace="com.quaint.blog.dao.BlogInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.BlogInfo" >
     <id column="blog_id" property="blogId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="blog_keyword" property="blogKeyword" jdbcType="VARCHAR" />
@@ -30,7 +30,7 @@
     delete from quaint_blog_info
     where blog_id = #{blogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.BlogInfo" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.BlogInfo" >
     insert into quaint_blog_info (blog_id, user_id, blog_keyword, 
       blog_description, blog_title, blog_content, 
       blog_count, praise_count)
@@ -38,7 +38,7 @@
       #{blogDescription,jdbcType=VARCHAR}, #{blogTitle,jdbcType=VARCHAR}, #{blogContent,jdbcType=VARCHAR}, 
       #{blogCount,jdbcType=INTEGER}, #{praiseCount,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.BlogInfo" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.BlogInfo" >
     insert into quaint_blog_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="blogId != null" >
@@ -93,7 +93,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.BlogInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.BlogInfo" >
     update quaint_blog_info
     <set >
       <if test="userId != null" >
@@ -120,7 +120,7 @@
     </set>
     where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.BlogInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.BlogInfo" >
     update quaint_blog_info
     set user_id = #{userId,jdbcType=INTEGER},
       blog_keyword = #{blogKeyword,jdbcType=VARCHAR},

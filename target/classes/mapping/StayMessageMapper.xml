@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.StayMessageMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.StayMessage" >
+<mapper namespace="com.quaint.blog.dao.StayMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.StayMessage" >
     <id column="stay_id" property="stayId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="stay_user_id" property="stayUserId" jdbcType="INTEGER" />
@@ -29,7 +29,7 @@
     delete from quaint_stay_message
     where stay_id = #{stayId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.StayMessage" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.StayMessage" >
     insert into quaint_stay_message (stay_id, user_id, stay_user_id, 
       message_content, stay_user_ip, message_stay_time, 
       place)
@@ -37,7 +37,7 @@
       #{messageContent,jdbcType=VARCHAR}, #{stayUserIp,jdbcType=VARCHAR}, #{messageStayTime,jdbcType=TIMESTAMP}, 
       #{place,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.StayMessage" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.StayMessage" >
     insert into quaint_stay_message
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="stayId != null" >
@@ -86,7 +86,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.StayMessage" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.StayMessage" >
     update quaint_stay_message
     <set >
       <if test="userId != null" >
@@ -110,7 +110,7 @@
     </set>
     where stay_id = #{stayId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.StayMessage" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.StayMessage" >
     update quaint_stay_message
     set user_id = #{userId,jdbcType=INTEGER},
       stay_user_id = #{stayUserId,jdbcType=INTEGER},

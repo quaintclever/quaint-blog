@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.User" >
+<mapper namespace="com.quaint.blog.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
@@ -43,7 +43,7 @@
     delete from quaint_user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.User" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.User" >
     insert into quaint_user (user_id, user_name, user_pwd, 
       user_email, user_image_url, user_nick_name, 
       user_says, user_phone, user_sex, 
@@ -59,7 +59,7 @@
       #{userRegisterTime,jdbcType=TIMESTAMP}, #{userRegisterIp,jdbcType=VARCHAR}, #{userLock,jdbcType=TINYINT}, 
       #{userFreeze,jdbcType=TINYINT}, #{userRank,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.User" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.User" >
     insert into quaint_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -186,7 +186,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.User" >
     update quaint_user
     <set >
       <if test="userName != null" >
@@ -249,7 +249,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.User" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.User" >
     update quaint_user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_pwd = #{userPwd,jdbcType=VARCHAR},

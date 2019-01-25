@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.PowerListMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.PowerList" >
+<mapper namespace="com.quaint.blog.dao.PowerListMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.PowerList" >
     <id column="power_id" property="powerId" jdbcType="INTEGER" />
     <result column="power_name" property="powerName" jdbcType="VARCHAR" />
   </resultMap>
@@ -23,11 +23,11 @@
     delete from quaint_power_list
     where power_id = #{powerId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.PowerList" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.PowerList" >
     insert into quaint_power_list (power_id, power_name)
     values (#{powerId,jdbcType=INTEGER}, #{powerName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.PowerList" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.PowerList" >
     insert into quaint_power_list
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="powerId != null" >
@@ -46,7 +46,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.PowerList" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.PowerList" >
     update quaint_power_list
     <set >
       <if test="powerName != null" >
@@ -55,7 +55,7 @@
     </set>
     where power_id = #{powerId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.PowerList" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.PowerList" >
     update quaint_power_list
     set power_name = #{powerName,jdbcType=VARCHAR}
     where power_id = #{powerId,jdbcType=INTEGER}

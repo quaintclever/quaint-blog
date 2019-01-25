@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.UserAttentionMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.UserAttention" >
+<mapper namespace="com.quaint.blog.dao.UserAttentionMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.UserAttention" >
     <id column="a_id" property="aId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="attention_id" property="attentionId" jdbcType="INTEGER" />
@@ -24,13 +24,13 @@
     delete from quaint_user_attention
     where a_id = #{aId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.UserAttention" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.UserAttention" >
     insert into quaint_user_attention (a_id, user_id, attention_id
       )
     values (#{aId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{attentionId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.UserAttention" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.UserAttention" >
     insert into quaint_user_attention
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="aId != null" >
@@ -55,7 +55,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.UserAttention" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.UserAttention" >
     update quaint_user_attention
     <set >
       <if test="userId != null" >
@@ -67,7 +67,7 @@
     </set>
     where a_id = #{aId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.UserAttention" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.UserAttention" >
     update quaint_user_attention
     set user_id = #{userId,jdbcType=INTEGER},
       attention_id = #{attentionId,jdbcType=INTEGER}

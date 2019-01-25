@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.quaint.blogback.dao.MoodMapper" >
-  <resultMap id="BaseResultMap" type="com.quaint.blogback.pojo.Mood" >
+<mapper namespace="com.quaint.blog.dao.MoodMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.Mood" >
     <id column="mood_id" property="moodId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="mood_time" property="moodTime" jdbcType="TIMESTAMP" />
@@ -27,7 +27,7 @@
     delete from quaint_mood
     where mood_id = #{moodId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.quaint.blogback.pojo.Mood" >
+  <insert id="insert" parameterType="com.quaint.blog.pojo.Mood" >
     insert into quaint_mood (mood_id, user_id, mood_time, 
       mood_ip, mood_content, type_id
       )
@@ -35,7 +35,7 @@
       #{moodIp,jdbcType=VARCHAR}, #{moodContent,jdbcType=VARCHAR}, #{typeId,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.quaint.blogback.pojo.Mood" >
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.Mood" >
     insert into quaint_mood
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="moodId != null" >
@@ -78,7 +78,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blogback.pojo.Mood" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.Mood" >
     update quaint_mood
     <set >
       <if test="userId != null" >
@@ -99,7 +99,7 @@
     </set>
     where mood_id = #{moodId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.quaint.blogback.pojo.Mood" >
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.Mood" >
     update quaint_mood
     set user_id = #{userId,jdbcType=INTEGER},
       mood_time = #{moodTime,jdbcType=TIMESTAMP},
