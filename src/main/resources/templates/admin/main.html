@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>后台管理面板</title>
+		<link rel="shortcut icon" href="../../static/blog/image/index/quaint-logo.ico">
 		<link rel="stylesheet" href="../../static/admin/layui/css/layui.css">
 		<link rel="stylesheet" href="../../static/admin/layui/css/admin.css">
 	</head>
@@ -52,11 +53,6 @@
 								<i class="layui-icon layui-icon-note"></i>
 							</a>
 						</li>
-						<li class="layui-nav-item layui-hide-xs" lay-unselect="">
-							<a href="javascript:;" layadmin-event="fullscreen">
-								<i class="layui-icon layui-icon-screen-full"></i>
-							</a>
-						</li>
 						<li class="layui-nav-item" lay-unselect="">
 							<a href="javascript:;">
 								<cite>Quaint</cite>
@@ -80,7 +76,8 @@
 				<div class="layui-side layui-side-menu">
 					<div class="layui-side-scroll">
 						<div class="layui-logo" lay-href="home/console.html">
-							<span>layuiAdmin</span>
+							<!--<img src="../../static/blog/image/index/quaint-logo.ico" width="45px" height="45px">-->
+							<span>Quaint-Blog</span>
 						</div>
 
 						<ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
@@ -91,78 +88,7 @@
 									<span class="layui-nav-more"></span></a>
 								<dl class="layui-nav-child">
 									<dd data-name="console" class="layui-this">
-										<a lay-href="home/console.html">控制台</a>
-									</dd>
-									<dd data-name="console">
-										<a lay-href="home/homepage1.html">主页一</a>
-									</dd>
-									<dd data-name="console">
-										<a lay-href="home/homepage2.html">主页二</a>
-									</dd>
-								</dl>
-
-							<li data-name="template" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="页面" lay-direction="2">
-									<i class="layui-icon layui-icon-template"></i>
-									<cite>页面</cite>
-									<span class="layui-nav-more"></span></a>
-								<dl class="layui-nav-child">
-									<dd><a lay-href="template/personalpage.html">个人主页</a></dd>
-									<dd><a href="/quaint/mood" target="quaint-ifream">心情列表</a></dd>
-									<dd><a lay-href="template/msgboard.html">留言板</a></dd>
-									<dd><a lay-href="template/search.html">搜索结果</a></dd>
-									<dd><a href="https://www.layui.com/admin/std/dist/views/user/reg.html" target="_blank">注册</a></dd>
-									<dd><a href="https://www.layui.com/admin/std/dist/views/user/login.html" target="_blank">登入</a></dd>
-									<dd><a href="https://www.layui.com/admin/std/dist/views/user/forget.html" target="_blank">忘记密码</a></dd>
-									<dd><a lay-href="template/tips/404.html">404页面不存在</a></dd>
-									<dd><a lay-href="template/tips/error.html">错误提示</a></dd>
-									<dd><a lay-href="//www.baidu.com/">百度一下</a></dd>
-									<dd><a lay-href="//www.quaint.com/">Quaint官网</a></dd>
-								</dl>
-							</li>
-							<li data-name="app" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="应用" lay-direction="2">
-									<i class="layui-icon layui-icon-app"></i>
-									<cite>应用</cite>
-									<span class="layui-nav-more"></span></a>
-								<dl class="layui-nav-child">
-
-									<dd data-name="content">
-										<a href="javascript:;">内容系统<span class="layui-nav-more"></span></a>
-										<dl class="layui-nav-child">
-											<dd data-name="list"><a lay-href="app/content/list.html">文章列表</a></dd>
-											<dd data-name="tags"><a lay-href="app/content/tags.html">分类管理</a></dd>
-											<dd data-name="comment"><a lay-href="app/content/comment.html">评论管理</a></dd>
-										</dl>
-									</dd>
-									<dd data-name="forum">
-										<a href="javascript:;">社区系统<span class="layui-nav-more"></span></a>
-										<dl class="layui-nav-child">
-											<dd data-name="list"><a lay-href="app/forum/list.html">帖子列表</a></dd>
-											<dd data-name="replys"><a lay-href="app/forum/replys.html">回帖列表</a></dd>
-										</dl>
-									</dd>
-									<dd>
-										<a lay-href="app/message/index.html">消息中心</a>
-									</dd>
-								</dl>
-							</li>
-							<li data-name="senior" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="高级" lay-direction="2">
-									<i class="layui-icon layui-icon-senior"></i>
-									<cite>高级</cite>
-									<span class="layui-nav-more"></span></a>
-								<dl class="layui-nav-child">
-									<dd>
-										<a layadmin-event="im">LayIM 通讯系统</a>
-									</dd>
-									<dd data-name="echarts">
-										<a href="javascript:;">Echarts集成<span class="layui-nav-more"></span></a>
-										<dl class="layui-nav-child">
-											<dd><a lay-href="senior/echarts/line.html">折线图</a></dd>
-											<dd><a lay-href="senior/echarts/bar.html">柱状图</a></dd>
-											<dd><a lay-href="senior/echarts/map.html">地图</a></dd>
-										</dl>
+										<a lay-href="home/console.html">仪表盘</a>
 									</dd>
 								</dl>
 							</li>
@@ -183,6 +109,47 @@
 									</dd>
 								</dl>
 							</li>
+							<li data-name="template" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="页面" lay-direction="2">
+									<i class="layui-icon layui-icon-template"></i>
+									<cite>页面</cite>
+									<span class="layui-nav-more"></span></a>
+								<dl class="layui-nav-child">
+									<dd><a lay-href="template/personalpage.html">发布文章</a></dd>
+									<dd><a lay-href="template/msgboard.html">文章管理</a></dd>
+									<dd><a href="/quaint/mood" target="quaint-ifream">心情列表</a></dd>
+									<dd><a lay-href="template/search.html">评论管理</a></dd>
+									<dd><a href="https://www.layui.com/admin/std/dist/views/user/reg.html" target="_blank">留言管理</a></dd>
+									<dd><a href="https://www.layui.com/admin/std/dist/views/user/login.html" target="_blank">分类标签</a></dd>
+								</dl>
+							</li>
+							<!--<li data-name="app" class="layui-nav-item">-->
+								<!--<a href="javascript:;" lay-tips="应用" lay-direction="2">-->
+									<!--<i class="layui-icon layui-icon-app"></i>-->
+									<!--<cite>应用</cite>-->
+									<!--<span class="layui-nav-more"></span></a>-->
+								<!--<dl class="layui-nav-child">-->
+									<!--<dd data-name="content">-->
+										<!--<a href="javascript:;">内容系统<span class="layui-nav-more"></span></a>-->
+										<!--<dl class="layui-nav-child">-->
+											<!--<dd data-name="list"><a lay-href="app/content/list.html">文章列表</a></dd>-->
+											<!--<dd data-name="tags"><a lay-href="app/content/tags.html">分类管理</a></dd>-->
+											<!--<dd data-name="comment"><a lay-href="app/content/comment.html">评论管理</a></dd>-->
+										<!--</dl>-->
+									<!--</dd>-->
+								<!--</dl>-->
+							<!--</li>-->
+							<!--<li data-name="senior" class="layui-nav-item">-->
+								<!--<a href="javascript:;" lay-tips="高级" lay-direction="2">-->
+									<!--<i class="layui-icon layui-icon-senior"></i>-->
+									<!--<cite>高级</cite>-->
+									<!--<span class="layui-nav-more"></span></a>-->
+								<!--<dl class="layui-nav-child">-->
+									<!--<dd>-->
+										<!--<a layadmin-event="im">LayIM 通讯系统</a>-->
+									<!--</dd>-->
+								<!--</dl>-->
+							<!--</li>-->
 							<li data-name="set" class="layui-nav-item">
 								<a href="javascript:;" lay-tips="设置" lay-direction="2">
 									<i class="layui-icon layui-icon-set"></i>

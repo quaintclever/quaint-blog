@@ -10,7 +10,7 @@
 	<link rel="shortcut icon" href="image/index/quaint-logo.ico">
 	<!-- js -->
 	<script src="../../static/comm/js/jquery-3.3.1.js"></script>
-	<script src="../../static/blog/js/quaint-live.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/blog/js/quaint-life.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../static/blog/js/quaint-effect.js" type="text/javascript"></script>
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="../../static/comm/css/bootstrap.css"/>
@@ -21,7 +21,7 @@
 <!-- quaint 中间开始 -->
 <div id="iframeH" class="container-fluid quaint-content">
 	<div class="quaint-middle-bgI">
-		<div id="quaint-live-mood" class="quaint-middle-bgII">
+		<div id="quaint-life-mood" class="quaint-middle-bgII">
 			<h4 class="quaint-bottomLine">Quaint心情日志：</h4>
 			<p class="quaint-indent">
 				每一次，迷茫的时候，找一个倾诉的地方，听着歌，反思自己想要的成长，但是又少了清晰的方向。
@@ -37,6 +37,21 @@
 			</p>
 		</div>
 
+		<!-- 数据用 可以考虑th -->
+		<div class="quaint-middle-bgII">
+			<p class="quaint-bottomLine">
+				<span class="glyphicon glyphicon-time"></span>
+				${data[i].moodTime}
+			</p>
+			<p class="quaint-indent">
+				${data[i].userId}
+			</p>
+			<p class="quaint-indent">
+				${data[i].moodContent}
+			</p>
+		</div>
+
+		<!-- 分页用 -->
 		<div class="quaint-text-center">
 			<ul class="pagination" id = "pagination"></ul>
 		</div>

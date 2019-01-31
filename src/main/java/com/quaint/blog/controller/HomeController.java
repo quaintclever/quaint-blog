@@ -31,6 +31,12 @@ public class HomeController {
             session.setAttribute("user",new Users());
             return "admin/main";
         }
+        if("404".equals(page)){
+            return "error/404";
+        }
+        if("500".equals(page)){
+            return "error/500";
+        }
 
         //如果用户退出，则返回登陆界面，清除登陆的用户
         if("exit".equals(page)){

@@ -10,13 +10,14 @@ $(function(){
 })
 
 /*
- * 请求ajax查询最近的心情
+ * 请求ajax查询最近的博客
  *
  */
 $(function(){
 
 	//ajax请求控制器,查询所有记忆,获取json
-	$.post("getMemoryList",{},function(data){
+	$.get("mood/data",{},function(data){
+		alert(data);
 		showMemory(data);
 	},"json")
 	//主页展示最新的一条心情记忆  TODO  需要修改 为Mood
@@ -28,13 +29,13 @@ $(function(){
 							<div class="quaint-new-label"></div>
 							<p class="quaint-bottomLine">
 							<span class="glyphicon glyphicon-time"></span>
-								${data[i].memoryTime}
+								${data[i].moodTime}
 							</p>
 							<p class="quaint-indent">
-								${data[i].title}
+								${data[i].userId}
 							</p>
 							<p class="quaint-indent">
-								${data[i].content}
+								${data[i].moodContent}
 							</p>
 							</div>
 							`;
@@ -42,20 +43,20 @@ $(function(){
 				memoryStr+=`<div class="quaint-middle-bgII">
 							<p class="quaint-bottomLine">
 							<span class="glyphicon glyphicon-time"></span>
-								${data[i].memoryTime}
+								${data[i].moodTime}
 							</p>
 							<p class="quaint-indent">
-								${data[i].title}
+								${data[i].userId}
 							</p>
 							<p class="quaint-indent">
-								${data[i].content}
+								${data[i].moodContent}
 							</p>
 							</div>
 							`;
 			}
 		}
 		//在quaint-live-mood后面添加生成的记忆
-		$("#quaint-live-mood").after(memoryStr);
+		$("#quaint-life-mood").after(memoryStr);
 		// ajax请求后需要 刷新一下ifream的高度  否则可能出现问题
 		iframeHeight();
 	}

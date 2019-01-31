@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.quaint.blog.mapper")
-public class BlogbackApplication {
+public class QuaintblogApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlogbackApplication.class, args);
+        SpringApplication.run(QuaintblogApplication.class, args);
     }
 
 }
