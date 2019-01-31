@@ -1,4 +1,4 @@
-package com.quaint.blog.constant;
+package com.quaint.blog.config.constant;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.quaint.blog.interceptor;
+package com.quaint.blog.config.interceptor;
 
 
 import com.quaint.blog.service.UserService;
