@@ -31,7 +31,7 @@ public class BlogController {
                     int limit
     ) {
         request.setAttribute("articles","quaint");
-        return "blog/index";
+        return "blogtemp/index";
     }
 
     /**
