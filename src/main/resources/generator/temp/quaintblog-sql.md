@@ -63,5 +63,17 @@ CREATE TABLE quaint_power (
  PRIMARY KEY (power_id)
 )
 
+------------------
+-- **quaint_mood 心情说说表**
+------------------
+CREATE TABLE quaint_mood (
+ mood_id int NOT NULL AUTO_INCREMENT COMMENT '自增ID,心情说说ID',
+ user_id int NOT NULL COMMENT '自增ID,心情说说ID',
+ mood_time datetime NOT NULL COMMENT '发表时间',
+ mood_ip varchar(36) NOT NULL COMMENT '发表ip',
+ mood_content varchar(255) NOT NULL COMMENT '说说内容',
+ type_id int NOT NULL default 0 COMMENT '隐私id 0公开 1好友 2私人',
+ PRIMARY KEY (mood_id)
+)
 
 

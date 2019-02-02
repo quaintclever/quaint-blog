@@ -1,4 +1,4 @@
-package com.quaint.blog.controller;
+package com.quaint.blog.controller.admin;
 
 import com.quaint.blog.pojo.Users;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  * @Date 2019/1/12
  */
 @Controller
-public class HomeController {
+public class AdminController {
 
 
     /**
