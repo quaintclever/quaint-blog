@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
     private UsersMapper userMapper;
 
     @Override
+    public Users selectByName(String userName) {
+        return userMapper.selectByName(userName);
+    }
+
+    @Override
     public int insertSelective(Users user) {
         return userMapper.insertSelective(user);
     }

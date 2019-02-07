@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 public class BlogController {
 
     /**
-     * 初始化界面
+     * 初始化新博客界面
      * @return
      */
     @GetMapping(value = "/")
@@ -25,7 +25,7 @@ public class BlogController {
     }
 
     /**
-     * 默认界面访问
+     * 默认新博客界面访问
      * @return
      */
     @GetMapping(value = "{page}.html")
@@ -34,11 +34,20 @@ public class BlogController {
         return "blogtemp/"+page;
     }
 
-
+    /**
+     * 进入旧版本的控制器
+     * @return
+     */
     @GetMapping(value = "/old")
     public String oldIndex() {
         return "blog/index";
     }
+
+    /**
+     * 旧版本页面跳转使用不带.html的页面
+     * @param page
+     * @return
+     */
     @GetMapping(value = "{page}")
     public String showOldPage(@PathVariable("page") String page){
         //如果访问的是blog前台展示公共页面
