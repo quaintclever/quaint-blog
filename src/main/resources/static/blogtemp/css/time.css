@@ -1,4 +1,4 @@
- @charset "gb2312";
+ @charset "utf-8";
 .timebox { background: #FFF; padding: 30px }
 .timebox span { position: relative; line-height: 32px; padding-right: 40px; color: #999 }
 .timebox span:after { position: absolute; content: ""; width: 2px; height: 40px; background: #e0dfdf; right: 18px }

@@ -1,4 +1,4 @@
- @charset "gb2312";
+ @charset "utf-8";
 .topbox { width: 100% }
 .topbox ul { overflow: hidden; padding: 10px; background: #FFF; }
 .topbox ul li { width: 20%; float: left; overflow: hidden; position: relative }
