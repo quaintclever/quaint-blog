@@ -1,4 +1,4 @@
- @charset "utf-8";
+@charset "utf-8";
 /*banner*/
 .banner { width: 68%; overflow: hidden; float: left; margin-bottom: 20px }
 .fader { position: relative; width: 100%; padding-top: 60%; font-family: "futura", arial; overflow: hidden; }
@@ -29,7 +29,7 @@
 .about_me p { line-height: 24px; font-size: 14px }
 .about_me i { width: 120px; float: left; clear: left; margin-right: 10px; height: 90px; overflow: hidden }
 .wdxc li { width: 32%; overflow: hidden; float: left; height: 80px; margin-bottom: 2px; margin-right: 2px }
-.wdxc li img { height: 100%; min-height: 80px; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; transition: all 0.5s; }
+.wdxc li img { height: 100%; width: 100%; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; transition: all 0.5s; }
 .wdxc li img:hover { transform: scale(1.05) }
 .fenlei li { margin-bottom: 10px; margin-left: 10px }
 .tuijian li { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-bottom: 5px; background: url(../images/li.png) left center no-repeat; padding-left: 20px }
@@ -95,10 +95,10 @@
 .bigpic { overflow: hidden; width: 100%; display: block; margin-bottom: 20px; background: #000 }
 .bigpic img { width: 100%; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; -ms-transition: all 0.6s ease; transition: all 0.6s ease; }
 .bigpic:hover img { opacity: 0.8 }
-.pagelist { text-align: right; color: #666; width: 100%; clear: both; margin: 25px 0; padding-top: 20px }
+.pagelist { text-align: right; color: #666; width: 100%; clear: both; margin: 0 0 10px; }
 .pagelist a { color: #666; margin: 0 2px 10px; border: 1px solid #fff; padding: 5px 10px; background: #FFF;display: inline-block;   }
 .pagelist a:hover { color: #3690cf; }
-.pagelist > b { border: 1px solid #ef254a; padding: 5px 10px; background: #fe4365; color: #FFF }
+.pagelist > b {     border: 1px solid #247dbb;    padding: 5px 10px;    background: #3690cf;    color: #FFF; }
 a.curPage { color: #19585d; font-weight: bold; }
 /*about*/
 .about { padding: 20px; background: rgba(255,255,255,0.8); }
@@ -113,6 +113,32 @@ a.curPage { color: #19585d; font-weight: bold; }
 .picinfo h3 { border-bottom: #ccc 1px solid; padding: 10px 0; margin: 0 20px; font-size: 16px }
 .picinfo span { padding: 10px 20px; display: block; color: #666; }
 .picbox ul li a:hover { color: #19585d }
-.place { margin: 0 0 10px 0; width: 100%; overflow: hidden;background: #fff; }
+.place { margin: 0 0 10px 0;   width: 100%;    overflow: hidden;    background: #fff;    border-bottom: 1px solid #ddd; }
 .place a { display: block; float: left; padding: 5px 10px; background: #fff; margin:0 20px;  }
 #pagecurrent { color: #222; border-bottom: 2px solid #3690cf; display: inline-block; }
+/*gbook*/
+.gbook { background: #FFF; overflow: hidden; margin-bottom: 20px }
+.gbox { padding: 20px; overflow: hidden; }
+.gbox p { margin-bottom: 10px }
+p.fbtime { color: #000; }
+.fbtime span { float: right; color: #999; font-size: 12px;    width: 66px; overflow: hidden;    white-space: nowrap; }
+p.fbinfo { margin: 10px 0; }
+.fb ul { margin: 10px 10px; padding: 10px 10px 10px 70px; border-bottom: #ececec 1px solid; }
+/* 留言头像加载位置 */
+.fb ul { background: url(../images/tx9.jpg) no-repeat top 20px left 10px; }
+.hf ul { padding: 10px 20px; background: #f9f9f9; }
+.hf { margin: 0 20px; padding-bottom: 20px; border-bottom: #dedddd 1px dashed; }
+.gbook textarea#lytext { width: 100%; }
+.gbox input[type="submit"] { display: block; background: #040404; color: #fff; border: 0; line-height: 30px; padding: 0 20px; border-radius: 5px; float: right; }
+.ecomment { border: #dedcdc 1px solid; padding: 10px; margin-bottom: 10px; }
+span.ecommentauthor { color: #b5b5b5; font-size: 14px; margin-bottom: 5px; display: block; }
+.saying { line-height: 30px; color: #a9a6a6; }
+.saying span { float: right }
+.saying span a { color: #de1513; }
+img#plKeyImg { display: inline-block; }
+.yname { margin: 10px 10px 10px 0 }
+.yname span, .yzm span { padding-right: 10px; }
+.yzm { margin: 0 10px 10px 0 }
+#plpost input[type="submit"] { display: block; background: #303030; color: #fff; border: 0; line-height: 30px; padding: 0 20px; border-radius: 5px; float: right; }
+textarea#saytext { width: 100%; }
+#plpost { margin: 0 20px }

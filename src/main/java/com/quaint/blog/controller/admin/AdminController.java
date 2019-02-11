@@ -1,5 +1,6 @@
 package com.quaint.blog.controller.admin;
 
+import com.quaint.blog.pojo.Users;
 import com.quaint.blog.utils.QuaintUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -28,6 +29,8 @@ public class AdminController {
         Subject subject = SecurityUtils.getSubject();
         //封住用户数据
         UsernamePasswordToken token = new UsernamePasswordToken(userName,userPwd);
+        //是否记住用户  暂未测试理解
+        //token.setRememberMe(true);
         //执行登陆方法
         try {
             subject.login(token);
@@ -40,6 +43,23 @@ public class AdminController {
             System.out.println("密码错误！");
             return "admin/login";
         }
+    }
+
+    /**
+     * 注销用户功能(退出登录)
+     * @return
+     */
+    @GetMapping(value = "exit")
+    public String exit() {
+        //获取subject
+        Subject subject = SecurityUtils.getSubject();
+        //从subject中获取登录的用户信息.
+        Users user = (Users) subject.getPrincipal();
+        //测试输出
+        System.out.println(user.getUserName()+"正在退出...");
+        //退出登录,清除用户信息.
+        subject.logout();
+        return "admin/login";
     }
 
     /**

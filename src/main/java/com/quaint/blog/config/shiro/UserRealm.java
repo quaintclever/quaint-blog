@@ -45,6 +45,6 @@ public class UserRealm extends AuthorizingRealm {
             return null;
         }
         //2.判断密码
-        return new SimpleAuthenticationInfo("",user.getUserPwd(),"");
+        return new SimpleAuthenticationInfo(user,user.getUserPwd(),"");
     }
 }

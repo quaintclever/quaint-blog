@@ -2,7 +2,7 @@ package resources.generator.temp.pojo;
 
 import java.util.Date;
 
-public class Users {
+public class UsersTemp {
     private Integer userId;
 
     private String userName;
