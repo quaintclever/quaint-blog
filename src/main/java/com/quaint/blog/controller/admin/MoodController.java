@@ -45,8 +45,7 @@ public class MoodController {
     public String insertSelective(@RequestBody Mood mood){
         mood.setMoodIp("127.0.0.1");
         mood.setMoodTime(new Date());
-        moodService.insertSelective(mood);
-        return "ok";
+        return moodService.insertSelective(mood)>0?"ok":"error";
     }
     /**
      * 测试put请求  修改

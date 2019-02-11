@@ -54,8 +54,11 @@
                     }else{
                         layer.msg(msg);
                     }
+                },
+                error: function () {
+                    layer.msg("添加失败！");
                 }
-             });
+            });
             return false;
         });
     });

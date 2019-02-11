@@ -15,6 +15,12 @@ public interface UsersMapper {
 
     List<Users> select();
 
+    /**
+     * 通过用户名查询用户信息
+     * @return
+     */
+    Users selectByName(String userName);
+
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);

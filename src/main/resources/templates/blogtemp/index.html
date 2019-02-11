@@ -1,145 +1,465 @@
-<!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="gbk">
-<title>首页_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
-<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青">
-<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html>
+<!--
+	Quaint素描正在学习中...
+
+                        QQQQQQQQQQQQQQQQ
+                    QQ                   QQQ
+                 QQ                           QQ
+               QQ                               QQ
+             QQ                                   QQ
+            Q                                       Q
+           Q     --===--             --===--         Q
+          Q                                           Q
+         Q        ____                 ____            Q
+        Q        | __ |               | __ |           Q
+        Q        | |■||               | |■||           Q
+        Q        |_( )|               |_( )|           Q
+        Q                                              Q
+        Q                                              Q
+        Q                     Q                        Q
+         Q                                            Q
+          Q                                          Q
+           Q                                        Q
+            Q               Q     Q                Q
+             Q                Q_Q                 Q
+               Q                                Q
+                 QQ                          QQ
+                    QQ                    QQ
+                        QQQQQQQQQQQQQQQQ
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="quaint个人博客,quaintBlog,quaint" />
+<meta name="date" content="2018.02.14"/>
+<meta name="description" content="(๑• ₃ •๑)欢迎来到Quaintの博客，(๑> ؂ <๑)这是一个正在成长中的博客，一起成长的还有我的好朋友(> ω <)夏睡醒了秋~"/>
+<title>Quaint个人博客 - 风清忆箫伤の寻遍星空散落的每一份感动</title>
+<link rel="shortcut icon" href="../../static/blog/image/index/quaint-logo.ico">
 <link href="../../static/blogtemp/css/base.css" rel="stylesheet">
 <link href="../../static/blogtemp/css/index.css" rel="stylesheet">
 <link href="../../static/blogtemp/css/m.css" rel="stylesheet">
+<script src="../../static/blogtemp/js/jquery.min.js" ></script>
+<script src="../../static/blogtemp/js/jquery.easyfader.min.js"></script>
+<script src="../../static/blogtemp/js/hc-sticky.js"></script>
+<script src="../../static/blogtemp/js/comm.js"></script>
+<script src="../../static/blogtemp/js/scrollReveal.js"></script>
+<script src="../../static/comm/js/quaint-effect.js"></script>
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
 </head>
 <body>
-<header>
-  <div class="logo"><a href="https://www.yangqq.com/">杨青个人博客</a></div>
-  <nav id="nav">
-    <ul>
-      <li><a href="https://www.yangqq.com/skin/871/index.html" id="selected">网站首页</a></li>
-      <li><a href="https://www.yangqq.com/skin/871/share.html">我的相册</a></li>
-      <li><a href="https://www.yangqq.com/skin/871/list.html">我的日记</a></li>
-      <li><a href="https://www.yangqq.com/skin/871/about.html">关于我</a></li>
-      <li><a href="https://www.yangqq.com/skin/871/gbook.html">留言</a></li>
-      <li><a href="https://www.yangqq.com/skin/871/info.html">内容页</a></li>
-      <li><a href="https://www.yangqq.com/skin/871/infopic.html">内容页</a></li>
+<header class="header-navigation" id="header">
+  <nav>
+    <div class="logo"><a href="/">Quaint's Blog</a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <ul id="starlist">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="share.html">Share</a></li>
+      <li class="menu">
+        <a href="time.html">Time</a>
+        <ul class="sub">
+          <li><a href="#">Life</a></li>
+          <li><a href="#">Appreciate</a></li>
+        </ul>
+      </li>
+      <li><a href="temp.html">Saying</a></li>
     </ul>
-  </nav>
-</header><div id="mark_mask" style="display:none;position:fixed;top:40px;left:0;z-index:99999999;height:1000px;width:100%;background:rgba(0,0,0,0.4);"></div>
-<article>
-  <div class="l_box">
-    <div class="about_me">
-      <h2>关于我</h2>
-      <ul>
-        <i><img src="../../static/blogtemp/image/4.jpg"></i>
-        <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
-      </ul>
-    </div>
-    <div class="wdxc">
-      <h2>我的相册</h2>
-      <ul>
-        <li><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/7.jpg"></a></li>
-        <li><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/8.jpg"></a></li>
-        <li><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/9.jpg"></a></li>
-        <li><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/10.jpg"></a></li>
-        <li><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/11.jpg"></a></li>
-        <li><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/12.jpg"></a></li>
-      </ul>
-    </div>
-    <div class="search">
-      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-        <input name="show" value="title" type="hidden">
-        <input name="tempid" value="1" type="hidden">
-        <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="搜索" type="submit">
+    <div class="searchbox">
+    <div id="search_bar" class="search_bar">
+      <form  id="searchform" action="/search" method="post" name="searchform">
+        <input class="input" placeholder="want to search?" type="text" name="keyboard" id="keyboard">
+        <input type="hidden" name="show" value="title" />
+        <input type="hidden" name="tempid" value="1" />
+        <input type="hidden" name="tbname" value="news">
+        <input type="hidden" name="Submit" value="搜索" />
+        <p class="search_ico"> <span></span></p>
       </form>
+     </div>
     </div>
-    <div class="fenlei">
-      <h2>文章分类</h2>
-      <ul>
-        <li><a href="https://www.yangqq.com/">学无止境（33）</a></li>
-        <li><a href="https://www.yangqq.com/">日记（19）</a></li>
-        <li><a href="https://www.yangqq.com/">慢生活（520）</a></li>
-        <li><a href="https://www.yangqq.com/">美文欣赏（40）</a></li>
-      </ul>
-    </div>
-    <div class="tuijian">
-      <h2>站长推荐</h2>
-      <ul>
-        <li><a href="https://www.yangqq.com/">你是什么人便会遇上什么人</a></li>
-        <li><a href="https://www.yangqq.com/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-        <li><a href="https://www.yangqq.com/">第二届 优秀个人博客模板比赛参选活动</a></li>
-        <li><a href="https://www.yangqq.com/">个人博客模板《绅士》后台管理</a></li>
-        <li><a href="https://www.yangqq.com/">你是什么人便会遇上什么人</a></li>
-        <li><a href="https://www.yangqq.com/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-        <li><a href="https://www.yangqq.com/">第二届 优秀个人博客模板比赛参选活动</a></li>
-        <li><a href="https://www.yangqq.com/">个人博客模板《绅士》后台管理</a></li>
-      </ul>
-    </div>
-    <div class="links">
-      <h2>友情链接</h2>
-      <ul>
-        <a href="http://www.yangqq.com/">杨青个人博客</a> <a href="http://www.yangqq.com/">杨青博客</a>
-      </ul>
-    </div>
-    <div class="guanzhu">
-      <h2>关注我 么么哒</h2>
-      <ul>
-        <img src="../../static/blogtemp/image/wx.jpg">
-      </ul>
+  </nav>
+</header>
+<article>
+  <!--banner begin-->
+  <div class="banner">
+    <div id="banner" class="fader">
+      <li class="slide" ><a href="/" target="_blank"><img src="../../static/blogtemp/images/1.jpg"><span class="imginfo">别让这些闹心的套路，毁了你的网页设计!</span></a></li>
+      <li class="slide" ><a href="/" target="_blank"><img src="../../static/blogtemp/images/2.jpg"><span class="imginfo">网页中图片属性固定宽度，如何用js改变大小</span></a></li>
+      <li class="slide" ><a href="/" target="_blank"><img src="../../static/blogtemp/images/3.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
+      <div class="fader_controls">
+        <div class="page prev" data-target="prev">&lsaquo;</div>
+        <div class="page next" data-target="next">&rsaquo;</div>
+        <ul class="pager_list">
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="r_box">
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/1.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">你是什么人便会遇上什么人</a></h3>
-      <p>有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/2.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">爱情没有永远，地老天荒也走不完</a></h3>
-      <p>也许，爱情没有永远，地老天荒也走不完，生命终结的末端，苦短情长。站在岁月的边端，那些美丽的定格，心伤的绝恋，都被四季的掩埋，一去不返。徒剩下这荒芜的花好月圆，一路相随，流离天涯背负了谁的思念？</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/3.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">女孩都有浪漫的小情怀——浪漫的求婚词</a></h3>
-      <p>还在为浪漫的求婚词而烦恼不知道该怎么说吗？女孩子都有着浪漫的小情怀，对于求婚更是抱着满满的浪漫期待，也希望在求婚那一天对方可以给自己一个最浪漫的求婚词。</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/4.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">擦肩而过</a></h3>
-      <p>《擦肩而过》文/清河鱼 编绘/天朝羽打开一扇窗，我不曾把你想得平常。看季节一一过往。你停留的那个地方，是否依然花儿开放？在夜里守靠着梦中的，想那仿佛前世铭刻进心肠的</p>
-    </li>
-    <li>
-      <h3><a href="https://www.yangqq.com/">女孩都有浪漫的小情怀——浪漫的求婚词</a></h3>
-      <p>还在为浪漫的求婚词而烦恼不知道该怎么说吗？女孩子都有着浪漫的小情怀，对于求婚更是抱着满满的浪漫期待，也希望在求婚那一天对方可以给自己一个最浪漫的求婚词。</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/5.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">擦肩而过</a></h3>
-      <p>《擦肩而过》文/清河鱼 编绘/天朝羽打开一扇窗，我不曾把你想得平常。看季节一一过往。你停留的那个地方，是否依然花儿开放？在夜里守靠着梦中的，想那仿佛前世铭刻进心肠的</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/6.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">女孩都有浪漫的小情怀——浪漫的求婚词</a></h3>
-      <p>还在为浪漫的求婚词而烦恼不知道该怎么说吗？女孩子都有着浪漫的小情怀，对于求婚更是抱着满满的浪漫期待，也希望在求婚那一天对方可以给自己一个最浪漫的求婚词。</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/7.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">你是什么人便会遇上什么人</a></h3>
-      <p>有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/8.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">爱情没有永远，地老天荒也走不完</a></h3>
-      <p>也许，爱情没有永远，地老天荒也走不完，生命终结的末端，苦短情长。站在岁月的边端，那些美丽的定格，心伤的绝恋，都被四季的掩埋，一去不返。徒剩下这荒芜的花好月圆，一路相随，流离天涯背负了谁的思念？</p>
-    </li>
-    <li><i><a href="https://www.yangqq.com/"><img src="../../static/blogtemp/image/9.jpg"></a></i>
-      <h3><a href="https://www.yangqq.com/">擦肩而过</a></h3>
-      <p>《擦肩而过》文/清河鱼 编绘/天朝羽打开一扇窗，我不曾把你想得平常。看季节一一过往。你停留的那个地方，是否依然花儿开放？在夜里守靠着梦中的，想那仿佛前世铭刻进心肠的</p>
-    </li>
-    <div class="pagelist"><a class="allpage"><b>99</b></a>&nbsp;&nbsp;<a href="#" class="curPage">1</a>&nbsp;&nbsp;<a href="#" onclick="page(2)">2</a>&nbsp;&nbsp;<a href="#" onclick="page(3)">3</a>&nbsp;&nbsp;<a href="#" onclick="page(4)">4</a>&nbsp;&nbsp;<a href="#" onclick="page(5)">5</a>&nbsp;&nbsp;<a href="#" onclick="page(6)">6</a>&nbsp;&nbsp;<a href="#" onclick="page(7)">7</a>&nbsp;&nbsp;<a href="#" onclick="page(8)">8</a>&nbsp;&nbsp;<a href="#" onclick="page(9)">9</a>&nbsp;&nbsp;<a href="#" onclick="page(2)">下一页</a></div>
+  <!--banner end-->
+  <div class="toppic">
+    <li> <a href="/" target="_blank"> <i><img src="../../static/blogtemp/images/1.jpg"></i>
+      <h2>安静地做一个爱设计的女子</h2>
+      <span>学无止境</span> </a> </li>
+    <li> <a href="/" target="_blank"> <i><img src="../../static/blogtemp/images/2.jpg"></i>
+      <h2>个人博客，属于我的小世界！</h2>
+      <span>学无止境</span> </a> </li>
   </div>
+  <main>
+  <div class="news_box">
+    <ul>
+      <li><i><a href="/"><img src="../../static/blogtemp/images/1.jpg"></a></i>
+        <h3><a href="/">html5个人博客模板《simple》</a></h3>
+      </li>
+      <li><i><a href="/"><img src="../../static/blogtemp/images/2.jpg"></a></i>
+        <h3><a href="/">html5古典个人博客模板《青砖屋檐》</a></h3>
+      </li>
+      <li><i><a href="/"><img src="../../static/blogtemp/images/3.jpg"></a></i>
+        <h3><a href="/">第二届 优秀个人博客模板比赛参选活动</a></h3>
+      </li>
+      <li><i><a href="/"><img src="../../static/blogtemp/images/4.jpg"></a></i>
+        <h3><a href="/">html5个人博客模板《More》</a></h3>
+      </li>
+      <li><i><a href="/"><img src="../../static/blogtemp/images/5.jpg"></a></i>
+        <h3><a href="/">D设计师博客-一个热爱生活的设计师</a></h3>
+      </li>
+      <li><i><a href="/"><img src="../../static/blogtemp/images/6.jpg"></a></i>
+        <h3><a href="/">个人博客用帝国cms 自定义页面 灵动标签调用网站所有信息</a></h3>
+      </li>
+    </ul>
+  </div>
+  <div class="pics">
+    <ul>
+      <li><i><a href="/news/life/2018-06-17/873.html" target="_blank"><img src="../../static/blogtemp/images/p1.jpg"></a></i><span>安静地做一个爱设计的女子</span></li>
+      <li><i><a href="/news/life/2018-04-27/816.html" target="_blank"><img src="../../static/blogtemp/images/p2.jpg"></a></i><span>个人博客，属于我的小世界！（可以是广告）</span></li>
+      <li><i><a href="/jstt/bj/2015-01-09/740.html" target="_blank"><img src="../../static/blogtemp/images/p3.jpg"></a></i><span>【匆匆那些年】总结个人博客经历的这四年…</span></li>
+    </ul>
+  </div>
+
+  <div class="blogtab">
+  <ul id="blogtab">
+    <li class="current">最新文章</li>
+    <li><a href="blog.html">心得笔记</a></li>
+    <li><a href="blog.html">CSS3|Html5</a></li>
+    <li><a href="blog.html">网站建设</a></li>
+    <li><a href="blog.html">文字标签</a></li>
+    <li><a href="blog.html">文字广告</a></li>
+  </ul>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="blogpic"><a href="/" title=""><img src="../../static/blogtemp/images/1.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">帝国cms 首页或者列表页 实现图文不同样式调用方法</a></h3>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！...</p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view">4567已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bplist"><a href="/" title="">
+      <li><img src="../../static/blogtemp/images/2.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/3.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/4.jpg" alt=""></li>
+      </a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bigpic"><a href="/" title=""><img src="../../static/blogtemp/images/5.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="blogpic"><a href="/" title=""><img src="../../static/blogtemp/images/6.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">帝国cms 首页或者列表页 实现图文不同样式调用方法</a></h3>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！...</p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view">4567已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bplist"><a href="/" title="">
+      <li><img src="../../static/blogtemp/images/7.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/8.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/9.jpg" alt=""></li>
+      </a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bigpic"><a href="/" title=""><img src="../../static/blogtemp/images/10.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="blogpic"><a href="/" title=""><img src="../../static/blogtemp/images/1.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">帝国cms 首页或者列表页 实现图文不同样式调用方法</a></h3>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！...</p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view">4567已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bplist"><a href="/" title="">
+      <li><img src="../../static/blogtemp/images/2.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/3.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/4.jpg" alt=""></li>
+      </a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bigpic"><a href="/" title=""><img src="../../static/blogtemp/images/5.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="blogpic"><a href="/" title=""><img src="../../static/blogtemp/images/6.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">帝国cms 首页或者列表页 实现图文不同样式调用方法</a></h3>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！...</p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view">4567已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bplist"><a href="/" title="">
+      <li><img src="../../static/blogtemp/images/7.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/8.jpg" alt=""></li>
+      <li><img src="../../static/blogtemp/images/9.jpg" alt=""></li>
+      </a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
+      <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
+      <span class="bigpic"><a href="/" title=""><img src="../../static/blogtemp/images/10.jpg" alt=""></a></span>
+      <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="/">Quaint</a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">2018-5-13</li>
+          <li class="view"><span>34567</span>已阅读</li>
+          <li class="like">9999</li>
+        </ul>
+      </div>
+    </div>
+</div>
+  </main>
+  <aside class="r_box" >
+      <div class="about_me">
+        <h2>博主简介</h2>
+        <ul>
+          <i><img src="../../static/blogtemp/images/4.jpg"></i>
+          <p><b>Quaint</b>，一个90后草根男站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+        </ul>
+      </div>
+      <div class="wdxc">
+        <h2>图片精选</h2>
+        <ul>
+          <li><a href="/"><img src="../../static/blogtemp/images/7.jpg"></a></li>
+          <li><a href="/"><img src="../../static/blogtemp/images/8.jpg"></a></li>
+          <li><a href="/"><img src="../../static/blogtemp/images/9.jpg"></a></li>
+          <li><a href="/"><img src="../../static/blogtemp/images/10.jpg"></a></li>
+          <li><a href="/"><img src="../../static/blogtemp/images/11.jpg"></a></li>
+          <li><a href="/"><img src="../../static/blogtemp/images/12.jpg"></a></li>
+        </ul>
+      </div>
+      <div class="fenlei">
+        <h2>文章分类</h2>
+        <ul>
+          <li><a href="/">学无止境（33）</a></li>
+          <li><a href="/">日记（19）</a></li>
+          <li><a href="/">慢生活（520）</a></li>
+          <li><a href="/">美文欣赏（40）</a></li>
+        </ul>
+      </div>
+      <div class="tuijian">
+        <h2 id="tab"><a href="#"class="current">活动公告</a><a href="#">点击排行</a><a href="#">站长推荐</a></h2>
+
+     <div id="content">
+        <ul style="display:block;">
+          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
+          <li><a href="/">【活动作品】柠檬绿兔小白个人博客模板</a></li>
+          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
+          <li><a href="/">2014年度优秀个人博客评选活动</a></li>
+          <li><a href="/">你是什么人便会遇上什么人</a></li>
+          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
+          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
+          <li><a href="/">个人博客模板《绅士》后台管理</a></li>
+        </ul>
+                <ul>
+          <li><a href="/">你是什么人便会遇上什么人</a></li>
+          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
+          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
+          <li><a href="/">个人博客模板《绅士》后台管理</a></li>
+          <li><a href="/">你是什么人便会遇上什么人</a></li>
+          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
+          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
+          <li><a href="/">黑色质感时间轴html5个人博客模板</a></li>
+        </ul>
+        <ul>
+          <li><a href="/">个人博客，我为什么要用帝国cms？</a></li>
+          <li><a href="/">D设计师博客-一个热爱生活的设计师</a></li>
+          <li><a href="/">东轩博客，我看到了你的坚持！</a></li>
+          <li><a href="/">程序员创业，就得“豁得出去”！</a></li>
+          <li><a href="/">张建华 一个90后年轻站长！我们是对手亦是朋友！</a></li>
+          <li><a href="/">《奋斗电商》看知名微商如何做博客引流？</a></li>
+          <li><a href="/">《寻之旅》一个关于旅游，游记的个人博客</a></li>
+          <li><a href="/">【匆匆那些年】总结个人博客经历的这四年</a></li>
+        </ul>
+       </div>
+      </div>
+      <div class="guanzhu">
+        <h2>关注我 么么哒</h2>
+        <ul>
+          <img src="../../static/blogtemp/images/wx.jpg">
+        </ul>
+      </div>
+
+  </aside>
 </article>
 <footer>
-  <p>Design by <a href="http://www.yangqq.com/" target="_blank">杨青个人博客</a> <a href="https://www.yangqq.com/">蜀ICP备11002373号-1</a></p>
+  <p>Design by <a href="http://www.yangqq.com" target="_blank">Quaint个人博客</a> <a href="/">蜀ICP备11002373号-1</a><a href="/" class="links">友情链接</a></p>
 </footer>
-
-
-
-</body></html>
+<a href="#" class="cd-top">Top</a>
+</body>
+</html>
