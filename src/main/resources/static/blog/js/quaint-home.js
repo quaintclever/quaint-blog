@@ -17,16 +17,16 @@ $(function(){
  * */
 $(function(){
 	//ajax请求控制器,查询最新的一条记忆,获取json
-	$.post("getNewMemory",{},function(data){
+	$.get("mood/selectNewMood",{},function(data){
 		show_skip(data);
 	},"json")
 	//主页展示最新的一条心情记忆
 	function show_skip(data){
 		var skip_new_str = "";
 		skip_new_str += `<span class="glyphicon glyphicon-time"></span>
-						 ${data.memoryTime}
+						 ${format(data.moodTime,'yyyy-MM-dd HH:mm:ss')}
 						 <p class="quaint-indent">
-						 ${data.title}
+						 ${data.moodContent}
 						 </p>`;
 		document.getElementById("skip_new").innerHTML=skip_new_str;
 		// ajax请求后需要 刷新一下ifream的高度  否则可能出现问题
@@ -34,3 +34,33 @@ $(function(){
 	}
 	
 })
+
+//封装时间格式  ${format(data.moodTime,'yyyy-MM-dd HH:mm:ss')}
+function format(time, format) {
+    var t = new Date(time);
+    var tf = function (i) {
+        return (i < 10 ? '0' : '') + i
+    };
+    return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
+        switch (a) {
+            case 'yyyy':
+                return tf(t.getFullYear());
+                break;
+            case 'MM':
+                return tf(t.getMonth() + 1);
+                break;
+            case 'mm':
+                return tf(t.getMinutes());
+                break;
+            case 'dd':
+                return tf(t.getDate());
+                break;
+            case 'HH':
+                return tf(t.getHours());
+                break;
+            case 'ss':
+                return tf(t.getSeconds());
+                break;
+        }
+    })
+}

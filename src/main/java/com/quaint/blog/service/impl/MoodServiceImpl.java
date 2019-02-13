@@ -1,5 +1,7 @@
 package com.quaint.blog.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.quaint.blog.mapper.MoodMapper;
 import com.quaint.blog.pojo.Mood;
 import com.quaint.blog.service.MoodService;
@@ -40,4 +42,15 @@ public class MoodServiceImpl implements MoodService {
         return moodMapper.deleteByPrimaryKey(moodId);
     }
 
+    @Override
+    public Mood selectNewMood() {
+        return moodMapper.selectNewMood();
+    }
+    @Override
+    public PageInfo<Mood> selectMoodList(int pageNo, int pageSize){
+        PageHelper.startPage(pageNo,pageSize);
+        List<Mood> list = moodMapper.select(); //用PageInfo对结果进行包装
+        PageInfo<Mood> page = new PageInfo<Mood>(list);
+        return page;
+    }
 }

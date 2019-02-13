@@ -23,7 +23,7 @@ public class MoodController {
     private MoodService moodService;
 
     /**
-     * 测试get     查询
+     * 后台分页查询 心情
      * @return 查询出来的心情
      */
     @GetMapping("data")
@@ -37,6 +37,31 @@ public class MoodController {
         layJson.setCount(page.getTotal());//设置数据数量
         return layJson;
     }
+
+    /**
+     * 前台分页查询 心情
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("selectMoodList")
+    public PageInfo<Mood> selectMoodList(@RequestParam(value="pageNo",defaultValue="1")int pageNo,
+                                    @RequestParam(value="pageSize",defaultValue="7")int pageSize){
+        PageInfo<Mood> page = moodService.selectMoodList(pageNo,pageSize);
+        return page;
+    }
+
+    /**
+     * 前台 查询最新发表的心情说说
+     * old blog使用
+     * @return
+     */
+    @GetMapping("selectNewMood")
+    public Mood selectNewMood(){
+        Mood mood = moodService.selectNewMood();
+        return mood;
+    }
+
     /**
      * 测试Post    添加
      * @return 添加一个心情
