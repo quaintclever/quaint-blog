@@ -4,13 +4,14 @@
   <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.Mood" >
     <id column="mood_id" property="moodId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="mood_time" property="moodTime" jdbcType="TIMESTAMP" />
     <result column="mood_ip" property="moodIp" jdbcType="VARCHAR" />
     <result column="mood_content" property="moodContent" jdbcType="VARCHAR" />
     <result column="type_id" property="typeId" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    mood_id, user_id, mood_time, mood_ip, mood_content, type_id
+    mood_id, user_id, user_name,mood_time, mood_ip, mood_content, type_id
   </sql>
   <select id="select" resultMap="BaseResultMap">
     select
@@ -28,10 +29,10 @@
     where mood_id = #{moodId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.quaint.blog.pojo.Mood" >
-    insert into quaint_mood (mood_id, user_id, mood_time, 
+    insert into quaint_mood (mood_id, user_id,user_name, mood_time,
       mood_ip, mood_content, type_id
       )
-    values (#{moodId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{moodTime,jdbcType=TIMESTAMP}, 
+    values (#{moodId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR}, #{moodTime,jdbcType=TIMESTAMP},
       #{moodIp,jdbcType=VARCHAR}, #{moodContent,jdbcType=VARCHAR}, #{typeId,jdbcType=TINYINT}
       )
   </insert>
@@ -43,6 +44,9 @@
       </if>
       <if test="userId != null" >
         user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
       </if>
       <if test="moodTime != null" >
         mood_time,
@@ -64,6 +68,9 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
       <if test="moodTime != null" >
         #{moodTime,jdbcType=TIMESTAMP},
       </if>
@@ -84,6 +91,9 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
       <if test="moodTime != null" >
         mood_time = #{moodTime,jdbcType=TIMESTAMP},
       </if>
@@ -102,6 +112,7 @@
   <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.Mood" >
     update quaint_mood
     set user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
       mood_time = #{moodTime,jdbcType=TIMESTAMP},
       mood_ip = #{moodIp,jdbcType=VARCHAR},
       mood_content = #{moodContent,jdbcType=VARCHAR},

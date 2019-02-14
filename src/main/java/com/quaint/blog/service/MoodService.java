@@ -27,6 +27,12 @@ public interface MoodService {
     int deleteByPrimaryKey(Integer moodId);
 
     /**
+     * 后台修改一个心情
+     * @return
+     */
+    int updateByPrimaryKeySelective(Mood record);
+
+    /**
      * 前台查询最新的一个心情
      * @return
      */

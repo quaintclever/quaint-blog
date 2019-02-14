@@ -1,14 +1,19 @@
 package com.quaint.blog.controller.admin;
 
 import com.quaint.blog.pojo.Users;
+import com.quaint.blog.service.UserService;
+import com.quaint.blog.utils.IPKit;
 import com.quaint.blog.utils.QuaintUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 后台主页控制器，通用功能控制器，
@@ -19,12 +24,18 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("quaint")
 public class AdminController {
 
+    @Autowired
+    private UserService userService;
 
     //测试登陆  登陆跳转界面
     @PostMapping("login")
-    public String login(@RequestParam String userName,@RequestParam String userPwd){
+    public String login(@RequestParam String userName, @RequestParam String userPwd, HttpServletRequest request){
 
+        //获取登录名称
         System.out.println(userName);
+        //获取登录ip
+        System.out.println(IPKit.getIpAddressByRequest1(request));
+
         //使用shiro 来编写认证操作
         Subject subject = SecurityUtils.getSubject();
         //封住用户数据
@@ -34,6 +45,10 @@ public class AdminController {
         //执行登陆方法
         try {
             subject.login(token);
+            //如果登陆成功,修改最后登录的ip
+            Users loginUser = (Users) subject.getPrincipal();
+            loginUser.setUserLastLoginIp(IPKit.getIpAddressByRequest1(request));
+            userService.updateByPrimaryKeySelective(loginUser);
             //没有异常则登陆成功
             return "redirect:admin/main";
         } catch (UnknownAccountException e) {

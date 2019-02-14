@@ -32,4 +32,14 @@ public class UserServiceImpl implements UserService {
     public List<Users> select() {
         return userMapper.select();
     }
+
+    @Override
+    public int updateByPrimaryKeySelective(Users record) {
+        return userMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public Users selectByPrimaryKey(Integer userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
 }

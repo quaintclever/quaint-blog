@@ -3,8 +3,13 @@ package com.quaint.blog.controller.admin;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.quaint.blog.pojo.Mood;
+import com.quaint.blog.pojo.Users;
 import com.quaint.blog.service.MoodService;
+import com.quaint.blog.service.UserService;
+import com.quaint.blog.utils.IPKit;
 import com.quaint.blog.utils.LayJson;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +26,8 @@ public class MoodController {
 
     @Autowired
     private MoodService moodService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 后台分页查询 心情
@@ -68,7 +75,14 @@ public class MoodController {
      */
     @PostMapping("data")
     public String insertSelective(@RequestBody Mood mood){
-        mood.setMoodIp("127.0.0.1");
+        //获取subject
+        Subject subject = SecurityUtils.getSubject();
+        //从subject中获取登录的用户信息
+        Users tokenUser = (Users) subject.getPrincipal();
+        Users newIpUser = userService.selectByPrimaryKey(tokenUser.getUserId());
+        mood.setUserId(newIpUser.getUserId());
+        mood.setUserName(newIpUser.getUserName());
+        mood.setMoodIp(newIpUser.getUserLastLoginIp());
         mood.setMoodTime(new Date());
         return moodService.insertSelective(mood)>0?"ok":"error";
     }
@@ -76,10 +90,9 @@ public class MoodController {
      * 测试put请求  修改
      * @return
      */
-    @PutMapping("dataById/{moodId}")
-    public void updateMood(@PathVariable("moodId") Integer moodId){
-        //修改心情(未完成)
-        System.out.println(moodId);
+    @PutMapping("dataById")
+    public String updateMood(@RequestBody Mood mood){
+        return moodService.updateByPrimaryKeySelective(mood)>0?"ok":"error";
     }
 
     /**

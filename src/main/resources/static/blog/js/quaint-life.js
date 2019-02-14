@@ -26,7 +26,7 @@ function pageClick(index){
 
 function moodPage(index){
 	//设置每页显示7个数据
-	var size = 2;
+	var size = 7;
 	$.get("mood/selectMoodList",{pageNo:index,pageSize:size},function(data){
 		console.log(data);
 		showMood(data);
@@ -37,13 +37,7 @@ function moodPage(index){
 function showMood(data){
 	var moods = data.list;
 	let memoryStr = "";
-	let pageStr = `<li onclick="pageClick(1)">首页</li>
-				<li>上一页</li>
-				<li class="on" onclick="pageClick(1)">1</li>
-				<li onclick="pageClick(2)">2</li>
-				<li onclick="pageClick(3)">3</li>
-				<li>下一页</li>
-				<li>尾页</li>`; //TODO  page数字 还有点击效果 生成的地方
+	//--------------每页的心情说说的显示开始---------------
 	for(let i = 0; i<moods.length; i++){
 		if(i==0){
 			memoryStr+=`<div class="quaint-middle-bgII" id="quaint-live-new">
@@ -72,7 +66,47 @@ function showMood(data){
 	}
 	//在quaint-live-mood后面添加生成的记忆
 	$("#mood-div").html(memoryStr);
+	//--------------每页的心情说说的显示结束---------------
+	//----------分页数字拼接处理开始--------------
+	let pageStr = `<li onclick="pageClick(${data.fastPage})">&lt;&lt;</li><li onclick="pageClick(${data.prePage})">&lt;</li>`;
+	//循环生成分页的数字
+	if(data.pages<=5){
+		for(let i = 1;i<=data.pages;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	} else if(data.pageNum<3){
+		for(let i = 1;i<=5;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	}else if(data.pages-data.pageNum<3){
+		for(let i = data.pages-4;i<=data.pages;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	}else{
+		for(let i = data.pageNum-2;i<=data.pageNum+2;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	}
+	pageStr+=`<li onclick="pageClick(${data.nextPage==0?data.lastPage:data.nextPage})">&gt;</li><li onclick="pageClick(${data.lastPage})">&gt;&gt;</li>`;
+	//-----------分页数字拼接处理开始--------------
 	$("#page-div").html(pageStr);
+
 	// ajax请求后需要 刷新一下ifream的高度  否则可能出现问题
 	iframeHeight();
 }

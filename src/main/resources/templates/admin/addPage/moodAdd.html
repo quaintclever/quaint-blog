@@ -6,17 +6,11 @@
     <link rel="stylesheet" href="../../../static/admin/layui/css/layui.css">
 </head>
 <body>
-<form class="layui-form" method="post">
-    <div class="layui-form-item">
-        <label class="layui-form-label">用户id</label>
-        <div class="layui-input-block">
-            <input type="text" name="userId" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
+<form class="layui-form" method="post" style="padding: 30px 0 0 0">
+    <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">说说内容</label>
-        <div class="layui-input-block">
-            <input type="text" name="moodContent" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+        <div class="layui-input-block" style="width: 220px">
+            <textarea name="moodContent" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item">

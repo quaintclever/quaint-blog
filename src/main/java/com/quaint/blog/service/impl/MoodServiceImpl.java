@@ -43,6 +43,11 @@ public class MoodServiceImpl implements MoodService {
     }
 
     @Override
+    public int updateByPrimaryKeySelective(Mood record) {
+        return moodMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
     public Mood selectNewMood() {
         return moodMapper.selectNewMood();
     }

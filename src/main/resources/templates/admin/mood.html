@@ -44,7 +44,8 @@
                 {type: 'checkbox', fixed: 'left'}
                 ,{type:'numbers',title:'编号'}
                 // ,{field:'moodId', width:80, title: 'id', sort: true,hidden:true}
-                ,{field:'userId', width:100, title: '用户',sort: true}
+                // ,{field:'userId', width:100, title: '用户id',hidden:true}
+                ,{field:'userName', width:100, title: '用户',sort: true}
                 ,{field:'moodTime', width:200, title: '发布时间', sort: true,templet: "<div>{{layui.util.toDateString(d.moodTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
                 ,{field:'moodContent', title: '说说内容'}
                 ,{field:'moodIp', width:120,title: '发布ip'}
@@ -63,7 +64,7 @@
                         title: '添加说说',
                         shadeClose: true,
                         shade: 0.2,
-                        area: ['380px', '50%'],
+                        area: ['400px', '50%'],
                         //iframe的url
                         content: '/quaint/admin/addPage/moodAdd'
                     });
@@ -85,7 +86,7 @@
         //监听行工具事件
         table.on('tool(mood)', function(obj){
             var data = obj.data;
-            //console.log(obj.data.moodId);
+            // console.log(obj.data);
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     //调用删除方法
@@ -109,6 +110,21 @@
                     formType: 2
                     ,value: data.moodContent
                 }, function(value, index){
+                    //调用修改方法
+                    $.ajax({
+                        url: "/mood/dataById",
+                        type: "PUT",
+                        contentType: 'application/json; charset=UTF-8',
+                        dataType:'text',
+                        data: "{\"moodId\":\""+data.moodId+"\",\"moodContent\":\""+value+"\"}",
+                        success: function(msg) {
+                            if(msg=="ok"){
+                                layer.msg("修改成功!");
+                            }else{
+                                layer.msg(msg);
+                            }
+                        }
+                    });
                     obj.update({
                         moodContent: value
                     });

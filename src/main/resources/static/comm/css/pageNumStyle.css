@@ -14,21 +14,30 @@ ul.page-wrap{
     line-height:88px;
     text-align:center
 }
-ul.page-wrap li{
-    margin:0 3px;
+ul.page-wrap > li{
+    margin:0px;
     display:inline-block;
     height:34px;
     *float:left;
     line-height:34px;
-    padding:0 13px;
+    padding:0 12px;
     cursor: pointer;
+}
+ul.page-wrap > li:first-child{
+    padding:0 7px;
+}
+ul.page-wrap > li:last-child{
+    padding:0 7px;
 }
 ul.page-wrap li.on:hover {
     background-color:#3690cf
 }
-/*ul.page-wrap li:hover{*/
-    /*background-color:#d0e5f9*/
-/*}*/
+ul.page-wrap li:hover{
+    background-color:#578cb4;
+    border-radius: 12px;
+}
 ul.page-wrap .on{
-    color:#fff;background-color:#3690cf
+    color:#fff;
+    background-color:#3690cf;
+    border-radius: 12px;
 }

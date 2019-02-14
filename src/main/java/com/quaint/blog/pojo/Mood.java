@@ -15,6 +15,8 @@ public class Mood {
 
     private Integer userId;     //发布的用户
 
+    private String userName;    //发布的用户名称
+
     private Date moodTime;      //发布说说的时间
 
     private String moodIp;      //发布说说的ip

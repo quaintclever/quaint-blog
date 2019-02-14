@@ -28,4 +28,17 @@ public interface UserService {
      */
     List<Users> select();
 
+    /**
+     * 通过主键修改属性不为空的user 信息
+     * @param record
+     * @return
+     */
+    int updateByPrimaryKeySelective(Users record);
+
+    /**
+     * 通过主键查询用户
+     * @param userId
+     * @return
+     */
+    Users selectByPrimaryKey(Integer userId);
 }
