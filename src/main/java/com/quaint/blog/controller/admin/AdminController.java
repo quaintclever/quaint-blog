@@ -29,7 +29,7 @@ public class AdminController {
 
     //测试登陆  登陆跳转界面
     @PostMapping("login")
-    public String login(@RequestParam String userName, @RequestParam String userPwd, HttpServletRequest request){
+    public String login(@RequestParam String userName, @RequestParam String userPwd,@RequestParam (value="type",defaultValue="user")String type, HttpServletRequest request){
 
         //获取登录名称
         System.out.println(userName);
@@ -49,8 +49,14 @@ public class AdminController {
             Users loginUser = (Users) subject.getPrincipal();
             loginUser.setUserLastLoginIp(IPKit.getIpAddressByRequest1(request));
             userService.updateByPrimaryKeySelective(loginUser);
-            //没有异常则登陆成功
-            return "redirect:admin/main";
+            //没有异常则登陆成功  根据类型判断在哪个系统登陆的，返回指定页面。
+            if("admin".equals(type)){
+                return "redirect:admin/main";
+            }else if("userOld".equals(type)){
+                return "redirect:blog/quaint-sayingYK";
+            }else{
+                return "redirect:blogtemp/saying";
+            }
         } catch (UnknownAccountException e) {
             System.out.println("用户名不存在！");
             return "admin/login";

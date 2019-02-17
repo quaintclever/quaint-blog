@@ -23,6 +23,7 @@
 			}
 		</style>-->
 		<script type="text/javascript">
+			/*
 			$(function(){
 				// ajax 请求登录验证   返回用户信息
 				$.post("UserAjax?type=logins",{},function(data){
@@ -52,6 +53,7 @@
 					$("#quaintUser").html(str);
 				}
 			}
+
 			function login(){
 				var uname = $("#unameInput").val();
 				var pwd = $("#pwdInput").val();
@@ -59,7 +61,8 @@
 					loginStatus(data);
 				},"json")
 			}
-			
+			*/
+			//TODO 拦截form 提交 用 ajax 提交 根据返回内容提示用户
 		</script>
 	</head>
 	<body>
@@ -75,22 +78,25 @@
 					</div>
 					<div id="hidebg"></div>
 					<div id="login_view">
-						<span class="black hidden_view glyphicon glyphicon-remove"></span>
-						<div class="quaint-login-title">
-							<span class="black">QuaintSaying<br>登陆界面</span>
-						</div>
-						<div class="form-group">
-						    <label for="unameInput"><span class="black glyphicon glyphicon-user"> QuaintSaying号：</span></label>
-						    <input class="form-control" type="text" id="unameInput" name="uname" placeholder="用户名"/>
-						</div>
-						<div class="form-group">
-						    <label for="pwdInput"><span class="black glyphicon glyphicon-star"> QuaintSaying密码：</span></label>
-						    <input class="form-control" type="password" id="pwdInput" name="pwd" placeholder="密码"/>
-						</div>
-						<div class="quaint-text-center">
-							<input id="login" class="btn btn-sm btn-info" type="button" value="登录" />
-							<button id="register" type="button" class="btn btn-sm btn-success">注册</button>
-						</div>
+						<form action="login" method="post">
+							<span class="black hidden_view glyphicon glyphicon-remove"></span>
+							<div class="quaint-login-title">
+								<span class="black">QuaintSaying<br>登陆界面</span>
+							</div>
+							<div class="form-group">
+								<label for="unameInput"><span class="black glyphicon glyphicon-user"> QuaintSaying号：</span></label>
+								<input class="form-control" type="text" id="unameInput" name="userName" placeholder="用户名"/>
+							</div>
+							<div class="form-group">
+								<label for="pwdInput"><span class="black glyphicon glyphicon-star"> QuaintSaying密码：</span></label>
+								<input class="form-control" type="password" id="pwdInput" name="userPwd" placeholder="密码"/>
+							</div>
+							<input type="text" hidden="true" value="old" name="type">
+							<div class="quaint-text-center">
+								<input id="login" class="btn btn-sm btn-info" type="submit" value="登录" />
+								<button id="register" type="button" class="btn btn-sm btn-success">注册</button>
+							</div>
+						</form>
 					</div>
 					<div id="register_view">
 						<span class="black hidden_view glyphicon glyphicon-remove"></span>

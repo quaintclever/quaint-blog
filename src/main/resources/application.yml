@@ -41,7 +41,7 @@ mybatis:
 #配置分页插件pagehelper
 pagehelper:
     helperDialect: mysql
-    reasonable: true
+    reasonable: false
     supportMethodsArguments: true
     params: count=countSql
     page-size-zero: true

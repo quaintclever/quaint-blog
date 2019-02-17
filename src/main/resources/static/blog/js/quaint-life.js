@@ -26,7 +26,7 @@ function pageClick(index){
 
 function moodPage(index){
 	//设置每页显示7个数据
-	var size = 7;
+	var size = 1;
 	$.get("mood/selectMoodList",{pageNo:index,pageSize:size},function(data){
 		console.log(data);
 		showMood(data);
@@ -68,7 +68,7 @@ function showMood(data){
 	$("#mood-div").html(memoryStr);
 	//--------------每页的心情说说的显示结束---------------
 	//----------分页数字拼接处理开始--------------
-	let pageStr = `<li onclick="pageClick(${data.fastPage})">&lt;&lt;</li><li onclick="pageClick(${data.prePage})">&lt;</li>`;
+	let pageStr = `<li onclick="pageClick(1)">&lt;&lt;</li><li onclick="pageClick(${data.prePage})">&lt;</li>`;
 	//循环生成分页的数字
 	if(data.pages<=5){
 		for(let i = 1;i<=data.pages;i++){
@@ -103,7 +103,7 @@ function showMood(data){
 			}
 		}
 	}
-	pageStr+=`<li onclick="pageClick(${data.nextPage==0?data.lastPage:data.nextPage})">&gt;</li><li onclick="pageClick(${data.lastPage})">&gt;&gt;</li>`;
+	pageStr+=`<li onclick="pageClick(${data.nextPage==0?data.lastPage:data.nextPage})">&gt;</li><li onclick="pageClick(${data.pages})">&gt;&gt;</li>`;
 	//-----------分页数字拼接处理开始--------------
 	$("#page-div").html(pageStr);
 
