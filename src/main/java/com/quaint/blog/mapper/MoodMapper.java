@@ -27,8 +27,6 @@ public interface MoodMapper {
      * 查询最新的mood
      * @return
      */
-
-
     @Results({
             @Result( property="moodTime",column="mood_time"),
             @Result( property="moodContent",column="mood_content")

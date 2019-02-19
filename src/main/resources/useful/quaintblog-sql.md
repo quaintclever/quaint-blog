@@ -82,6 +82,16 @@ CREATE TABLE quaint_mood (
  PRIMARY KEY (mood_id)
 )
 
+------------------
+-- **quaint_mail_code 邮件验证码对应关系表**
+------------------
+CREATE TABLE quaint_mail_code (
+ mc_id int NOT NULL AUTO_INCREMENT COMMENT '自增ID,邮件验证码ID',
+ email_url varchar(27) NOT NULL COMMENT '邮箱地址',
+ email_code varchar(10) NOT NULL COMMENT '邮箱验证码',
+ create_time datetime NOT NULL COMMENT '生成时间',
+ PRIMARY KEY (mc_id)
+)
 
 ## ----------------下面是暂时没有用到的  参考使用----------------------
 ## ----------------下面是暂时没有用到的  参考使用----------------------

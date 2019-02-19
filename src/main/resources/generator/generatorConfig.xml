@@ -18,21 +18,22 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成(实体)模型的包名和位置(临时位置后期修改表结构防止覆盖之前的代码)-->
-        <javaModelGenerator targetPackage="resources.generator.temp.pojo" targetProject=".\src\main">
+        <javaModelGenerator targetPackage="com.quaint.blog.pojo" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成XML映射文件的包名和位置(临时位置后期修改表结构防止覆盖之前的代码)-->
-        <sqlMapGenerator targetPackage="resources.generator.temp.mapper" targetProject=".\src\main">
+        <sqlMapGenerator targetPackage="resources.mapper" targetProject=".\src\main">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO接口的包名和位置(临时位置后期修改表结构防止覆盖之前的代码)-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="resources.generator.temp.dao" targetProject=".\src\main">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.quaint.blog.mapper" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="quaint_user" domainObjectName="Users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="quaint_mail_code" domainObjectName="MailCode" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <!--
+        <table tableName="quaint_user" domainObjectName="Users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="quaint_user_role" domainObjectName="UsersLinkRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="quaint_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="quaint_role_power" domainObjectName="RoleLinkPower" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>

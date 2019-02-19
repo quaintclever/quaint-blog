@@ -11,17 +11,21 @@ $(function(){
 })
 $(function(){
 //	实现登录弹出窗口
+	var login_view = document.getElementById("login_view");
+	var register_view = document.getElementById("register_view");
 	$("#quaintUser").on("click",".login",function(){
-		var login_view = document.getElementById("login_view");
 		hidebg.style.display = "block"; //显示隐藏层
 		hidebg.style.height = document.body.clientHeight + "px"; //设置隐藏层的高度为当前页面高度
 		login_view.style.display = "block"; //显示弹出层
-		document.getElementById("register_view").style.display = "none";
+		register_view.style.display = "none";
+	})
+	$("#quaintBack").click(function(){
+		login_view.style.display = "block"; //显示弹出层
+		register_view.style.display = "none";
 	})
 	$("#register").click(function(){
-		var register_view = document.getElementById("register_view");
 		register_view.style.display = "block"; //显示弹出层
-		document.getElementById("login_view").style.display = "none";
+		login_view.style.display = "none";
 	})
 	$(".hidden_view").click(function(){
 		closeWindow();
@@ -55,34 +59,36 @@ function setTime(obj) {
 //往邮箱发送验证码
 function sendCode(){
 	var uemail = $("#emailInput").val();
-	if(uemail==""){
-		alert("邮箱不能为空!");
-		return false;
-	}
 	//邮箱格式验证
 	var emailReg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-	if(!emailReg.test(uemail)){
+	if(uemail==""){
+		alert("邮箱不能为空!");
+		return;
+	}else if(!emailReg.test(uemail)){
 		alert("邮箱格式错误!");
-		return false;
-	}
-	//TODO 通过ajax发送验证码到邮箱
-	$.ajax({
-		url:"/sendCode/"+uemail,
-		type: "POST",
-		contentType: 'application/json; charset=UTF-8',
-		dataType:"json",
-		success:function(data){
-			console.log(data);
-			if(data.userId=="-200"){
-				alert("验证码已发送!");
-			}else{
-				alert("发送失败!");
-			}
+		return;
+	}else{
+		//通过ajax发送验证码到邮箱
+		$.ajax({
+			url:"/sendCode/"+uemail,
+			type: "POST",
+			contentType: 'application/json; charset=UTF-8',
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+				if(data.userId=="-200"){
+					alert("验证码已发送!");
+				}else if(data.userId=="-701"){
+					alert("请检查邮箱是否为可用QQ邮箱！")
+				}else{
+					alert("发送失败!");
+				}
 
-		}
-	});
-	//60s倒计时开始
-	setTime($("#getCodeBtn"));
+			}
+		});
+		//60s倒计时开始
+		setTime($("#getCodeBtn"));
+	}
 }
 //拦截form 注册提交 用 ajax 提交 根据返回内容提示用户
 function register_form_submit() {

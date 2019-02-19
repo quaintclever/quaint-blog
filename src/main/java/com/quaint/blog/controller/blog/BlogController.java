@@ -1,6 +1,8 @@
 package com.quaint.blog.controller.blog;
 
+import com.quaint.blog.pojo.MailCode;
 import com.quaint.blog.pojo.Users;
+import com.quaint.blog.service.MailCodeService;
 import com.quaint.blog.service.UserService;
 import com.quaint.blog.utils.IPKit;
 import com.quaint.blog.utils.JavaMailUtil;
@@ -27,6 +29,8 @@ public class BlogController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private MailCodeService mailCodeService;
     /**
      * 初始化新博客界面
      * @return
@@ -84,14 +88,17 @@ public class BlogController {
         //默认签名
         user.setUserSays("这家伙很懒,什么都没留下.");
         user.setUserLastLoginIp(registerIP);
-        //TODO 这里 需要与邮件的验证码验证
-        if(!"1234".equals(user.getCode()+"")){
+        //邮件的验证码验证
+        MailCode mc = mailCodeService.selectByMail(user.getUserEmail());
+        if(mc!=null && !mc.getEmailCode().equalsIgnoreCase(user.getCode()+"")){
+            //TODO 验证码不存在或者错误，可以再添加一个时间判断
             return new Users(-501);
         }else{
             userService.insertSelective(user);
             //注册完成自动登录
             return login(user.getUserName(),user.getUserPwd(),"old",request);
         }
+
 
     }
     /**
@@ -107,11 +114,22 @@ public class BlogController {
         try {
             JavaMailUtil.sendCode(email,code);
         } catch (Exception e) {
+            //TODO 需要处理一下邮件不可达的问题
             e.printStackTrace();
             return new Users(-701);
         }
-        //TODO  考虑 存储验证码 用来做判断 例如redis 或者 数据库
-        return new Users(-200,code);
+        //发送成功则将该验证码添加到数据库
+        //判断数据库是否有数据，有的话修改验证码为最新验证码。
+        MailCode mc = mailCodeService.selectByMail(email);
+        if(mc!=null){
+            mc.setEmailCode(code);
+            mc.setCreateTime(new Date());
+            mailCodeService.update(mc);
+        }else{
+            mailCodeService.insert(new MailCode(email,code,new Date()));
+        }
+        //返回发送成功
+        return new Users(-200);
     }
     //测试登陆  登陆跳转界面
     @PostMapping("login")
