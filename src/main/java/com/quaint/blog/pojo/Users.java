@@ -53,4 +53,20 @@ public class Users {
 
     private Byte userFreeze;
 
+    //--------------扩展使用,临时存放数据----------------
+
+    private String code;    //验证码
+    private String type;    //判断登录的是新博客还是旧博客
+
+    //带参构造
+    public Users(Integer userId) {
+        this.userId = userId;
+    }
+    public Users(Integer userId,String code) {
+        this.userId = userId;
+        this.code = code;
+    }
+    //无参构造
+    public Users() {
+    }
 }

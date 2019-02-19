@@ -30,8 +30,10 @@ spring:
     host: smtp.qq.com
     #端口号465或587
     port: 587
-    username: your_qq_num@qq.com
-    password: your_licenseKey_or_password
+    #username: your_qq_num@qq.com
+    #password: your_licenseKey_or_password
+    username: 857776215@qq.com
+    password: arttnyqgipcmbcjg
     protocol: smtp
     default-encoding: UTF-8
 #配置mybatis

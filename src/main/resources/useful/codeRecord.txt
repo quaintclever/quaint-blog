@@ -1,0 +1,24 @@
+代码操作记录
+
+--2019年2月18日14:06:27
+
+  注册功能  form 表单 名字 与 实体类对应   ajax请求
+
+  注册部分的 ajax
+  $.ajax({
+  		url:"/register",
+  		type: "POST",
+  		contentType: 'application/json; charset=UTF-8',
+  		data:JSON.stringify($('#register_form').serializeJSON()),
+  		dataType:"json",
+  		success:function(data){
+
+  			console.log(data);
+
+  			alert("注册成功!");
+  			closeWindow();
+  			var str = `欢迎用户：${data.userName}！
+  					<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
+  			$("#quaintUser").html(str);
+  		}
+  	});
