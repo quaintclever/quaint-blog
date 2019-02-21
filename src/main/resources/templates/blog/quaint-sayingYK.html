@@ -10,10 +10,12 @@
 		<link rel="shortcut icon" href="image/index/quaint-logo.ico">
 		<!-- css -->
 		<link rel="stylesheet" type="text/css" href="../../static/comm/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="../../static/comm/css/pageNumStyle.css"/>
 		<link rel="stylesheet" type="text/css" href="../../static/blog/css/quaint-saying.css"/>
 		<link rel="stylesheet" type="text/css" href="../../static/blog/css/quaint-index.css"/>
 	</head>
 	<body>
+		<div id="msgDiv"></div>
 		<!-- quaint 中间开始 -->
 		<div id="iframeH" class="container-fluid quaint-content">
 			<div class="quaint-middle-bgI">
@@ -77,53 +79,43 @@
 							</div>
 						</form>
 					</div>
-					<textarea class="quaint-saying-text" name="saying" rows="3" cols="5"></textarea>
+					<textarea id="quaintsUserSay" class="quaint-saying-text" name="saying" rows="3" cols="5"></textarea>
 					<div align="right">
-						<button class="quaint-btn-rediusA30 btn btn-sm btn-warning" >留言</button>
+						<button onclick="userSay()" class="quaint-btn-rediusA30 btn btn-sm btn-warning" >留言</button>
 					</div>
-					<div class="quaint-saying-box">
-						<div class="quaint-f-right quaint-lineh40">
-							共XX条留言
+					<!-- 留言部分 -->
+					<div id="sayingDiv">
+						<div class="quaint-saying-box">
+							<div class="quaint-f-right quaint-lineh40">
+								共&nbsp;&nbsp;&nbsp;&nbsp;条留言
+							</div>
+							<div class="quaint-saying-logo">留言展示</div>
 						</div>
-						<div class="quaint-saying-logo">留言展示</div>
-					</div>
-					<div class="new-saying">
-						<span class=" glyphicon glyphicon-send"> 最新留言</span>
-					</div>
-					
-					<div class="quaint-user-saying">
-						<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
-						<div class="row quaint-saying-margin">
-							<div class="col-sm-12">
-								<div class="row">
-									<p>2018-09-02 00:07:56</p>
-									Quaint:
-								</div>
-								<div class="row">
-									<p class="quaint-indent">这是一个测试留言!---------->><br />测试换行!<br />测试换行!<br />测试换行!</p>
+						<div class="new-saying">
+							<span class=" glyphicon glyphicon-send"> 最新留言</span>
+						</div>
+						<div class="quaint-user-saying">
+							<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
+							<div class="row quaint-saying-margin">
+								<div class="col-sm-12">
+									<div class="row">
+										<p>2018-09-02 00:07:56</p>
+										Quaint:
+									</div>
+									<div class="row">
+										<p class="quaint-indent">这是一个测试留言!---------->><br />测试换行!<br />测试换行!<br />测试换行!</p>
+									</div>
 								</div>
 							</div>
+							<div class="quaint-saying-hr"></div>
 						</div>
-						<div class="quaint-saying-hr"></div>
 					</div>
-					
-					<div class="quaint-user-saying">
-						<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
-						<div class="row quaint-saying-margin">
-							<div class="col-sm-12">
-								<div class="row">
-									<p>2018-09-02 00:07:56</p>
-									Quaint:
-								</div>
-								<div class="row">
-									<p class="quaint-indent">这是一个测试留言!---------->><br />测试换行!<br />测试换行!<br />测试换行!</p>
-								</div>
-							</div>
-						</div>
-						<div class="quaint-saying-hr"></div>
-					</div>
-					
-					
+					<!-- 页码部分 -->
+                    <div class="quaint-text-center">
+                        <ul class="page-wrap" id="page-div">
+                        </ul>
+                    </div>
+
 				</div>
 			</div>
 		</div>
@@ -135,5 +127,6 @@
 	<script src="../../static/blog/js/quaint-saying.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../static/comm/js/quaint-effect.js" type="text/javascript"></script>
 	<script src="../../static/blog/js/quaint-jframe.js" type="text/javascript" charset="utf-8"></script>
+
 </html>
     

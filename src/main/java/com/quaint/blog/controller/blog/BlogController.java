@@ -35,7 +35,7 @@ public class BlogController {
      * 初始化新博客界面
      * @return
      */
-    @GetMapping(value = "/")
+    @GetMapping(value = "/new.html")
     public String index() {
         return "blogtemp/index";
     }
@@ -54,7 +54,7 @@ public class BlogController {
      * 进入旧版本的控制器
      * @return
      */
-    @GetMapping(value = "/old")
+    @GetMapping(value = "/")
     public String oldIndex() {
         return "blog/index";
     }
@@ -72,34 +72,36 @@ public class BlogController {
 
 
     /**
-     * 添加
+     * 用户注册
      * @return
      */
     @PostMapping("register")
     @ResponseBody
     public Users insertSelective(@RequestBody Users user, HttpServletRequest request){
-        //获取用户ip地址,并设置给user
-        String registerIP = IPKit.getIpAddressByRequest1(request);
-        user.setUserRegisterIp(registerIP);
-        //设置注册时间
-        user.setUserRegisterTime(new Date());
-        //默认昵称为账号
-        user.setUserNickName(user.getUserName());
-        //默认签名
-        user.setUserSays("这家伙很懒,什么都没留下.");
-        user.setUserLastLoginIp(registerIP);
-        //邮件的验证码验证
-        MailCode mc = mailCodeService.selectByMail(user.getUserEmail());
-        if(mc!=null && !mc.getEmailCode().equalsIgnoreCase(user.getCode()+"")){
-            //TODO 验证码不存在或者错误，可以再添加一个时间判断
-            return new Users(-501);
+        if(null!=userService.selectByName(user.getUserName())){
+            return new Users(-500,"用户名已存在!");
         }else{
-            userService.insertSelective(user);
-            //注册完成自动登录
-            return login(user.getUserName(),user.getUserPwd(),"old",request);
+            //获取用户ip地址,并设置给user
+            String registerIP = IPKit.getIpAddressByRequest1(request);
+            user.setUserRegisterIp(registerIP);
+            //设置注册时间
+            user.setUserRegisterTime(new Date());
+            //默认昵称为账号
+            user.setUserNickName(user.getUserName());
+            //默认签名
+            user.setUserSays("这家伙很懒,什么都没留下.");
+            user.setUserLastLoginIp(registerIP);
+            //邮件的验证码验证
+            MailCode mc = mailCodeService.selectByMail(user.getUserEmail());
+            if(mc!=null && !mc.getEmailCode().equalsIgnoreCase(user.getCode()+"")){
+                //TODO 验证码不存在或者错误，可以再添加一个时间判断
+                return new Users(-501,"验证码错误!");
+            }else{
+                userService.insertSelective(user);
+                //注册完成自动登录
+                return login(user.getUserName(),user.getUserPwd(),"old",request);
+            }
         }
-
-
     }
     /**
      * 发送验证码到邮箱
@@ -178,6 +180,20 @@ public class BlogController {
         //退出登录,清除用户信息.
         subject.logout();
         return new Users(-200);
+    }
+
+    /**
+     * 判断用户是否登陆
+     * @return
+     */
+    @GetMapping(value = "isLogin")
+    @ResponseBody
+    public Users isLogin(){
+        Subject subject = SecurityUtils.getSubject();
+        //从subject中获取登录的用户信息.
+        Users user = (Users) subject.getPrincipal();
+        //如果用户为null  返回 -404状态码
+        return user!=null?user:new Users(-404);
     }
 
 }

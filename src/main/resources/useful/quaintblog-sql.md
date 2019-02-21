@@ -93,6 +93,20 @@ CREATE TABLE quaint_mail_code (
  PRIMARY KEY (mc_id)
 )
 
+--------------------
+--**quaint_stay_message 用户留言表**
+--------------------
+CREATE TABLE quaint_stay_message (
+ s_id int NOT NULL AUTO_INCREMENT COMMENT '留言表自增ID',
+ stay_id int NOT NULL COMMENT '用户ID 0为留言,其他id为回复留言id',
+ stay_user_id int NOT NULL COMMENT '留言者ID',
+ message_content varchar(255) NOT NULL COMMENT '留言内容',
+ stay_user_ip varchar(15) NOT NULL COMMENT '留言用户的IP地址',
+ message_stay_time datetime NOT NULL COMMENT '留言时间',
+ place varchar(64) COMMENT '地区',
+ PRIMARY KEY (s_id)
+)
+
 ## ----------------下面是暂时没有用到的  参考使用----------------------
 ## ----------------下面是暂时没有用到的  参考使用----------------------
 ## ----------------下面是暂时没有用到的  参考使用----------------------
@@ -165,23 +179,6 @@ CREATE TABLE quaint_secret_message (
  message_topic varchar(32) NOT NULL COMMENT '私信标题',
  message_content varchar(255) NOT NULL COMMENT '私信内容',
  PRIMARY KEY (secret_id)
-)
-
-
-
-
---------------------
---**quaint_stay_message 用户留言表**
---------------------
-CREATE TABLE quaint_stay_message (
- stay_id int NOT NULL AUTO_INCREMENT COMMENT '留言表自增ID',
- user_id int NOT NULL COMMENT '用户ID',
- stay_user_id int NOT NULL COMMENT '留言者ID',
- message_content varchar(255) NOT NULL COMMENT '留言内容',
- stay_user_ip varchar(15) NOT NULL COMMENT '留言用户的IP地址',
- message_stay_time datetime NOT NULL COMMENT '留言时间',
- place varchar(64) NOT NULL COMMENT '地区',
- PRIMARY KEY (stay_id)
 )
 
 

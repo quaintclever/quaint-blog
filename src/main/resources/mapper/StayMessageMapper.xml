@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.quaint.blog.mapper.StayMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.quaint.blog.pojo.StayMessage" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="stay_id" property="stayId" jdbcType="INTEGER" />
+    <result column="stay_user_id" property="stayUserId" jdbcType="INTEGER" />
+    <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="stay_user_ip" property="stayUserIp" jdbcType="VARCHAR" />
+    <result column="message_stay_time" property="messageStayTime" jdbcType="TIMESTAMP" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BaseResultMapDto" type="com.quaint.blog.pojo.StayMessage" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="stay_id" property="stayId" jdbcType="INTEGER" />
+    <result column="stay_user_id" property="stayUserId" jdbcType="INTEGER" />
+    <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="stay_user_ip" property="stayUserIp" jdbcType="VARCHAR" />
+    <result column="message_stay_time" property="messageStayTime" jdbcType="TIMESTAMP" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s_id, stay_id, stay_user_id, message_content, stay_user_ip, message_stay_time, place
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quaint_stay_message
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <!-- 查询留言 返回dto 对象 -->
+  <select id="select" resultMap="BaseResultMapDto">
+    select
+      qsm.s_id, qsm.stay_id, qsm.stay_user_id, qsm.message_content,
+      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name
+    from quaint_stay_message qsm
+    left join quaint_user qu
+    on qsm.stay_user_id=qu.user_id
+    order by qsm.message_stay_time desc
+  </select>
+  <!-- 查询留言结束 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quaint_stay_message
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.quaint.blog.pojo.StayMessage" >
+    insert into quaint_stay_message (s_id, stay_id, stay_user_id, 
+      message_content, stay_user_ip, message_stay_time, 
+      place)
+    values (#{sId,jdbcType=INTEGER}, #{stayId,jdbcType=INTEGER}, #{stayUserId,jdbcType=INTEGER}, 
+      #{messageContent,jdbcType=VARCHAR}, #{stayUserIp,jdbcType=VARCHAR}, #{messageStayTime,jdbcType=TIMESTAMP}, 
+      #{place,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.quaint.blog.pojo.StayMessage" >
+    insert into quaint_stay_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="stayId != null" >
+        stay_id,
+      </if>
+      <if test="stayUserId != null" >
+        stay_user_id,
+      </if>
+      <if test="messageContent != null" >
+        message_content,
+      </if>
+      <if test="stayUserIp != null" >
+        stay_user_ip,
+      </if>
+      <if test="messageStayTime != null" >
+        message_stay_time,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="stayId != null" >
+        #{stayId,jdbcType=INTEGER},
+      </if>
+      <if test="stayUserId != null" >
+        #{stayUserId,jdbcType=INTEGER},
+      </if>
+      <if test="messageContent != null" >
+        #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="stayUserIp != null" >
+        #{stayUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="messageStayTime != null" >
+        #{messageStayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.StayMessage" >
+    update quaint_stay_message
+    <set >
+      <if test="stayId != null" >
+        stay_id = #{stayId,jdbcType=INTEGER},
+      </if>
+      <if test="stayUserId != null" >
+        stay_user_id = #{stayUserId,jdbcType=INTEGER},
+      </if>
+      <if test="messageContent != null" >
+        message_content = #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="stayUserIp != null" >
+        stay_user_ip = #{stayUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="messageStayTime != null" >
+        message_stay_time = #{messageStayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.quaint.blog.pojo.StayMessage" >
+    update quaint_stay_message
+    set stay_id = #{stayId,jdbcType=INTEGER},
+      stay_user_id = #{stayUserId,jdbcType=INTEGER},
+      message_content = #{messageContent,jdbcType=VARCHAR},
+      stay_user_ip = #{stayUserIp,jdbcType=VARCHAR},
+      message_stay_time = #{messageStayTime,jdbcType=TIMESTAMP},
+      place = #{place,jdbcType=VARCHAR}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

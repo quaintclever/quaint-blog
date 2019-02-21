@@ -36,7 +36,7 @@ public class JavaMailUtil {
         // 设置收件人
         simpleMailMessage.setTo(new String[] {"3213452105@qq.com"});
         //寄件人
-        simpleMailMessage.setFrom("857776215@qq.com");
+        simpleMailMessage.setFrom("quaint@quaint-aini.com");
         simpleMailMessage.setSubject(title);
         simpleMailMessage.setText(text);
         // 发送邮件
@@ -54,7 +54,7 @@ public class JavaMailUtil {
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
         //发送到传进来的邮箱
         mimeMessageHelper.setTo(email);
-        mimeMessageHelper.setFrom("857776215@qq.com");
+        mimeMessageHelper.setFrom("quaint@quaint-aini.com");
         mimeMessageHelper.setSubject(title);
         StringBuilder sb = new StringBuilder();
         sb.append("<html><head></head><body>");

@@ -55,7 +55,7 @@ public class Users {
 
     //--------------扩展使用,临时存放数据----------------
 
-    private String code;    //验证码
+    private String code;    //验证码,存放的错误信息返回到界面
     private String type;    //判断登录的是新博客还是旧博客
 
     //带参构造

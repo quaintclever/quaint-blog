@@ -10,7 +10,7 @@ $(function(){
 })
 
 /*
- * 请求ajax查询最近的博客
+ * 请求ajax查询最近的心情
  *
  */
 $(function(){
@@ -26,18 +26,17 @@ function pageClick(index){
 
 function moodPage(index){
 	//设置每页显示7个数据
-	var size = 1;
+	var size = 7;
 	$.get("mood/selectMoodList",{pageNo:index,pageSize:size},function(data){
-		console.log(data);
 		showMood(data);
 	},"json")
 }
 
-//主页展示最新的一条心情记忆
+//分页展示心情
 function showMood(data){
 	var moods = data.list;
 	let memoryStr = "";
-	//--------------每页的心情说说的显示开始---------------
+	//--------------分页的心情说说的显示开始---------------
 	for(let i = 0; i<moods.length; i++){
 		if(i==0){
 			memoryStr+=`<div class="quaint-middle-bgII" id="quaint-live-new">

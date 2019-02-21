@@ -27,13 +27,14 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   #配置javaMail
   mail:
-    host: smtp.qq.com
+    #host: smtp.qq.com  个人
+    host: smtp.exmail.qq.com  #企业
     #端口号465或587
     port: 587
     #username: your_qq_num@qq.com
     #password: your_licenseKey_or_password
-    username: 857776215@qq.com
-    password: arttnyqgipcmbcjg
+    username: quaint@quaint-aini.com
+    password: mGAxt233vKD6Grkn
     protocol: smtp
     default-encoding: UTF-8
 #配置mybatis

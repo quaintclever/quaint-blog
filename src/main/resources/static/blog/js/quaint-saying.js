@@ -38,8 +38,199 @@ function closeWindow(){
 	document.getElementById("login_view").style.display = "none";
 	document.getElementById("register_view").style.display = "none";
 }
-
+//提示信息框
+function quaintAlert(msg){
+	//先停止之前动画,然后展示提示信息1s后隐藏
+	$("#msgDiv").html(msg).stop(true,true).show().delay(2121).hide(300);
+}
 //-----------------------业务逻辑开始------------------------------
+
+//分页显示留言开始
+
+/*
+ * 请求ajax查询最近的心情
+ *
+ */
+$(function(){
+	//默认查询第一页
+	stayMessagePage(1);
+	//刷新页面时 判断subject中是否有用户
+	$.get("isLogin",{},function(data){
+		if(data.userId>0){
+			var str = `欢迎用户：${data.userName}！
+						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
+			$("#quaintUser").html(str);
+		}else{
+			$("#quaintUser").html("<button class='login quaint-btn-rediusB30 btn btn-success'>登录</button>");
+		}
+
+	},"json")
+})
+//当点击留言的时候
+function userSay(){
+	$.get("isLogin",{},function(data){
+		if(data.userId>0){
+			//执行留言操作
+			var message = $("#quaintsUserSay").val();
+			if(message==""){
+				quaintAlert("亲,随便说两句再点吧!");
+				return;
+			}else{
+				$.ajax({
+					url:"/stayMessage/data",
+					type: "POST",
+					contentType: 'application/json; charset=UTF-8',
+					data:'{\"messageContent\":\"'+message+'\"}',
+					dataType:"json",
+					success:function(data){
+						if(data.userId>0){
+							quaintAlert("留言成功!");
+							setInterval(function(){
+								location.href="/quaint-sayingYK";
+							},1000);
+						}else{
+							quaintAlert("留言失败!");
+						}
+					}
+				});
+			}
+		}else{
+			hidebg.style.display = "block"; //显示隐藏层
+			hidebg.style.height = document.body.clientHeight + "px"; //设置隐藏层的高度为当前页面高度
+			document.getElementById("login_view").style.display = "block"; //显示弹出层
+			document.getElementById("register_view").style.display = "none";
+
+			quaintAlert("请先登陆在留言!");
+		}
+
+	},"json")
+}
+
+//分页点击调用函数
+function pageClick(index){
+	stayMessagePage(index);
+}
+//展示当指定页数据
+function stayMessagePage(index){
+	//设置每页显示7个数据
+	var size = 7;
+	$.get("stayMessage/selectStayMessageList",{pageNo:index,pageSize:size},function(data){
+		showStayMessage(data);
+	},"json")
+}
+//分页展示心情
+function showStayMessage(data){
+	//console.log(data);
+	var stayMessages = data.list;
+	let stayMessagesStr = `
+			<div class="quaint-saying-box">
+				<div class="quaint-f-right quaint-lineh40">
+					共&nbsp;${data.total}&nbsp;条留言
+				</div>
+				<div class="quaint-saying-logo">留言展示</div>
+			</div>
+			<div class="new-saying"><span class="glyphicon glyphicon-send">最新留言</span></div>`;
+
+	//--------------分页的心情说说的显示开始---------------
+	for(let i = 0; i<stayMessages.length; i++){
+		stayMessagesStr+=
+			`<div class="quaint-user-saying">
+				<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
+				<div class="row quaint-saying-margin">
+					<div class="col-sm-12">
+						<div class="row">
+							<p>${format(stayMessages[i].messageStayTime,'yyyy-MM-dd HH:mm:ss')}</p>
+							${stayMessages[i].userName}:
+						</div>
+						<div class="row">
+							<p class="quaint-indent">
+							   ${stayMessages[i].messageContent}
+                            </p>
+						</div>
+					</div>
+				</div>
+				<div class="quaint-saying-hr"></div>
+			</div>`;
+	}
+	//在quaint-live-mood后面添加生成的记忆
+	$("#sayingDiv").html(stayMessagesStr);
+	//--------------每页的心情说说的显示结束---------------
+	//----------分页数字拼接处理开始--------------
+	let pageStr = `<li onclick="pageClick(1)">&lt;&lt;</li><li onclick="pageClick(${data.prePage})">&lt;</li>`;
+	//循环生成分页的数字
+	if(data.pages<=5){
+		for(let i = 1;i<=data.pages;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	} else if(data.pageNum<3){
+		for(let i = 1;i<=5;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	}else if(data.pages-data.pageNum<3){
+		for(let i = data.pages-4;i<=data.pages;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	}else{
+		for(let i = data.pageNum-2;i<=data.pageNum+2;i++){
+			if(i==data.pageNum) {
+				pageStr+=`<li class="on" onclick="pageClick(${i})">${i}</li>`;
+			}else {
+				pageStr+=`<li onclick="pageClick(${i})">${i}</li>`;
+			}
+		}
+	}
+	pageStr+=`<li onclick="pageClick(${data.nextPage==0?data.lastPage:data.nextPage})">&gt;</li><li onclick="pageClick(${data.pages})">&gt;&gt;</li>`;
+	//-----------分页数字拼接处理开始--------------
+	$("#page-div").html(pageStr);
+
+	// ajax请求后需要 刷新一下ifream的高度  否则可能出现问题
+	iframeHeight();
+}
+//封装时间格式  ${format(moods[i].moodTime,'yyyy-MM-dd HH:mm:ss')}
+function format(time, format) {
+	var t = new Date(time);
+	var tf = function (i) {
+		return (i < 10 ? '0' : '') + i
+	};
+	return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
+		switch (a) {
+			case 'yyyy':
+				return tf(t.getFullYear());
+				break;
+			case 'MM':
+				return tf(t.getMonth() + 1);
+				break;
+			case 'mm':
+				return tf(t.getMinutes());
+				break;
+			case 'dd':
+				return tf(t.getDate());
+				break;
+			case 'HH':
+				return tf(t.getHours());
+				break;
+			case 'ss':
+				return tf(t.getSeconds());
+				break;
+		}
+	})
+}
+
+
+//分页显示留言结束
+
 
 //60s倒计时实现逻辑
 var countdown = 60;
@@ -62,10 +253,10 @@ function sendCode(){
 	//邮箱格式验证
 	var emailReg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 	if(uemail==""){
-		alert("邮箱不能为空!");
+		quaintAlert("邮箱不能为空!");
 		return;
 	}else if(!emailReg.test(uemail)){
-		alert("邮箱格式错误!");
+		quaintAlert("邮箱格式错误!");
 		return;
 	}else{
 		//通过ajax发送验证码到邮箱
@@ -75,13 +266,13 @@ function sendCode(){
 			contentType: 'application/json; charset=UTF-8',
 			dataType:"json",
 			success:function(data){
-				console.log(data);
+				//console.log(data);
 				if(data.userId=="-200"){
-					alert("验证码已发送!");
+					quaintAlert("验证码已发送!");
 				}else if(data.userId=="-701"){
-					alert("请检查邮箱是否为可用QQ邮箱！")
+					quaintAlert("请检查邮箱是否为可用QQ邮箱！")
 				}else{
-					alert("发送失败!");
+					quaintAlert("发送失败!");
 				}
 
 			}
@@ -99,28 +290,28 @@ function register_form_submit() {
 	var ucode = $("#codeInput").val();
 
 	if(uname==""){
-		alert("用户名不能为空!");
+		quaintAlert("用户名不能为空!");
 		return false;
 	}
 	if(upwd==""){
-		alert("密码不能为空!");
+		quaintAlert("密码不能为空!");
 		return false;
 	}else if (upwd.length<6){
-		alert("密码长度必须大于6位!");
+		quaintAlert("密码长度必须大于6位!");
 		return false;
 	}
 	if(uemail==""){
-		alert("邮箱不能为空!");
+		quaintAlert("邮箱不能为空!");
 		return false;
 	}
 	//邮箱格式验证
 	var emailReg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 	if(!emailReg.test(uemail)){
-		alert("邮箱格式错误!");
+		quaintAlert("邮箱格式错误!");
 		return false;
 	}
 	if(ucode==""){
-		alert("验证码不能为空!");
+		quaintAlert("验证码不能为空!");
 		return false;
 	}
 	$.ajax({
@@ -130,11 +321,11 @@ function register_form_submit() {
 		data:JSON.stringify($('#register_form').serializeJSON()),
 		dataType:"json",
 		success:function(data){
-			console.log(data);
-			if(data.userId=="-501"){
-				alert("验证码输入错误!");
+			//console.log(data);
+			if(data.userId<0){
+				quaintAlert(data.code);
 			}else{
-				alert("注册成功!");
+				quaintAlert("注册成功!游客更多功能正在开发中...");
 				closeWindow();
 				var str = `欢迎用户：${data.userName}！
 					<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
@@ -151,14 +342,14 @@ function login_form_submit() {
 	var uname = $("#l-unameInput").val();
 	var upwd = $("#l-pwdInput").val();
 	if(uname==""){
-		alert("用户名不可为空!");
+		quaintAlert("用户名不可为空!");
 		return false;
 	}
 	if(upwd==""){
-		alert("密码不可为空!");
+		quaintAlert("密码不可为空!");
 		return false;
 	}else if (upwd.length<6){
-		alert("密码长度必须大于6位!");
+		quaintAlert("密码长度必须大于6位!");
 		return false;
 	}
 	$.ajax({
@@ -168,19 +359,19 @@ function login_form_submit() {
 		dataType:"json",
 		success:function(data){
 			if(data.userId=="-404"){
-				alert("用户名不存在!");
+				quaintAlert("用户名不存在!");
 				return false;
 			}else if(data.userId=="-500"){
-				alert("用户密码错误!");
+				quaintAlert("用户密码错误!");
 				return false;
 			}else{
-				alert("登陆成功!");
+				quaintAlert("登陆成功!");
 				closeWindow();
 				var str = `欢迎用户：${data.userName}！
 						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
 				$("#quaintUser").html(str);
 			}
-			console.log(data);
+			//console.log(data);
 		}
 	});
 	return false;
@@ -193,7 +384,7 @@ $(function(){
 			type: "GET",
 			dataType:"json",
 			success:function(data){
-				console.log(data);
+				//console.log(data);
 				$("#quaintUser").html("<button class='login quaint-btn-rediusB30 btn btn-success'>登录</button>");
 			}
 		});
