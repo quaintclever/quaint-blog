@@ -35,7 +35,7 @@ public class BlogController {
      * 初始化新博客界面
      * @return
      */
-    @GetMapping(value = "/new.html")
+    @GetMapping(value = "new.html")
     public String index() {
         return "blogtemp/index";
     }

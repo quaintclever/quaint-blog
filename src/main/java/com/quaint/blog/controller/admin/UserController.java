@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @author quaint
  * @Date 2019/1/16
  */
-@RequestMapping("/user")
+@RequestMapping("user")
 @Controller
 public class UserController {
 

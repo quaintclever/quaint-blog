@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/jdbc">
+<head>
+    <meta charset="utf-8">
+    <title>心情说说模块列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/admin/layui/css/layui.css">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <script type="text/html" id="toolbarUserSay">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" lay-event="insert">添加留言</button>
+        </div>
+    </script>
+
+    <script type="text/html" id="barMood">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</head>
+<body>
+
+<table class="layui-hide" id="userSay" lay-filter="userSay"></table>
+
+<script src="../../static/admin/layui/layui.js" charset="utf-8"></script>
+<script src="../../static/comm/js/jquery-3.3.1.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script type="text/javascript"  th:inline="none">
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            id:'sId'
+            ,elem: '#userSay'
+            ,url:'/mood/data'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,toolbar: '#toolbarUserSay'
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{type:'numbers',title:'编号'}
+                // ,{field:'stayId', width:80, title: '留言还是回复用户', sort: true,hidden:true}
+                // ,{field:'stayUserId', width:100, title: '留言用户id',hidden:true}
+                ,{field:'userName', width:100, title: '用户',sort: true}
+                ,{field:'messageStayTime', width:200, title: '留言时间', sort: true,templet: "<div>{{layui.util.toDateString(d.moodTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field:'messageContent', title: '留言内容'}
+                ,{fixed: 'right', title:'操作', toolbar: '#barMood', width:150}
+            ]]
+            ,page: true
+        });
+        //头工具栏事件
+        table.on('toolbar(mood)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'insert':
+                    //询问框
+                    layer.open({
+                        type: 2,
+                        title: '添加说说',
+                        shadeClose: true,
+                        shade: 0.2,
+                        area: ['400px', '50%'],
+                        //iframe的url
+                        content: '/quaint/admin/addPage/moodAdd'
+                    });
+                    break;
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+            };
+        });
+
+        //监听行工具事件
+        table.on('tool(userSay)', function(obj){
+            var data = obj.data;
+            // console.log(obj.data);
+            if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    //调用删除方法
+                    $.ajax({
+                        url: "/userSay/dataById/"+data.moodId,
+                        type: "DELETE",
+                        dataType:'text',
+                        success: function(msg) {
+                            if(msg=="ok"){
+                                layer.msg("删除成功!");
+                            }else{
+                                layer.msg(msg);
+                            }
+                        }
+                    });
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.prompt({
+                    formType: 2
+                    ,value: data.moodContent
+                }, function(value, index){
+                    //调用修改方法
+                    $.ajax({
+                        url: "/mood/dataById",
+                        type: "PUT",
+                        contentType: 'application/json; charset=UTF-8',
+                        dataType:'text',
+                        data: "{\"moodId\":\""+data.moodId+"\",\"moodContent\":\""+value+"\"}",
+                        success: function(msg) {
+                            if(msg=="ok"){
+                                layer.msg("修改成功!");
+                            }else{
+                                layer.msg(msg);
+                            }
+                        }
+                    });
+                    obj.update({
+                        moodContent: value
+                    });
+                    layer.close(index);
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

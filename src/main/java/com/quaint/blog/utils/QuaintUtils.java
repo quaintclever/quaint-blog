@@ -15,7 +15,11 @@ public class QuaintUtils {
     public static String getRetrunPath(String... path){
         String url="";
         for(int i = 0;i<path.length;i++){
-            url+="/"+path[i];
+            if(i==0){
+                url+=path[i];
+            }else{
+                url+="/"+path[i];
+            }
         }
         return url;
     }

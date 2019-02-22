@@ -31,10 +31,14 @@ public class AdminController {
     @PostMapping("login")
     public String login(@RequestParam String userName, @RequestParam String userPwd,@RequestParam (value="type",defaultValue="user")String type, HttpServletRequest request){
 
-        //获取登录名称
+        //获取登录名称  临时
         System.out.println(userName);
         //获取登录ip
         System.out.println(IPKit.getIpAddressByRequest1(request));
+        //TODO 权限没有完善,暂时不让其他用户登陆后台
+        if(!"quaint".equals(userName)){
+            return "blog/index";
+        }
 
         //使用shiro 来编写认证操作
         Subject subject = SecurityUtils.getSubject();
@@ -54,8 +58,10 @@ public class AdminController {
                 return "redirect:admin/main";
             }else if("userOld".equals(type)){
                 return "redirect:blog/quaint-sayingYK";
-            }else{
+            }else if("userNew".equals(type)){
                 return "redirect:blogtemp/saying";
+            }else{
+                return "blog/index";
             }
         } catch (UnknownAccountException e) {
             System.out.println("用户名不存在！");
@@ -107,7 +113,7 @@ public class AdminController {
      */
     @GetMapping("toLogin")
     public String showLogin(){
-        return "/admin/login";
+        return "admin/login";
     }
 
 

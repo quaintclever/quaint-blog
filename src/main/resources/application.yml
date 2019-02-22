@@ -1,6 +1,6 @@
 #配置服务器
 server:
-  port: 7777
+  port: 80
 #配置spring
 spring:
   mvc:

@@ -2,6 +2,7 @@ package com.quaint.blog.service;
 
 import com.github.pagehelper.PageInfo;
 import com.quaint.blog.pojo.StayMessage;
+import com.quaint.blog.utils.LayJson;
 
 public interface StayMessageService {
 
@@ -18,5 +19,11 @@ public interface StayMessageService {
      * @return
      */
     PageInfo<StayMessage> selectStayMessageList(int pageNo, int pageSize);
+
+    /**
+     * 后台查询全部留言
+     * @return
+     */
+    LayJson<StayMessage> select(LayJson<StayMessage> layJson);
 
 }
