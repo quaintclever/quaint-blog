@@ -36,7 +36,7 @@ public class AdminController {
         //获取登录ip
         System.out.println(IPKit.getIpAddressByRequest1(request));
         //TODO 权限没有完善,暂时不让其他用户登陆后台
-        if(!"quaint".equals(userName)){
+        if(!"quaint".equals(userName)&&"admin".equals(type)){
             return "blog/index";
         }
 
