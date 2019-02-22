@@ -43,7 +43,7 @@ function showMood(data){
 							<div class="quaint-new-label"></div>
 							<p class="quaint-bottomLine">
 							<span class="glyphicon glyphicon-time"></span>
-								${format(moods[i].moodTime,'yyyy-MM-dd HH:mm:ss')}
+								${moods[i].moodTime}
 							</p>
 							<p class="quaint-indent">
 								${moods[i].moodContent}
@@ -54,7 +54,7 @@ function showMood(data){
 			memoryStr+=`<div class="quaint-middle-bgII">
 							<p class="quaint-bottomLine">
 							<span class="glyphicon glyphicon-time"></span>
-								${format(moods[i].moodTime,'yyyy-MM-dd HH:mm:ss')}
+								${moods[i].moodTime}
 							</p>
 							<p class="quaint-indent">
 								${moods[i].moodContent}
@@ -108,36 +108,6 @@ function showMood(data){
 
 	// ajax请求后需要 刷新一下ifream的高度  否则可能出现问题
 	iframeHeight();
-}
-
-//封装时间格式  ${format(moods[i].moodTime,'yyyy-MM-dd HH:mm:ss')}
-function format(time, format) {
-	var t = new Date(time);
-	var tf = function (i) {
-		return (i < 10 ? '0' : '') + i
-	};
-	return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
-		switch (a) {
-			case 'yyyy':
-				return tf(t.getFullYear());
-				break;
-			case 'MM':
-				return tf(t.getMonth() + 1);
-				break;
-			case 'mm':
-				return tf(t.getMinutes());
-				break;
-			case 'dd':
-				return tf(t.getDate());
-				break;
-			case 'HH':
-				return tf(t.getHours());
-				break;
-			case 'ss':
-				return tf(t.getSeconds());
-				break;
-		}
-	})
 }
 
 

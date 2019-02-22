@@ -139,7 +139,7 @@ function showStayMessage(data){
 				<div class="row quaint-saying-margin">
 					<div class="col-sm-12">
 						<div class="row">
-							<p>${format(stayMessages[i].messageStayTime,'yyyy-MM-dd HH:mm:ss')}</p>
+							<p>${stayMessages[i].messageStayTime}</p>
 							${stayMessages[i].userName}:
 						</div>
 						<div class="row">
@@ -198,36 +198,6 @@ function showStayMessage(data){
 	// ajax请求后需要 刷新一下ifream的高度  否则可能出现问题
 	iframeHeight();
 }
-//封装时间格式  ${format(moods[i].moodTime,'yyyy-MM-dd HH:mm:ss')}
-function format(time, format) {
-	var t = new Date(time);
-	var tf = function (i) {
-		return (i < 10 ? '0' : '') + i
-	};
-	return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
-		switch (a) {
-			case 'yyyy':
-				return tf(t.getFullYear());
-				break;
-			case 'MM':
-				return tf(t.getMonth() + 1);
-				break;
-			case 'mm':
-				return tf(t.getMinutes());
-				break;
-			case 'dd':
-				return tf(t.getDate());
-				break;
-			case 'HH':
-				return tf(t.getHours());
-				break;
-			case 'ss':
-				return tf(t.getSeconds());
-				break;
-		}
-	})
-}
-
 
 //分页显示留言结束
 

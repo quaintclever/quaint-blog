@@ -25,6 +25,10 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  #时间转换处理
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   #配置javaMail
   mail:
     #host: smtp.qq.com  个人
