@@ -43,4 +43,15 @@ public class StayMessageServiceImpl implements StayMessageService {
         layJson.setData(list);
         return layJson;
     }
+
+    @Override
+    public int deleteByPrimaryKey(Integer sId) {
+        return stayMessageMapper.deleteByPrimaryKey(sId);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(StayMessage stayMessage) {
+        return stayMessageMapper.updateByPrimaryKeySelective(stayMessage);
+    }
+
 }

@@ -12,7 +12,6 @@ import com.quaint.blog.base.Msg;
 public class JsonUtil {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    private static Msg msg = new Msg();
 
     /**
      * 将对象转换为Json
@@ -36,8 +35,7 @@ public class JsonUtil {
      * @return
      */
     public static String MsgToJson(String m){
-        msg.setMsg(m);
-        return ObjToJson(msg);
+        return ObjToJson(Msg.getInstanceWithText(m));
     }
 
 }

@@ -26,4 +26,17 @@ public interface StayMessageService {
      */
     LayJson<StayMessage> select(LayJson<StayMessage> layJson);
 
+    /**
+     * 通过id删除留言
+     * @param sId
+     * @return
+     */
+    int deleteByPrimaryKey(Integer sId);
+
+    /**
+     * 修改留言内容
+     * @param stayMessage
+     * @return
+     */
+    int updateByPrimaryKeySelective(StayMessage stayMessage);
 }

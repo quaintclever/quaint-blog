@@ -2,6 +2,7 @@ package com.quaint.blog.controller.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.quaint.blog.base.Msg;
 import com.quaint.blog.pojo.StayMessage;
 import com.quaint.blog.pojo.Users;
 import com.quaint.blog.service.StayMessageService;
@@ -40,7 +41,7 @@ public class StayMessageController {
         return page;
     }
     /**
-     * 后台分页查询 心情
+     * 后台分页查询 留言
      * @return 查询出来的心情
      */
     @GetMapping("data")
@@ -74,6 +75,23 @@ public class StayMessageController {
         //不是回复这里就设置成0
         stayMessage.setStayId(0);
         return stayMessageService.insertSelective(stayMessage)>0?newIpUser:new Users(-500);
+    }
+
+    /**
+     * delete  删除
+     * @return
+     */
+    @DeleteMapping("dataById/{sId}")
+    public Msg deleteStayMessage(@PathVariable("sId") Integer sId){
+        return stayMessageService.deleteByPrimaryKey(sId)>0?Msg.getInstanceWithText("ok"):Msg.getInstanceWithText("error");
+    }
+    /**
+     * update  修改
+     * @return
+     */
+    @PutMapping("dataById")
+    public Msg updateStayMessage(@RequestBody StayMessage stayMessage){
+        return stayMessageService.updateByPrimaryKeySelective(stayMessage)>0?Msg.getInstanceWithText("ok"):Msg.getInstanceWithText("error");
     }
 
 }

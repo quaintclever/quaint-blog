@@ -116,7 +116,7 @@
                         type: "PUT",
                         contentType: 'application/json; charset=UTF-8',
                         dataType:'text',
-                        data: "{\"moodId\":\""+data.moodId+"\",\"moodContent\":\""+value+"\"}",
+                        data: JSON.stringify({moodId:data.moodId,moodContent:value}),
                         success: function(msg) {
                             if(msg=="ok"){
                                 layer.msg("修改成功!");

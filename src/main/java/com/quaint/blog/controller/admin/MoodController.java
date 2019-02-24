@@ -92,6 +92,7 @@ public class MoodController {
      */
     @PutMapping("dataById")
     public String updateMood(@RequestBody Mood mood){
+        System.out.println(mood);
         return moodService.updateByPrimaryKeySelective(mood)>0?"ok":"error";
     }
 
