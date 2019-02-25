@@ -77,7 +77,7 @@ CREATE TABLE quaint_mood (
  user_name varchar(27) COMMENT '用户名',
  mood_time datetime NOT NULL COMMENT '发表时间',
  mood_ip varchar(36) COMMENT '发表ip',
- mood_content varchar(255) NOT NULL COMMENT '说说内容',
+ mood_content varchar(7777) NOT NULL COMMENT '说说内容',
  type_id int NOT NULL default 0 COMMENT '隐私id 0公开 1好友 2私人',
  PRIMARY KEY (mood_id)
 )

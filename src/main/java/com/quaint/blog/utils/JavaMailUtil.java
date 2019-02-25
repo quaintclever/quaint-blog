@@ -6,7 +6,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 /**
@@ -34,7 +33,7 @@ public class JavaMailUtil {
     public static void sendText(String title,String text) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         // 设置收件人
-        simpleMailMessage.setTo(new String[] {"3213452105@qq.com"});
+        simpleMailMessage.setTo(new String[] {"123456789@qq.com"});
         //寄件人
         simpleMailMessage.setFrom("quaint@quaint-aini.com");
         simpleMailMessage.setSubject(title);

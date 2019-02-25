@@ -35,10 +35,8 @@ spring:
     host: smtp.exmail.qq.com  #企业
     #端口号465或587
     port: 587
-    #username: your_qq_num@qq.com
-    #password: your_licenseKey_or_password
-    username: quaint@quaint-aini.com
-    password: mGAxt233vKD6Grkn
+    username: your_qq_num@qq.com
+    password: your_licenseKey_or_password
     protocol: smtp
     default-encoding: UTF-8
 #配置mybatis
