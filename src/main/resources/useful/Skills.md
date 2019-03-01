@@ -167,6 +167,10 @@
 
 	$ cnpm install --global vue-cli
 
+    --快速删除 node_modules
+        cnpm install rimraf -g   命令行语句，速度会更快
+        rimraf node_modules
+
 	--**创建一个基于 webpack 模板的新项目**
 
 	$ vue init webpack my-project
