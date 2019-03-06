@@ -16,6 +16,14 @@ public interface StayMessageMapper {
     int updateByPrimaryKeySelective(StayMessage record);
 
     int updateByPrimaryKey(StayMessage record);
-
+    /**
+     * 查询全部留言
+     * @return留言dto集合对象
+     */
     List<StayMessage> select();
+    /**
+     * 查询全部留言回复
+     * @return留言留言dto集合对象
+     */
+    List<StayMessage> selectByRe(Integer sid);
 }

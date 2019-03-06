@@ -66,13 +66,47 @@ $(function(){
 
 	},"json")
 })
+//当回复留言的时候
+function reUserSay(sid){
+	//1.先判断用户是否登陆
+	$.get("isLogin",{},function(data){
+		if(data.userId>0){
+			//2.如果登陆判断留言是否为空,或者空字符串
+			var reStr = $("#reText"+sid).val();
+			if($.trim(reStr)==""){
+				quaintAlert("亲,随便说两句再点吧!");
+				return;
+			}
+			//执行回复留言逻辑
+			$.ajax({
+				url:"/stayMessage/data",
+				type: "POST",
+				contentType: 'application/json; charset=UTF-8',
+				data:JSON.stringify({stayId:sid,messageContent:reStr}),
+				dataType:"json",
+				success:function(data){
+					if(data.userId>0){
+						quaintAlert("回复留言成功!");
+						setInterval(function(){
+							location.href="/quaint-sayingYK";
+						},1000);
+					}else{
+						quaintAlert("回复留言失败!");
+					}
+				}
+			});
+		}else{
+			quaintAlert("请先登陆在回复!");
+		}
+	},"json")
+}
 //当点击留言的时候
 function userSay(){
 	$.get("isLogin",{},function(data){
 		if(data.userId>0){
 			//执行留言操作
 			var message = $("#quaintsUserSay").val();
-			if(message==""){
+			if($.trim(message)==""){
 				quaintAlert("亲,随便说两句再点吧!");
 				return;
 			}else{
@@ -80,7 +114,7 @@ function userSay(){
 					url:"/stayMessage/data",
 					type: "POST",
 					contentType: 'application/json; charset=UTF-8',
-					data:'{\"messageContent\":\"'+message+'\"}',
+					data:JSON.stringify({messageContent:message}),
 					dataType:"json",
 					success:function(data){
 						if(data.userId>0){
@@ -129,29 +163,64 @@ function showStayMessage(data){
 				</div>
 				<div class="quaint-saying-logo">留言展示</div>
 			</div>
-			<div class="new-saying"><span class="glyphicon glyphicon-send">最新留言</span></div>`;
+			<div class="new-saying"><span class="glyphicon glyphicon-send">&nbsp;最新留言</span></div>`;
 
-	//--------------分页的心情说说的显示开始---------------
+	//--------------分页的留言的显示开始---------------
+	$.ajaxSettings.async = false;
 	for(let i = 0; i<stayMessages.length; i++){
 		stayMessagesStr+=
 			`<div class="quaint-user-saying">
-				<img src="../../static/blog/image/home/quaint-music.jpg" class="quaint-saying-img img-circle">
 				<div class="row quaint-saying-margin">
 					<div class="col-sm-12">
 						<div class="row">
-							<p>${stayMessages[i].messageStayTime}</p>
-							${stayMessages[i].userName}:
+							<div class="icon iconStr">${stayMessages[i].userName[0]}</div>
+							<p class="quaint-indent3 quaint-say-time">
+								<span>${stayMessages[i].messageStayTime}</span>
+								${stayMessages[i].userName}
+							</p>
 						</div>
+						<div class="row quaint-position-relative">
+							<button onclick="reUserSay(${stayMessages[i].sid})" class="quaint-re-btn btn btn-sm btn-success">回复</button>
+							<p class="quaint-indent3 quaint-say-content">${stayMessages[i].messageContent}</p>
+							<div class="quaint-indent"><input class="reText" id="reText${stayMessages[i].sid}" type="text"></div>
+						</div>
+						`;
+		//这里是回复添加
+		$.get("stayMessage/selectReMessageList",{sid:stayMessages[i].sid},function(data){
+			if (data.length>0){
+				stayMessagesStr+=`
 						<div class="row">
-							<p class="quaint-indent">
-							   ${stayMessages[i].messageContent}
-                            </p>
-						</div>
+							<div class="quaint-re-div">
+								<div class="col-sm-12">`;
+				for(let i_r=0;i_r<data.length;i_r++){
+					stayMessagesStr+=`									
+									<div class="row quaint-position-relative">
+										<div class="icon iconStr">${data[i_r].userName[0]}</div>
+										<p class="quaint-indent3 quaint-say-time">
+											<span>${data[i_r].messageStayTime}</span>
+											${data[i_r].userName}
+										</p>
+									</div>
+									<div class="row">
+										<p class="quaint-indent3 quaint-say-content">${data[i_r].messageContent}</p>
+									</div>`;
+				}
+				stayMessagesStr+=`							
+								</div>
+							</div>
+						</div>`;
+			}
+		},"json");
+		//回复添加结束
+
+		stayMessagesStr+=`
+						
 					</div>
 				</div>
 				<div class="quaint-saying-hr"></div>
 			</div>`;
 	}
+	$.ajaxSettings.async = true;
 	//在quaint-live-mood后面添加生成的记忆
 	$("#sayingDiv").html(stayMessagesStr);
 	//--------------每页的心情说说的显示结束---------------

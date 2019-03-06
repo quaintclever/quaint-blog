@@ -163,10 +163,74 @@ ul#show-nav li:nth-child(4){
 	position: absolute;
 }
 .quaint-saying-margin{
-	margin-left: 72px;
+    margin: 0px;
+    background: #fff;
+    border-radius: 10px;
+    padding-bottom: 10px;
 }
 .quaint-saying-hr{
 	margin: 27px 0px;
 	border-bottom: 1px dashed;
 }
-
+p.quaint-say-time{
+    color: #000;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+p.quaint-say-time span{
+    float: right;
+    text-indent: 0px;
+    color: #999;
+    font-size: 12px;
+    width: 130px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+p.quaint-say-content{
+    color:#555;
+    display: block;
+}
+/* 头像文字显示 */
+.icon:hover {
+    transform: scale(1.7);
+    border: 0px;
+}
+.iconStr {
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: white;
+    background-color: #337ab7;
+    border-radius: 50%;
+}
+.icon {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    width: 30px;
+    height: 30px;
+    border: 0px solid #D7D7D7;
+    transition: all 0.45s;
+    overflow: hidden;
+}
+.quaint-re-btn{
+    position: absolute;
+    border-radius: 20px;
+    padding: 2px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    left: 210px;
+    top: 31px;
+    z-index: 2;
+}
+.quaint-re-div{
+    overflow: hidden;
+    border: 1px dashed #3c763d;
+    margin: 10px 10px 20px 30px;
+}
+.reText{
+    color: black;
+}

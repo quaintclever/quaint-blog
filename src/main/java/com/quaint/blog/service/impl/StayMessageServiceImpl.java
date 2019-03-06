@@ -3,7 +3,6 @@ package com.quaint.blog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.quaint.blog.mapper.StayMessageMapper;
-import com.quaint.blog.pojo.Mood;
 import com.quaint.blog.pojo.StayMessage;
 import com.quaint.blog.service.StayMessageService;
 import com.quaint.blog.utils.LayJson;
@@ -29,11 +28,21 @@ public class StayMessageServiceImpl implements StayMessageService {
     }
 
     @Override
+    public StayMessage selectByPrimaryKey(Integer sId) {
+        return stayMessageMapper.selectByPrimaryKey(sId);
+    }
+
+    @Override
     public PageInfo<StayMessage> selectStayMessageList(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         List<StayMessage> list = stayMessageMapper.select(); //用PageInfo对结果进行包装
         PageInfo<StayMessage> page = new PageInfo<StayMessage>(list);
         return page;
+    }
+
+    @Override
+    public List<StayMessage> selectByRe(Integer sid) {
+        return stayMessageMapper.selectByRe(sid);
     }
 
     @Override

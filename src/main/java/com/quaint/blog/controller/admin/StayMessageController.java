@@ -7,6 +7,7 @@ import com.quaint.blog.pojo.StayMessage;
 import com.quaint.blog.pojo.Users;
 import com.quaint.blog.service.StayMessageService;
 import com.quaint.blog.service.UserService;
+import com.quaint.blog.utils.JavaMailUtil;
 import com.quaint.blog.utils.LayJson;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author quaint
@@ -40,6 +42,17 @@ public class StayMessageController {
         PageInfo<StayMessage> page = stayMessageService.selectStayMessageList(pageNo,pageSize);
         return page;
     }
+
+    /**
+     * 留言回复展示
+     * @return
+     */
+    @GetMapping("selectReMessageList")
+    public List<StayMessage> selectReMessageList(@RequestParam(value="sid") Integer sid){
+        List<StayMessage> reMessageList = stayMessageService.selectByRe(sid);
+        return reMessageList;
+    }
+
     /**
      * 后台分页查询 留言
      * @return 查询出来的心情
@@ -72,8 +85,19 @@ public class StayMessageController {
         stayMessage.setMessageStayTime(new Date());
         //这里留做扩展 ,暂时 不知道如何从ip获取地区
         stayMessage.setPlace("");
-        //不是回复这里就设置成0
-        stayMessage.setStayId(0);
+        //如果不是留言而是回复,则给被回复的用户发送邮件提醒
+        Integer stayId = stayMessage.getStayId();
+        if(stayId!=null || stayId!=0){
+            //通过留言id查询用户,获取邮箱,并发送提示信息
+            StayMessage getEmail = stayMessageService.selectByPrimaryKey(stayId);
+            Users re2user = userService.selectByPrimaryKey(getEmail.getStayUserId());
+            //给该用户发送邮件提醒留言已经被回复
+            try {
+                JavaMailUtil.sendReRemind(re2user.getUserEmail(),stayMessage.getMessageContent());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return stayMessageService.insertSelective(stayMessage)>0?newIpUser:new Users(-500);
     }
 

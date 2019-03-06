@@ -40,7 +40,6 @@
     from quaint_user
     where user_name = #{userName}
   </select>
-
   <!-- 手动添加mapper end -->
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

@@ -32,6 +32,9 @@
 		position: relative;
 		z-index: 2;
 	}
+	.quaint-position-relative{
+		position: relative;
+	}
 	.quaint-div-center{
 		margin: 0px auto;
 	}
@@ -58,6 +61,9 @@
 	.quaint-indent{
 		text-indent: 2em;
 	}
+	.quaint-indent3 {
+		 text-indent: 3em;
+	 }
 	.quaint-mtop7{
 		/* 距顶部距离 */
 		margin-top: 7px;

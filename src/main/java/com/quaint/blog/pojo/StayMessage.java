@@ -26,4 +26,11 @@ public class StayMessage {
     //--------扩展字段------------
 
     private String userName;
+
+    public StayMessage() {
+    }
+
+    public StayMessage(Integer sId) {
+        this.sId = sId;
+    }
 }

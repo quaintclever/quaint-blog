@@ -76,4 +76,13 @@ public class JavaMailUtil {
         sendHtml(email,"Quaint博客用户注册邮件",code);
     }
 
+    /**
+     * 发送留言回复提醒
+     */
+    public static void sendReRemind(String email,String msg) throws Exception{
+        //调用方法前传递随机生成的code
+        msg = "<h3>尊敬的Quaint博客用户,您好</h3><p>您的留言收到了一条回复消息,内容为：<br/>"+msg+"</p><p>我在这里等着你哦~博客连接：www.quaint-aini.com</p>";
+        sendHtml(email,"Quaint博客用户留言回复邮件",msg);
+    }
+
 }
