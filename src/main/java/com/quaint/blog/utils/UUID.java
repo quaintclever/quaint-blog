@@ -4,7 +4,7 @@ package com.quaint.blog.utils;
 import java.util.Random;
 
 /**
- * 封装UUID
+ * 封装UUID(暂时没有使用到,保留用)
  */
 public abstract class UUID {
 

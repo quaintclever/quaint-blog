@@ -24,10 +24,10 @@ ul.page-wrap > li{
     cursor: pointer;
 }
 ul.page-wrap > li:first-child{
-    padding:0 7px;
+    padding:0px;
 }
 ul.page-wrap > li:last-child{
-    padding:0 7px;
+    padding:0px;
 }
 ul.page-wrap li.on:hover {
     background-color:#3690cf

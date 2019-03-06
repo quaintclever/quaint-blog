@@ -107,7 +107,7 @@ ul#show-nav li:nth-child(4){
 	opacity: 0.6;
 	/*非IE浏览器下设置透明度为60%*/
 	display: none;
-	z-Index: 2;
+	z-Index: 3;
 }
 .hidden_view{
 	float: right;

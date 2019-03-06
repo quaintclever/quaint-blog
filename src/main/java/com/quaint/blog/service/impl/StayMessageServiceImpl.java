@@ -47,7 +47,7 @@ public class StayMessageServiceImpl implements StayMessageService {
 
     @Override
     public LayJson<StayMessage> select(LayJson<StayMessage> layJson) {
-        List<StayMessage> list =stayMessageMapper.select();
+        List<StayMessage> list =stayMessageMapper.selectWithRe();
         //设置查询出来的全部数据
         layJson.setData(list);
         return layJson;

@@ -87,15 +87,18 @@ public class StayMessageController {
         stayMessage.setPlace("");
         //如果不是留言而是回复,则给被回复的用户发送邮件提醒
         Integer stayId = stayMessage.getStayId();
-        if(stayId!=null || stayId!=0){
+        if(stayId!=null){
             //通过留言id查询用户,获取邮箱,并发送提示信息
             StayMessage getEmail = stayMessageService.selectByPrimaryKey(stayId);
             Users re2user = userService.selectByPrimaryKey(getEmail.getStayUserId());
-            //给该用户发送邮件提醒留言已经被回复
-            try {
-                JavaMailUtil.sendReRemind(re2user.getUserEmail(),stayMessage.getMessageContent());
-            } catch (Exception e) {
-                e.printStackTrace();
+            //如果是其他人回复自己,则发送邮件
+            if(re2user.getUserId()!=tokenUser.getUserId()){
+                //给该用户发送邮件提醒留言已经被回复
+                try {
+                    JavaMailUtil.sendReRemind(re2user.getUserEmail(),stayMessage.getMessageContent());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         return stayMessageService.insertSelective(stayMessage)>0?newIpUser:new Users(-500);

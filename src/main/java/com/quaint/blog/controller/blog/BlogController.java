@@ -31,14 +31,6 @@ public class BlogController {
     private UserService userService;
     @Autowired
     private MailCodeService mailCodeService;
-    /**
-     * 初始化新博客界面
-     * @return
-     */
-    @GetMapping(value = "new.html")
-    public String index() {
-        return "blogtemp/index";
-    }
 
     /**
      * 默认新博客界面访问

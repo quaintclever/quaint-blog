@@ -41,7 +41,7 @@ function closeWindow(){
 //提示信息框
 function quaintAlert(msg){
 	//先停止之前动画,然后展示提示信息1s后隐藏
-	$("#msgDiv").html(msg).stop(true,true).show().delay(2121).hide(300);
+	$("#msgDiv",parent.document).html(msg).stop(true,true).show().delay(721).hide(210);
 }
 //-----------------------业务逻辑开始------------------------------
 
@@ -121,7 +121,7 @@ function userSay(){
 							quaintAlert("留言成功!");
 							setInterval(function(){
 								location.href="/quaint-sayingYK";
-							},1000);
+							},1212);
 						}else{
 							quaintAlert("留言失败!");
 						}
@@ -225,7 +225,7 @@ function showStayMessage(data){
 	$("#sayingDiv").html(stayMessagesStr);
 	//--------------每页的心情说说的显示结束---------------
 	//----------分页数字拼接处理开始--------------
-	let pageStr = `<li onclick="pageClick(1)">&lt;&lt;</li><li onclick="pageClick(${data.prePage})">&lt;</li>`;
+	let pageStr = `<li onclick="pageClick(1)">&lt;&lt;</li><li onclick="pageClick(${data.prePage==0?1:data.prePage})">&lt;</li>`;
 	//循环生成分页的数字
 	if(data.pages<=5){
 		for(let i = 1;i<=data.pages;i++){

@@ -56,10 +56,8 @@ public class AdminController {
             //没有异常则登陆成功  根据类型判断在哪个系统登陆的，返回指定页面。
             if("admin".equals(type)){
                 return "redirect:admin/main";
-            }else if("userOld".equals(type)){
+            }else if("user".equals(type)){
                 return "redirect:blog/quaint-sayingYK";
-            }else if("userNew".equals(type)){
-                return "redirect:blogtemp/saying";
             }else{
                 return "blog/index";
             }

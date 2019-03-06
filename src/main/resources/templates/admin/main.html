@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>后台管理面板</title>
 		<link rel="shortcut icon" href="../../static/blog/image/index/quaint-logo.ico">
-		<link rel="stylesheet" href="../../static/admin/layui/css/layui.css">
-		<link rel="stylesheet" href="../../static/admin/layui/css/admin.css">
+		<link rel="stylesheet" href="../../static/admin/layuiadmin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../static/admin/layuiadmin/style/admin.css" media="all">
 	</head>
 
 	<body class="layui-layout-body">
@@ -117,8 +117,8 @@
 								<dl class="layui-nav-child">
 									<dd><a lay-href="template/personalpage.html">发布文章</a></dd>
 									<dd><a lay-href="template/msgboard.html">文章管理</a></dd>
-									<dd><a href="/quaint/admin/mood" target="quaint-ifream">❤心情列表❤</a></dd>
-									<dd><a href="/quaint/admin/staymessage" target="quaint-ifream">❤留言管理❤</a></dd>
+									<dd><a lay-href="/quaint/admin/mood" target="quaint-ifream">❤心情列表❤</a></dd>
+									<dd><a lay-href="/quaint/admin/staymessage" target="quaint-ifream">❤留言管理❤</a></dd>
 									<dd><a href="https://www.layui.com/admin/std/dist/views/user/reg.html" target="_blank">评论管理</a></dd>
 									<dd><a href="https://www.layui.com/admin/std/dist/views/user/login.html" target="_blank">分类标签</a></dd>
 								</dl>
@@ -207,8 +207,13 @@
 				<div class="layadmin-body-shade" layadmin-event="shade"></div>
 			</div>
 		</div>
-		<script src="../../static/admin/layui/layui.js"></script>
+		<script src="../../static/admin/layuiadmin/layui/layui.js"></script>
 		<script>
+			layui.config({
+				base: '../../static/admin/layuiadmin/' //静态资源所在路径
+			}).extend({
+				index: 'lib/index' //主入口模块
+			}).use('index');
 			//JavaScript代码区域
 			layui.use('element', function() {
 				var element = layui.element;

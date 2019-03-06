@@ -40,6 +40,15 @@
     where qsm.stay_id = 0
     order by qsm.message_stay_time desc
   </select>
+  <select id="selectWithRe" resultMap="BaseResultMapDto">
+    select
+      qsm.s_id, qsm.stay_id, qsm.stay_user_id, qsm.message_content,
+      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name
+    from quaint_stay_message qsm
+    left join quaint_user qu
+    on qsm.stay_user_id=qu.user_id
+    order by qsm.message_stay_time desc
+  </select>
   <!-- 查询留言结束 -->
   <!-- 查询回复 返回dto 对象 -->
   <select id="selectByRe" resultMap="BaseResultMapDto" parameterType="java.lang.Integer">

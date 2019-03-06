@@ -433,7 +433,7 @@
 	/* bottom end */
 	/* 提示信息容器 */
 	#msgDiv{
-		position: absolute;
+		position: fixed;
 		left:0;right:0;
 		top:230px;
 		padding: 20px;
