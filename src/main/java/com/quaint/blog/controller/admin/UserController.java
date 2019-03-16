@@ -1,8 +1,11 @@
 package com.quaint.blog.controller.admin;
 
+import com.quaint.blog.base.Msg;
 import com.quaint.blog.pojo.Users;
 import com.quaint.blog.service.UserService;
 import com.quaint.blog.utils.LayJson;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,18 +16,52 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2019/1/16
  */
 @RequestMapping("user")
-@Controller
+@RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("view")
-    public String view(){
-        return "user";
+    /**
+     * 同过主键id查询用户
+     * @return
+     */
+    @GetMapping("dataById")
+    public Users selectByPrimaryKey(Integer id){
+        return userService.selectByPrimaryKey(id);
     }
 
     /**
+     * 获取当前用户登录信息
+     * 也可以直接调用BlogController 下的isLogin 方法
+     * @return
+     */
+    @GetMapping("getLoginUser")
+    public Users getLoginUser(){
+        //获取subject
+        Subject subject = SecurityUtils.getSubject();
+        //从subject中获取登录的用户信息.
+        Users user = (Users) subject.getPrincipal();
+        //返回数据库中最新的用户信息
+        Users user_new = userService.selectByPrimaryKey(user.getUserId());
+        //消除用户密码
+        user_new.setUserPwd("*******");
+        return user_new;
+    }
+
+    /**
+     * 修改用户信息
+     * @return
+     */
+    @PutMapping("dataById")
+    public Msg updateUser(@RequestBody Users users){
+        return userService.updateByPrimaryKeySelective(users)>0
+                ?Msg.getInstanceWithText("修改用户信息成功！")
+                :Msg.getInstanceWithText("用户信息修改失败！");
+    }
+
+    /**
+     * ------------------下面暂时未使用到---------------------
      * 查询
      * @return
      */
@@ -35,38 +72,6 @@ public class UserController {
         LayJson<Users> list = new LayJson<>();
         list.setData(userService.select());
         return list;
-    }
-    /**
-     * 添加
-     * @return
-     */
-    @PostMapping("data")
-    public String insertSelective(){
-        Users user = new Users();
-        user.setUserId(1);
-        user.setUserName("quaint");
-        user.setUserPwd("123465");
-        userService.insertSelective(user);
-        return view();
-    }
-    /**
-     * 测试put请求  修改
-     * @return
-     */
-    @PutMapping("dataById")
-    public String updateUser(){
-        //修改权限列表(未完成)
-        return view();
-    }
-
-    /**
-     * 测试delete  删除
-     * @return
-     */
-    @DeleteMapping("dataById")
-    public String deleteUser(){
-        //删除权限列表(未完成)
-        return view();
     }
 
 

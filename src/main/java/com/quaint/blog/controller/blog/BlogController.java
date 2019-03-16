@@ -184,8 +184,16 @@ public class BlogController {
         Subject subject = SecurityUtils.getSubject();
         //从subject中获取登录的用户信息.
         Users user = (Users) subject.getPrincipal();
-        //如果用户为null  返回 -404状态码
-        return user!=null?user:new Users(-404);
+        //返回数据库中最新的用户信息
+        if(user!=null){
+            Users user_new = userService.selectByPrimaryKey(user.getUserId());
+            //消除用户密码
+            user_new.setUserPwd("*******");
+            return user_new;
+        }else{
+            //如果用户为null  返回 -404状态码
+            return new Users(-404);
+        }
     }
 
 }

@@ -32,6 +32,12 @@ public class StayMessageServiceImpl implements StayMessageService {
         return stayMessageMapper.selectByPrimaryKey(sId);
     }
 
+    /**
+     * 前台分页查询留言
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo<StayMessage> selectStayMessageList(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);

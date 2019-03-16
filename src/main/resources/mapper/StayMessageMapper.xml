@@ -19,6 +19,7 @@
     <result column="message_stay_time" property="messageStayTime" jdbcType="TIMESTAMP" />
     <result column="place" property="place" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_nick_name" property="userNickName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     s_id, stay_id, stay_user_id, message_content, stay_user_ip, message_stay_time, place
@@ -33,7 +34,7 @@
   <select id="select" resultMap="BaseResultMapDto">
     select
       qsm.s_id, qsm.stay_id, qsm.stay_user_id, qsm.message_content,
-      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name
+      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name, qu.user_nick_name
     from quaint_stay_message qsm
     left join quaint_user qu
     on qsm.stay_user_id=qu.user_id
@@ -43,7 +44,7 @@
   <select id="selectWithRe" resultMap="BaseResultMapDto">
     select
       qsm.s_id, qsm.stay_id, qsm.stay_user_id, qsm.message_content,
-      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name
+      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name, qu.user_nick_name
     from quaint_stay_message qsm
     left join quaint_user qu
     on qsm.stay_user_id=qu.user_id
@@ -54,7 +55,7 @@
   <select id="selectByRe" resultMap="BaseResultMapDto" parameterType="java.lang.Integer">
     select
       qsm.s_id, qsm.stay_id, qsm.stay_user_id, qsm.message_content,
-      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name
+      qsm.stay_user_ip, qsm.message_stay_time, qsm.place, qu.user_name, qu.user_nick_name
     from quaint_stay_message qsm
     left join quaint_user qu
     on qsm.stay_user_id=qu.user_id

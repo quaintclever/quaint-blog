@@ -21,6 +21,11 @@ public interface UsersMapper {
      */
     Users selectByName(String userName);
 
+    /**
+     * 修改用户信息 忽略空值
+     * @param record
+     * @return
+     */
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);

@@ -57,8 +57,9 @@ $(function(){
 	//刷新页面时 判断subject中是否有用户
 	$.get("isLogin",{},function(data){
 		if(data.userId>0){
-			var str = `欢迎用户：${data.userName}！
-						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
+			var str = `欢迎用户：${data.userNickName}！
+						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>
+						<button id="update" class="quaint-btn-rediusC30 btn btn-success">修改信息</button>`;
 			$("#quaintUser").html(str);
 		}else{
 			$("#quaintUser").html("<button class='login quaint-btn-rediusB30 btn btn-success'>登录</button>");
@@ -152,9 +153,9 @@ function stayMessagePage(index){
 		showStayMessage(data);
 	},"json")
 }
-//分页展示心情
+//分页展示留言
 function showStayMessage(data){
-	//console.log(data);
+	// console.log(data);
 	var stayMessages = data.list;
 	let stayMessagesStr = `
 			<div class="quaint-saying-box">
@@ -173,10 +174,10 @@ function showStayMessage(data){
 				<div class="row quaint-saying-margin">
 					<div class="col-sm-12">
 						<div class="row">
-							<div class="icon iconStr">${stayMessages[i].userName[0]}</div>
+							<div class="icon iconStr">${stayMessages[i].userNickName[0]}</div>
 							<p class="quaint-indent3 quaint-say-time">
 								<span>${stayMessages[i].messageStayTime}</span>
-								${stayMessages[i].userName}
+								${stayMessages[i].userNickName}
 							</p>
 						</div>
 						<div class="row quaint-position-relative">
@@ -195,10 +196,10 @@ function showStayMessage(data){
 				for(let i_r=0;i_r<data.length;i_r++){
 					stayMessagesStr+=`									
 									<div class="row quaint-position-relative">
-										<div class="icon iconStr">${data[i_r].userName[0]}</div>
+										<div class="icon iconStr">${data[i_r].userNickName[0]}</div>
 										<p class="quaint-indent3 quaint-say-time">
 											<span>${data[i_r].messageStayTime}</span>
-											${data[i_r].userName}
+											${data[i_r].userNickName}
 										</p>
 									</div>
 									<div class="row">
@@ -366,8 +367,9 @@ function register_form_submit() {
 			}else{
 				quaintAlert("注册成功!游客更多功能正在开发中...");
 				closeWindow();
-				var str = `欢迎用户：${data.userName}！
-					<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
+				var str = `欢迎用户：${data.userNickName}！
+					<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>
+					<button id="update" class="quaint-btn-rediusC30 btn btn-success">修改信息</button>`;
 				$("#quaintUser").html(str);
 			}
 		}
@@ -406,8 +408,9 @@ function login_form_submit() {
 			}else{
 				quaintAlert("登陆成功!");
 				closeWindow();
-				var str = `欢迎用户：${data.userName}！
-						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>`;
+				var str = `欢迎用户：${data.userNickName}！
+						<button id="cancel" class="quaint-btn-rediusC30 btn btn-warning">注销</button>
+						<button id="update" class="quaint-btn-rediusC30 btn btn-success">修改信息</button>`;
 				$("#quaintUser").html(str);
 			}
 			//console.log(data);
@@ -427,5 +430,9 @@ $(function(){
 				$("#quaintUser").html("<button class='login quaint-btn-rediusB30 btn btn-success'>登录</button>");
 			}
 		});
+	})
+	//当用户点击修改信息时
+	$("#quaintUser").on("click","#update",function(){
+		location.href="/quaint-user";
 	})
 })

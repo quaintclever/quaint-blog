@@ -27,6 +27,8 @@ public class StayMessage {
 
     private String userName;
 
+    private String userNickName;
+
     public StayMessage() {
     }
 
