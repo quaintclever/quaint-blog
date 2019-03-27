@@ -23,6 +23,11 @@ public class MoodServiceImpl implements MoodService {
     private MoodMapper moodMapper;
 
     @Override
+    public Mood selectByPrimaryKey(Integer moodId) {
+        return moodMapper.selectByPrimaryKey(moodId);
+    }
+
+    @Override
     public int insertSelective(Mood mood) {
         return moodMapper.insertSelective(mood);
     }

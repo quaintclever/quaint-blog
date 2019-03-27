@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.quaint.blog.pojo.Mood;
 import com.quaint.blog.pojo.Users;
+import com.quaint.blog.service.ArticleService;
 import com.quaint.blog.service.MoodService;
 import com.quaint.blog.service.UserService;
 import com.quaint.blog.utils.IPKit;
@@ -27,6 +28,8 @@ public class MoodController {
     @Autowired
     private MoodService moodService;
     @Autowired
+    public ArticleService articleService;
+    @Autowired
     private UserService userService;
 
     /**
@@ -37,7 +40,7 @@ public class MoodController {
     public LayJson<Mood> select(LayJson<Mood> layJson, Mood example){
         //获取心情(未完成)
         PageHelper.startPage(layJson.getPage(), layJson.getLimit());//传入起始页与页数大小
-//        layJson.setExample(example);//设置条件
+//      layJson.setExample(example);//设置条件
         LayJson<Mood> list = moodService.select(layJson);//带条件查询
         PageInfo page = new PageInfo(list.getData());//将用户数据封装到PageInfo 中
         layJson.setCode(0);//设置成功代码
@@ -70,7 +73,7 @@ public class MoodController {
     }
 
     /**
-     * 测试Post    添加
+     * Post    添加
      * @return 添加一个心情
      */
     @PostMapping("data")
@@ -97,12 +100,20 @@ public class MoodController {
     }
 
     /**
-     * 测试delete  删除
+     * delete  删除心情，如果是文章简介的话 删除对应文章
      * @return
      */
     @DeleteMapping("dataById/{moodId}")
     public String deleteMood(@PathVariable("moodId") Integer moodId){
-        //删除心情(未完成)
+        //获取删除的心情
+        Mood mood = moodService.selectByPrimaryKey(moodId);
+        // 如果说说存在，并且删除文章的id不等于0
+        if(mood!=null&&mood.getArticleId()!=0){
+            // 如果删除失败，则不进行说说删除。
+            if(articleService.deleteByPrimaryKey(mood.getArticleId())<=0){
+                return "error";
+            }
+        }
         return moodService.deleteByPrimaryKey(moodId)>0?"ok":"error";
     }
 

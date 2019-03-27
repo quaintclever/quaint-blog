@@ -35,11 +35,26 @@ function moodPage(index){
 //分页展示心情
 function showMood(data){
 	var moods = data.list;
+	//测试文章跳转开始
 	let memoryStr = "";
+	//测试文章跳转结束
 	//--------------分页的心情说说的显示开始---------------
 	for(let i = 0; i<moods.length; i++){
 		if(i==0){
-			memoryStr+=`<div class="quaint-middle-bgII" id="quaint-live-new">
+			if(moods[i].articleId!=0){
+				memoryStr += `<a href="/article/dataById/${moods[i].moodId}"><div class="quaint-middle-bgII" id="quaint-live-new">
+						<div class="quaint-new-label"></div>
+						<div class="quaint-look-label"></div>
+						<p class="quaint-bottomLine">
+						<span class="glyphicon glyphicon-time"></span>
+							${moods[i].moodTime}
+						</p>
+						<p class="quaint-indent">
+							${moods[i].moodContent}
+						</p>
+					</div></a>`;
+			}else{
+				memoryStr+=`<div class="quaint-middle-bgII" id="quaint-live-new">
 							<div class="quaint-new-label"></div>
 							<p class="quaint-bottomLine">
 							<span class="glyphicon glyphicon-time"></span>
@@ -50,8 +65,22 @@ function showMood(data){
 							</p>
 							</div>
 							`;
+			}
 		}else{
-			memoryStr+=`<div class="quaint-middle-bgII">
+			if(moods[i].articleId!=0){
+				memoryStr+=`<a href="/article/dataById/${moods[i].moodId}"><div class="quaint-middle-bgII">
+							<div class="quaint-look-label"></div>
+							<p class="quaint-bottomLine">
+							<span class="glyphicon glyphicon-time"></span>
+								${moods[i].moodTime}
+							</p>
+							<p class="quaint-indent">
+								${moods[i].moodContent}
+							</p>
+							</div></a>
+							`;
+			}else{
+				memoryStr+=`<div class="quaint-middle-bgII">
 							<p class="quaint-bottomLine">
 							<span class="glyphicon glyphicon-time"></span>
 								${moods[i].moodTime}
@@ -61,6 +90,8 @@ function showMood(data){
 							</p>
 							</div>
 							`;
+			}
+
 		}
 	}
 	//在quaint-live-mood后面添加生成的记忆

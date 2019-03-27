@@ -9,9 +9,10 @@
     <result column="mood_ip" property="moodIp" jdbcType="VARCHAR" />
     <result column="mood_content" property="moodContent" jdbcType="VARCHAR" />
     <result column="type_id" property="typeId" jdbcType="TINYINT" />
+    <result column="article_id" property="articleId" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    mood_id, user_id, user_name,mood_time, mood_ip, mood_content, type_id
+    mood_id, user_id, user_name,mood_time, mood_ip, mood_content, type_id, article_id
   </sql>
   <select id="select" resultMap="BaseResultMap">
     select
@@ -60,6 +61,9 @@
       <if test="typeId != null" >
         type_id,
       </if>
+      <if test="articleId != null" >
+        article_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="moodId != null" >
@@ -83,6 +87,9 @@
       <if test="typeId != null" >
         #{typeId,jdbcType=TINYINT},
       </if>
+      <if test="articleId != null" >
+        #{articleId,jdbcType=TINYINT},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.quaint.blog.pojo.Mood" >
@@ -105,6 +112,9 @@
       </if>
       <if test="typeId != null" >
         type_id = #{typeId,jdbcType=TINYINT},
+      </if>
+      <if test="articleId != null" >
+        article_id = #{articleId,jdbcType=TINYINT},
       </if>
     </set>
     where mood_id = #{moodId,jdbcType=INTEGER}

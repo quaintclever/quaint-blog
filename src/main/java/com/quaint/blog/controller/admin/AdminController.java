@@ -27,7 +27,7 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    //测试登陆  登陆跳转界面
+    //登陆  登陆跳转界面
     @PostMapping("login")
     public String login(@RequestParam String userName, @RequestParam String userPwd,@RequestParam (value="type",defaultValue="user")String type, HttpServletRequest request){
 
@@ -35,7 +35,6 @@ public class AdminController {
         System.out.println(userName);
         //获取登录ip
         System.out.println(IPKit.getIpAddressByRequest1(request));
-        //TODO 权限没有完善,暂时不让其他用户登陆后台
         if(!"quaint".equals(userName)&&"admin".equals(type)){
             return "blog/index";
         }
@@ -55,17 +54,15 @@ public class AdminController {
             userService.updateByPrimaryKeySelective(loginUser);
             //没有异常则登陆成功  根据类型判断在哪个系统登陆的，返回指定页面。
             if("admin".equals(type)){
-                return "redirect:admin/main";
+                return "redirect:admin/index";
             }else if("user".equals(type)){
                 return "redirect:blog/quaint-sayingYK";
             }else{
                 return "blog/index";
             }
         } catch (UnknownAccountException e) {
-            System.out.println("用户名不存在！");
             return "admin/login";
         } catch (IncorrectCredentialsException e){
-            System.out.println("密码错误！");
             return "admin/login";
         }
     }
@@ -88,7 +85,7 @@ public class AdminController {
     }
 
     /**
-     * 后台跳转界面通用方法
+     * 后台跳转界面通用方法1级
      * @param page
      * @return
      */
@@ -97,13 +94,22 @@ public class AdminController {
         return QuaintUtils.getRetrunPath(path,page);
     }
     /**
-     * 后台跳转界面通用方法
+     * 后台跳转界面通用方法2级
      * @param page
      * @return
      */
     @RequestMapping("{path}/{path2}/{page}")
     public String showPage(@PathVariable("path") String path,@PathVariable("path2") String path2,@PathVariable("page") String page){
         return QuaintUtils.getRetrunPath(path,path2,page);
+    }
+    /**
+     * 后台跳转界面通用方法 admin 下面3级页面跳转
+     * @param page
+     * @return
+     */
+    @RequestMapping("{path}/{path2}/{path3}/{page}")
+    public String showPage(@PathVariable("path") String path,@PathVariable("path2") String path2,@PathVariable("path3") String path3,@PathVariable("page") String page){
+        return QuaintUtils.getRetrunPath(path,path2,path3,page);
     }
     /**
      * 回到后台登陆界面

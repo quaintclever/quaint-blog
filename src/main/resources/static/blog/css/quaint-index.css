@@ -113,6 +113,21 @@
 		box-shadow: 0px 0px 5px lawngreen;
 		padding: 0px 5px 0px 5px;
 	}
+	/*look小标签*/
+	.quaint-look-label{
+		position: relative;
+	}
+	.quaint-look-label:after {
+		position: absolute;
+		bottom: -80px;
+		right: -15px;
+		content: " Click look all >>";
+		color: brown;
+		background: lawngreen;
+		border-radius: 21px 0px 21px 0px;
+		box-shadow: 0px 0px 5px lawngreen;
+		padding: 0px 5px 0px 5px;
+	}
 	.quaint-lineh21{
 		line-height: 21px;
 	}

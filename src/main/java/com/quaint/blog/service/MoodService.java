@@ -7,6 +7,13 @@ import com.quaint.blog.utils.LayJson;
 public interface MoodService {
 
     /**
+     * 通过id查询心情
+     * @param moodId
+     * @return
+     */
+    Mood selectByPrimaryKey(Integer moodId);
+
+    /**
      * 后台增加一个心情
      * @param mood
      * @return

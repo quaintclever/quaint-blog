@@ -52,6 +52,7 @@
         quaint_power
         quaint_mail_code        邮箱验证码存储表
         quaint_mood             心情表
+        quaint_article          文章表
         quaint_stay_message     留言表
         
 
@@ -88,7 +89,7 @@
 **前台心情显示**
     
     --基本完成:
-
+        心情也包含文章了
     --后期扩展:
         前台根据用户查询心情,用户也可以管理自己的心情.
     

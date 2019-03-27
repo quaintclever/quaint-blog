@@ -79,7 +79,19 @@ CREATE TABLE quaint_mood (
  mood_ip varchar(36) COMMENT '发表ip',
  mood_content varchar(7777) NOT NULL COMMENT '说说内容',
  type_id int NOT NULL default 0 COMMENT '隐私id 0公开 1好友 2私人',
+ article_id int NOT NULL default 0 COMMENT '文章id,0则代表不是文章,1指代该文章id'
  PRIMARY KEY (mood_id)
+)
+
+------------------
+-- **quaint_article 文章表**
+------------------
+CREATE TABLE quaint_article (
+ article_id int NOT NULL AUTO_INCREMENT COMMENT '自增ID,文章ID',
+ article_title varchar(100) COMMENT '文章标题',
+ article_type varchar(100) COMMENT '文章标签,类型',
+ article_content varchar(7777) NOT NULL COMMENT '文章内容',
+ PRIMARY KEY (article_id)
 )
 
 ------------------
@@ -106,6 +118,8 @@ CREATE TABLE quaint_stay_message (
  place varchar(64) COMMENT '地区',
  PRIMARY KEY (s_id)
 )
+
+
 
 ## ----------------下面是暂时没有用到的  参考使用----------------------
 ## ----------------下面是暂时没有用到的  参考使用----------------------

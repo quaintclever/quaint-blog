@@ -25,4 +25,6 @@ public class Mood {
 
     private Byte typeId;    //隐私id
 
+    private Integer articleId;  //文章id 0为非文章  其他为文章id
+
 }
