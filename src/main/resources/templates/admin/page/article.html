@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quaint后台-欢迎界面</title>
+    <link rel="stylesheet" href="../../../static/comm/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../static/admin/css/home/style.min.css">
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="../../../static/admin/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="../../../static/admin/ueditor/ueditor.all.js"></script>
+</head>
+<body>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">发布文章</h4>
+            </div>
+        </div>
+        <div class="row">
+            <form class="layui-form" method="post">
+                <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
+                    <input name="articleTitle" type="text" class="form-control" placeholder="请输入文章标题（必须）" required="required">
+                </div>
+                <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
+                    <!-- 如果是作品类，那么暂时不允许使用标签 -->
+                    <input name="articleType" type="text" class="form-control" placeholder="请填写文章标签">
+                </div>
+                <div class="form-group col-md-12" style="padding: 0 10px 0 0;">
+                    <!-- 如果是作品类，那么暂时不允许使用标签 -->
+                    <input name="moodContent" type="text" class="form-control" placeholder="请填写文章简介">
+                </div>
+                <div class="form-group col-md-12" style="padding: 0 10px 0 0;">
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="articleContent" type="text/plain">请输入文章内容</script>
+                </div>
+                <div class="form-group col-md-12">
+                    <center><a class="btn btn-success" lay-submit="" lay-filter="add">发布文章</a></center>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+</script>
+<script src="../../../static/admin/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<script src="../../../static/comm/js/jquery-3.3.1.js" charset="utf-8"></script>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            var param = JSON.stringify(data.field);
+            $.ajax({
+                url: "/article/data",
+                type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                dataType:'text',
+                data: param,
+                success: function(msg) {
+                    if(msg=="ok"){
+                        //添加成功,先获取ifream坐标
+                        // var index = parent.layer.getFrameIndex(window.name);
+                        layer.msg("添加成功!");
+                    }else{
+                        layer.msg(msg);
+                    }
+                },
+                error: function () {
+                    layer.msg("添加失败！");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</html>

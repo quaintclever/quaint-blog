@@ -90,7 +90,7 @@ CREATE TABLE quaint_article (
  article_id int NOT NULL AUTO_INCREMENT COMMENT '自增ID,文章ID',
  article_title varchar(100) COMMENT '文章标题',
  article_type varchar(100) COMMENT '文章标签,类型',
- article_content varchar(7777) NOT NULL COMMENT '文章内容',
+ article_content varchar(21000) NOT NULL COMMENT '文章内容',
  PRIMARY KEY (article_id)
 )
 

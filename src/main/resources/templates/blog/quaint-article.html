@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="quaint个人博客,quaintBlog,quaint" />
+    <meta name="date" content="2018.02.14"/>
+    <meta name="description" content="(๑• ₃ •๑)欢迎来到Quaintの博客，(๑> ؂ <๑)这是一个正在成长中的博客，一起成长的还有我的好朋友(> ω <)夏睡醒了秋~"/>
+    <title>Quaint个人博客 - 风清忆箫伤の似水流年</title>
+    <link rel="shortcut icon" href="image/index/quaint-logo.ico">
+    <!-- js -->
+    <script src="../../static/comm/js/jquery-3.3.1.js"></script>
+    <script src="../../static/blog/js/quaint-article.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/comm/js/quaint-effect.js" type="text/javascript"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="../../static/comm/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/blog/css/quaint-index.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/blog/css/quaint-article.css"/>
+</head>
+
+<body>
+<!-- quaint 中间开始 -->
+<div id="iframeH" class="container-fluid quaint-content">
+    <div class="quaint-middle-bgI">
+        <div id="quaint-life-mood" class="quaint-middle-bgII">
+            <h4 class="quaint-bottomLine">Quaint心情日志：</h4>
+            <p class="quaint-indent">
+                每一次，迷茫的时候，找一个倾诉的地方，听着歌，反思自己想要的成长，但是又少了清晰的方向。
+            </p>
+            <p class="quaint-indent">
+                每一次，上课的时候，找一个角落的位置，看着书，研究自己喜欢的地方，但是总会被认为是差学生。
+            </p>
+            <p class="quaint-indent">
+                每一次，游戏的时候，找一个舒服的姿势，吵闹着，发泄自己所有的不满，但是总会引起别人的不满。
+            </p>
+            <p class="quaint-indent">
+                下一次，你来的时候，找一个帅气的样子，欢迎着，拿出自己最好的状态，但请你一定要相信我，相信我们都还在努力。
+            </p>
+        </div>
+        <!-- 数据存放容器 -->
+        <div id="article-div">
+            <div class="quaint-middle-bgII">
+                <p class="quaint-indent">
+                    <div class="infosbox">
+                        <div class="newsview">
+                            <h3 class="news_title" th:text="${article.articleTitle}">文章标题</h3>
+                            <div class="bloginfo">
+                                <ul>
+                                    <li class="author" th:text="${user.userNickName}">Quaint</li>
+                                    <li class="lmname" th:text="${article.articleType}">慢生活</li>
+                                    <li class="timer" th:text="${#dates.format(mood.moodTime,'yyyy-MM-dd HH:mm:ss')}">2018-07-28</li>
+                                </ul>
+                            </div>
+                            <div th:utext="${article.articleContent}">内容</div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- quaint 中间结束 -->
+</body>
+<script src="../../static/blog/js/quaint-jframe.js" type="text/javascript" charset="utf-8"></script>
+</html>
