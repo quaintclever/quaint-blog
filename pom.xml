@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.quaint</groupId>
-    <artifactId>quain-tblog</artifactId>
+    <artifactId>quaint-blog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>quaint-blog</name>
     <description>Demo project for Spring Boot</description>
